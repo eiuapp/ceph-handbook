@@ -1,0 +1,197 @@
+
+vagrant@ceph-admin:~/test-cluster$ ls
+ceph-deploy-ceph.log  ceph.bootstrap-mds.keyring  ceph.bootstrap-mgr.keyring  ceph.bootstrap-osd.keyring  ceph.bootstrap-rgw.keyring  ceph.client.admin.keyring  ceph.conf  ceph.mon.keyring
+vagrant@ceph-admin:~/test-cluster$ ssh ceph-server-2 "sudo mkdir /var/local/osd0 && sudo chown ceph:ceph /var/local/osd0"
+vagrant@ceph-admin:~/test-cluster$ ssh ceph-server-3 "sudo mkdir /var/local/osd1 && sudo chown ceph:ceph /var/local/osd1"
+vagrant@ceph-admin:~/test-cluster$ ceph-deploy osd prepare ceph-server-2:/var/local/osd0 ceph-server-3:/var/local/osd1
+[ceph_deploy.conf][DEBUG ] found configuration file at: /home/vagrant/.cephdeploy.conf
+[ceph_deploy.cli][INFO  ] Invoked (1.5.38): /usr/bin/ceph-deploy osd prepare ceph-server-2:/var/local/osd0 ceph-server-3:/var/local/osd1
+[ceph_deploy.cli][INFO  ] ceph-deploy options:
+[ceph_deploy.cli][INFO  ]  username                      : None
+[ceph_deploy.cli][INFO  ]  block_db                      : None
+[ceph_deploy.cli][INFO  ]  disk                          : [('ceph-server-2', '/var/local/osd0', None), ('ceph-server-3', '/var/local/osd1', None)]
+[ceph_deploy.cli][INFO  ]  dmcrypt                       : False
+[ceph_deploy.cli][INFO  ]  verbose                       : False
+[ceph_deploy.cli][INFO  ]  bluestore                     : None
+[ceph_deploy.cli][INFO  ]  block_wal                     : None
+[ceph_deploy.cli][INFO  ]  overwrite_conf                : False
+[ceph_deploy.cli][INFO  ]  subcommand                    : prepare
+[ceph_deploy.cli][INFO  ]  dmcrypt_key_dir               : /etc/ceph/dmcrypt-keys
+[ceph_deploy.cli][INFO  ]  quiet                         : False
+[ceph_deploy.cli][INFO  ]  cd_conf                       : <ceph_deploy.conf.cephdeploy.Conf instance at 0x7fe281293a70>
+[ceph_deploy.cli][INFO  ]  cluster                       : ceph
+[ceph_deploy.cli][INFO  ]  fs_type                       : xfs
+[ceph_deploy.cli][INFO  ]  func                          : <function osd at 0x7fe2814f67d0>
+[ceph_deploy.cli][INFO  ]  ceph_conf                     : None
+[ceph_deploy.cli][INFO  ]  default_release               : False
+[ceph_deploy.cli][INFO  ]  zap_disk                      : False
+[ceph_deploy.osd][DEBUG ] Preparing cluster ceph disks ceph-server-2:/var/local/osd0: ceph-server-3:/var/local/osd1:
+[ceph-server-2][DEBUG ] connection detected need for sudo
+[ceph-server-2][DEBUG ] connected to host: ceph-server-2 
+[ceph-server-2][DEBUG ] detect platform information from remote host
+[ceph-server-2][DEBUG ] detect machine type
+[ceph-server-2][DEBUG ] find the location of an executable
+[ceph_deploy.osd][INFO  ] Distro info: Ubuntu 18.04 bionic
+[ceph_deploy.osd][DEBUG ] Deploying osd to ceph-server-2
+[ceph-server-2][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+[ceph-server-2][WARNIN] osd keyring does not exist yet, creating one
+[ceph-server-2][DEBUG ] create a keyring file
+[ceph_deploy.osd][DEBUG ] Preparing host ceph-server-2 disk /var/local/osd0 journal None activate False
+[ceph-server-2][DEBUG ] find the location of an executable
+[ceph-server-2][INFO  ] Running command: sudo /usr/sbin/ceph-disk -v prepare --cluster ceph --fs-type xfs -- /var/local/osd0
+[ceph-server-2][WARNIN] command: Running command: /usr/bin/ceph-osd --cluster=ceph --show-config-value=fsid
+[ceph-server-2][WARNIN] command: Running command: /usr/bin/ceph-conf --cluster=ceph --name=osd. --lookup bluestore_block_size
+[ceph-server-2][WARNIN] command: Running command: /usr/bin/ceph-conf --cluster=ceph --name=osd. --lookup bluestore_block_db_size
+[ceph-server-2][WARNIN] command: Running command: /usr/bin/ceph-conf --cluster=ceph --name=osd. --lookup bluestore_block_size
+[ceph-server-2][WARNIN] command: Running command: /usr/bin/ceph-conf --cluster=ceph --name=osd. --lookup bluestore_block_wal_size
+[ceph-server-2][WARNIN] populate_data_path: Preparing osd data dir /var/local/osd0
+[ceph-server-2][WARNIN] command: Running command: /bin/chown -R ceph:ceph /var/local/osd0/ceph_fsid.23503.tmp
+[ceph-server-2][WARNIN] command: Running command: /bin/chown -R ceph:ceph /var/local/osd0/fsid.23503.tmp
+[ceph-server-2][WARNIN] command: Running command: /bin/chown -R ceph:ceph /var/local/osd0/magic.23503.tmp
+[ceph-server-2][WARNIN] command: Running command: /bin/chown -R ceph:ceph /var/local/osd0/type.23503.tmp
+[ceph-server-2][INFO  ] checking OSD status...
+[ceph-server-2][DEBUG ] find the location of an executable
+[ceph-server-2][INFO  ] Running command: sudo /usr/bin/ceph --cluster=ceph osd stat --format=json
+[ceph_deploy.osd][DEBUG ] Host ceph-server-2 is now ready for osd use.
+[ceph-server-3][DEBUG ] connection detected need for sudo
+[ceph-server-3][DEBUG ] connected to host: ceph-server-3 
+[ceph-server-3][DEBUG ] detect platform information from remote host
+[ceph-server-3][DEBUG ] detect machine type
+[ceph-server-3][DEBUG ] find the location of an executable
+[ceph_deploy.osd][INFO  ] Distro info: Ubuntu 18.04 bionic
+[ceph_deploy.osd][DEBUG ] Deploying osd to ceph-server-3
+[ceph-server-3][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+[ceph-server-3][WARNIN] osd keyring does not exist yet, creating one
+[ceph-server-3][DEBUG ] create a keyring file
+[ceph_deploy.osd][DEBUG ] Preparing host ceph-server-3 disk /var/local/osd1 journal None activate False
+[ceph-server-3][DEBUG ] find the location of an executable
+[ceph-server-3][INFO  ] Running command: sudo /usr/sbin/ceph-disk -v prepare --cluster ceph --fs-type xfs -- /var/local/osd1
+[ceph-server-3][WARNIN] command: Running command: /usr/bin/ceph-osd --cluster=ceph --show-config-value=fsid
+[ceph-server-3][WARNIN] command: Running command: /usr/bin/ceph-conf --cluster=ceph --name=osd. --lookup bluestore_block_size
+[ceph-server-3][WARNIN] command: Running command: /usr/bin/ceph-conf --cluster=ceph --name=osd. --lookup bluestore_block_db_size
+[ceph-server-3][WARNIN] command: Running command: /usr/bin/ceph-conf --cluster=ceph --name=osd. --lookup bluestore_block_size
+[ceph-server-3][WARNIN] command: Running command: /usr/bin/ceph-conf --cluster=ceph --name=osd. --lookup bluestore_block_wal_size
+[ceph-server-3][WARNIN] populate_data_path: Preparing osd data dir /var/local/osd1
+[ceph-server-3][WARNIN] command: Running command: /bin/chown -R ceph:ceph /var/local/osd1/ceph_fsid.23684.tmp
+[ceph-server-3][WARNIN] command: Running command: /bin/chown -R ceph:ceph /var/local/osd1/fsid.23684.tmp
+[ceph-server-3][WARNIN] command: Running command: /bin/chown -R ceph:ceph /var/local/osd1/magic.23684.tmp
+[ceph-server-3][WARNIN] command: Running command: /bin/chown -R ceph:ceph /var/local/osd1/type.23684.tmp
+[ceph-server-3][INFO  ] checking OSD status...
+[ceph-server-3][DEBUG ] find the location of an executable
+[ceph-server-3][INFO  ] Running command: sudo /usr/bin/ceph --cluster=ceph osd stat --format=json
+[ceph_deploy.osd][DEBUG ] Host ceph-server-3 is now ready for osd use.
+vagrant@ceph-admin:~/test-cluster$ ceph-deploy osd activate ceph-server-2:/var/local/osd0 ceph-server-3:/var/local/osd1
+[ceph_deploy.conf][DEBUG ] found configuration file at: /home/vagrant/.cephdeploy.conf
+[ceph_deploy.cli][INFO  ] Invoked (1.5.38): /usr/bin/ceph-deploy osd activate ceph-server-2:/var/local/osd0 ceph-server-3:/var/local/osd1
+[ceph_deploy.cli][INFO  ] ceph-deploy options:
+[ceph_deploy.cli][INFO  ]  username                      : None
+[ceph_deploy.cli][INFO  ]  verbose                       : False
+[ceph_deploy.cli][INFO  ]  overwrite_conf                : False
+[ceph_deploy.cli][INFO  ]  subcommand                    : activate
+[ceph_deploy.cli][INFO  ]  quiet                         : False
+[ceph_deploy.cli][INFO  ]  cd_conf                       : <ceph_deploy.conf.cephdeploy.Conf instance at 0x7f63b6f4ba70>
+[ceph_deploy.cli][INFO  ]  cluster                       : ceph
+[ceph_deploy.cli][INFO  ]  func                          : <function osd at 0x7f63b71ae7d0>
+[ceph_deploy.cli][INFO  ]  ceph_conf                     : None
+[ceph_deploy.cli][INFO  ]  default_release               : False
+[ceph_deploy.cli][INFO  ]  disk                          : [('ceph-server-2', '/var/local/osd0', None), ('ceph-server-3', '/var/local/osd1', None)]
+[ceph_deploy.osd][DEBUG ] Activating cluster ceph disks ceph-server-2:/var/local/osd0: ceph-server-3:/var/local/osd1:
+[ceph-server-2][DEBUG ] connection detected need for sudo
+[ceph-server-2][DEBUG ] connected to host: ceph-server-2 
+[ceph-server-2][DEBUG ] detect platform information from remote host
+[ceph-server-2][DEBUG ] detect machine type
+[ceph-server-2][DEBUG ] find the location of an executable
+[ceph_deploy.osd][INFO  ] Distro info: Ubuntu 18.04 bionic
+[ceph_deploy.osd][DEBUG ] activating host ceph-server-2 disk /var/local/osd0
+[ceph_deploy.osd][DEBUG ] will use init type: systemd
+[ceph-server-2][DEBUG ] find the location of an executable
+[ceph-server-2][INFO  ] Running command: sudo /usr/sbin/ceph-disk -v activate --mark-init systemd --mount /var/local/osd0
+[ceph-server-2][WARNIN] main_activate: path = /var/local/osd0
+[ceph-server-2][WARNIN] activate: Cluster uuid is c49c3fb1-cfb9-4f16-adfd-ba93b44bd3b5
+[ceph-server-2][WARNIN] command: Running command: /usr/bin/ceph-osd --cluster=ceph --show-config-value=fsid
+[ceph-server-2][WARNIN] activate: Cluster name is ceph
+[ceph-server-2][WARNIN] activate: OSD uuid is a2b344e7-6231-4cb5-a0c3-75f0f7528a77
+[ceph-server-2][WARNIN] allocate_osd_id: Allocating OSD id...
+[ceph-server-2][WARNIN] command: Running command: /usr/bin/ceph-authtool --gen-print-key
+[ceph-server-2][WARNIN] __init__: stderr 
+[ceph-server-2][WARNIN] command_with_stdin: Running command with stdin: ceph --cluster ceph --name client.bootstrap-osd --keyring /var/lib/ceph/bootstrap-osd/ceph.keyring -i - osd new a2b344e7-6231-4cb5-a0c3-75f0f7528a77
+[ceph-server-2][WARNIN] command_with_stdin: 0
+[ceph-server-2][WARNIN] 
+[ceph-server-2][WARNIN] command_check_call: Running command: /usr/bin/ceph-authtool /var/local/osd0/keyring --create-keyring --name osd.0 --add-key AQD8v3BctlHkBxAAH0SEF00FaT71AFx1e0Vibg==
+[ceph-server-2][DEBUG ] creating /var/local/osd0/keyring
+[ceph-server-2][DEBUG ] added entity osd.0 auth auth(auid = 18446744073709551615 key=AQD8v3BctlHkBxAAH0SEF00FaT71AFx1e0Vibg== with 0 caps)
+[ceph-server-2][WARNIN] command: Running command: /bin/chown -R ceph:ceph /var/local/osd0/keyring
+[ceph-server-2][WARNIN] command: Running command: /bin/chown -R ceph:ceph /var/local/osd0/whoami.23706.tmp
+[ceph-server-2][WARNIN] activate: OSD id is 0
+[ceph-server-2][WARNIN] activate: Initializing OSD...
+[ceph-server-2][WARNIN] command_check_call: Running command: /usr/bin/ceph --cluster ceph --name client.bootstrap-osd --keyring /var/lib/ceph/bootstrap-osd/ceph.keyring mon getmap -o /var/local/osd0/activate.monmap
+[ceph-server-2][WARNIN] got monmap epoch 1
+[ceph-server-2][WARNIN] command_check_call: Running command: /usr/bin/ceph-osd --cluster ceph --mkfs -i 0 --monmap /var/local/osd0/activate.monmap --osd-data /var/local/osd0 --osd-uuid a2b344e7-6231-4cb5-a0c3-75f0f7528a77 --setuser ceph --setgroup ceph
+[ceph-server-2][WARNIN] 2019-02-23 03:37:32.800130 7f26d00f2e40 -1 bluestore(/var/local/osd0/block) _read_bdev_label failed to open /var/local/osd0/block: (2) No such file or directory
+[ceph-server-2][WARNIN] 2019-02-23 03:37:32.800144 7f26d00f2e40 -1 bluestore(/var/local/osd0/block) _read_bdev_label failed to open /var/local/osd0/block: (2) No such file or directory
+[ceph-server-2][WARNIN] 2019-02-23 03:37:35.455375 7f26d00f2e40 -1 created object store /var/local/osd0 for osd.0 fsid c49c3fb1-cfb9-4f16-adfd-ba93b44bd3b5
+[ceph-server-2][WARNIN] activate: Marking with init system systemd
+[ceph-server-2][WARNIN] command: Running command: /bin/chown -R ceph:ceph /var/local/osd0/systemd
+[ceph-server-2][WARNIN] command: Running command: /bin/chown -R ceph:ceph /var/local/osd0/active.23706.tmp
+[ceph-server-2][WARNIN] activate: ceph osd.0 data dir is ready at /var/local/osd0
+[ceph-server-2][WARNIN] activate_dir: Creating symlink /var/lib/ceph/osd/ceph-0 -> /var/local/osd0
+[ceph-server-2][WARNIN] start_daemon: Starting ceph osd.0...
+[ceph-server-2][WARNIN] command_check_call: Running command: /bin/systemctl disable ceph-osd@0
+[ceph-server-2][WARNIN] command_check_call: Running command: /bin/systemctl disable ceph-osd@0 --runtime
+[ceph-server-2][WARNIN] command_check_call: Running command: /bin/systemctl enable ceph-osd@0
+[ceph-server-2][WARNIN] Created symlink /etc/systemd/system/ceph-osd.target.wants/ceph-osd@0.service → /lib/systemd/system/ceph-osd@.service.
+[ceph-server-2][WARNIN] command_check_call: Running command: /bin/systemctl start ceph-osd@0
+[ceph-server-2][INFO  ] checking OSD status...
+[ceph-server-2][DEBUG ] find the location of an executable
+[ceph-server-2][INFO  ] Running command: sudo /usr/bin/ceph --cluster=ceph osd stat --format=json
+[ceph-server-2][INFO  ] Running command: sudo systemctl enable ceph.target
+[ceph-server-3][DEBUG ] connection detected need for sudo
+[ceph-server-3][DEBUG ] connected to host: ceph-server-3 
+[ceph-server-3][DEBUG ] detect platform information from remote host
+[ceph-server-3][DEBUG ] detect machine type
+[ceph-server-3][DEBUG ] find the location of an executable
+[ceph_deploy.osd][INFO  ] Distro info: Ubuntu 18.04 bionic
+[ceph_deploy.osd][DEBUG ] activating host ceph-server-3 disk /var/local/osd1
+[ceph_deploy.osd][DEBUG ] will use init type: systemd
+[ceph-server-3][DEBUG ] find the location of an executable
+[ceph-server-3][INFO  ] Running command: sudo /usr/sbin/ceph-disk -v activate --mark-init systemd --mount /var/local/osd1
+[ceph-server-3][WARNIN] main_activate: path = /var/local/osd1
+[ceph-server-3][WARNIN] activate: Cluster uuid is c49c3fb1-cfb9-4f16-adfd-ba93b44bd3b5
+[ceph-server-3][WARNIN] command: Running command: /usr/bin/ceph-osd --cluster=ceph --show-config-value=fsid
+[ceph-server-3][WARNIN] activate: Cluster name is ceph
+[ceph-server-3][WARNIN] activate: OSD uuid is 82ddfbd9-14ee-45ce-a955-464a6b1ea5d4
+[ceph-server-3][WARNIN] allocate_osd_id: Allocating OSD id...
+[ceph-server-3][WARNIN] command: Running command: /usr/bin/ceph-authtool --gen-print-key
+[ceph-server-3][WARNIN] __init__: stderr 
+[ceph-server-3][WARNIN] command_with_stdin: Running command with stdin: ceph --cluster ceph --name client.bootstrap-osd --keyring /var/lib/ceph/bootstrap-osd/ceph.keyring -i - osd new 82ddfbd9-14ee-45ce-a955-464a6b1ea5d4
+[ceph-server-3][WARNIN] command_with_stdin: 1
+[ceph-server-3][WARNIN] 
+[ceph-server-3][WARNIN] command_check_call: Running command: /usr/bin/ceph-authtool /var/local/osd1/keyring --create-keyring --name osd.1 --add-key AQAGwHBc3XAYLRAAp6jzViBXm8jUZ+jbBLfqIw==
+[ceph-server-3][DEBUG ] creating /var/local/osd1/keyring
+[ceph-server-3][DEBUG ] added entity osd.1 auth auth(auid = 18446744073709551615 key=AQAGwHBc3XAYLRAAp6jzViBXm8jUZ+jbBLfqIw== with 0 caps)
+[ceph-server-3][WARNIN] command: Running command: /bin/chown -R ceph:ceph /var/local/osd1/keyring
+[ceph-server-3][WARNIN] command: Running command: /bin/chown -R ceph:ceph /var/local/osd1/whoami.23863.tmp
+[ceph-server-3][WARNIN] activate: OSD id is 1
+[ceph-server-3][WARNIN] activate: Initializing OSD...
+[ceph-server-3][WARNIN] command_check_call: Running command: /usr/bin/ceph --cluster ceph --name client.bootstrap-osd --keyring /var/lib/ceph/bootstrap-osd/ceph.keyring mon getmap -o /var/local/osd1/activate.monmap
+[ceph-server-3][WARNIN] got monmap epoch 1
+[ceph-server-3][WARNIN] command_check_call: Running command: /usr/bin/ceph-osd --cluster ceph --mkfs -i 1 --monmap /var/local/osd1/activate.monmap --osd-data /var/local/osd1 --osd-uuid 82ddfbd9-14ee-45ce-a955-464a6b1ea5d4 --setuser ceph --setgroup ceph
+[ceph-server-3][WARNIN] 2019-02-23 03:37:43.374516 7fca887e0e40 -1 bluestore(/var/local/osd1/block) _read_bdev_label failed to open /var/local/osd1/block: (2) No such file or directory
+[ceph-server-3][WARNIN] 2019-02-23 03:37:43.374525 7fca887e0e40 -1 bluestore(/var/local/osd1/block) _read_bdev_label failed to open /var/local/osd1/block: (2) No such file or directory
+[ceph-server-3][WARNIN] 2019-02-23 03:37:45.159734 7fca887e0e40 -1 created object store /var/local/osd1 for osd.1 fsid c49c3fb1-cfb9-4f16-adfd-ba93b44bd3b5
+[ceph-server-3][WARNIN] activate: Marking with init system systemd
+[ceph-server-3][WARNIN] command: Running command: /bin/chown -R ceph:ceph /var/local/osd1/systemd
+[ceph-server-3][WARNIN] command: Running command: /bin/chown -R ceph:ceph /var/local/osd1/active.23863.tmp
+[ceph-server-3][WARNIN] activate: ceph osd.1 data dir is ready at /var/local/osd1
+[ceph-server-3][WARNIN] activate_dir: Creating symlink /var/lib/ceph/osd/ceph-1 -> /var/local/osd1
+[ceph-server-3][WARNIN] start_daemon: Starting ceph osd.1...
+[ceph-server-3][WARNIN] command_check_call: Running command: /bin/systemctl disable ceph-osd@1
+[ceph-server-3][WARNIN] command_check_call: Running command: /bin/systemctl disable ceph-osd@1 --runtime
+[ceph-server-3][WARNIN] command_check_call: Running command: /bin/systemctl enable ceph-osd@1
+[ceph-server-3][WARNIN] Created symlink /etc/systemd/system/ceph-osd.target.wants/ceph-osd@1.service → /lib/systemd/system/ceph-osd@.service.
+[ceph-server-3][WARNIN] command_check_call: Running command: /bin/systemctl start ceph-osd@1
+[ceph-server-3][INFO  ] checking OSD status...
+[ceph-server-3][DEBUG ] find the location of an executable
+[ceph-server-3][INFO  ] Running command: sudo /usr/bin/ceph --cluster=ceph osd stat --format=json
+[ceph-server-3][INFO  ] Running command: sudo systemctl enable ceph.target
+vagrant@ceph-admin:~/test-cluster$ 

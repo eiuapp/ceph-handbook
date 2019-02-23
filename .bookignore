@@ -7,3 +7,4 @@ _unused/*
 .DS_Store
 deploy.sh
 _book/gitbook/images/*
+docs/carmstrong/*.log
