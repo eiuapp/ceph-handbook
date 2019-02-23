@@ -656,6 +656,16 @@ Congratulations!
 
 好了，到这里，我们一个基本的ceph环境的已经搭建好了！
 
+这个时候，最好快照一下。
+
+```
+$ vagrant snapshot save ceph-admin basic
+$ vagrant snapshot save ceph-client basic
+$ vagrant snapshot save ceph-server-1 basic
+$ vagrant snapshot save ceph-server-2 basic
+$ vagrant snapshot save ceph-server-3 basic
+```
+
 ## Expanding the cluster （没有实践）
 
 To more closely model a production cluster, we're going to add one more OSD daemon and a [Ceph Metadata Server](http://docs.ceph.com/docs/master/man/8/ceph-mds/). We'll also add monitors to all hosts instead of just one.

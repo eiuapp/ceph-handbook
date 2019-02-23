@@ -7,27 +7,25 @@
 <!-- ## 环境配置
 
 - [ceph 环境配置](docs/env.md) -->
-## 安装
 
-### with vagrant
+## install
 
-#### carmstrong/multinode-ceph-vagrant
+* [安装](docs/installation/README.md)
+    * [vagrant install](docs/installation/vagrant/README.md)
+        * [carmstrong/multinode-ceph-vagrant](docs/installation/vagrant/carmstrong/multinode-ceph-vagrant.md)
+        * [oprypin/vagrant-ceph-quickstart](docs/installation/vagrant/oprypin/vagrant-ceph-quickstart.md)
+    * [quick install](docs/installation/quick-install.md)
+    * [Installation (ceph-deploy)](ceph-deploy.md)
 
-- [carmstrong/multinode-ceph-vagrant](docs/carmstrong/multinode-ceph-vagrant.md)
+## Intro to Ceph
+
+* [硬件推荐](docs/hardware-recommendations.md)
 
 
-#### oprypin/vagrant-ceph-quickstart
 
-- [oprypin/vagrant-ceph-quickstart](docs/oprypin/vagrant-ceph-quickstart.md)
+## configuration
 
-## 官网文档
-
-### Intro to Ceph
-
-- [硬件推荐](docs/hardware-recommendations.md)
-
-### Installation (ceph-deploy)
-
+* [configuration/common](docs/master/rados/configuration/common.md)
 <!-- - [预检](docs/start/quick-start-preflight.md) -->
 
 
