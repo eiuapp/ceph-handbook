@@ -1,6 +1,6 @@
 # Ceph Handbook
 
-此书是[ceph(v13.2.4 Mimic)](http://docs.ceph.com)的阅读与理解，帮助大家更快了解ceph的管理和使用。
+此书是[ceph](http://docs.ceph.com)的阅读与理解，帮助大家更快了解ceph的管理和使用。
 
 - GitHub地址：https://github.com/eiuapp/ceph-handbook
 

@@ -7,6 +7,9 @@
 <!-- ## 环境配置
 
 - [ceph 环境配置](docs/env.md) -->
+## env
+
+* [环境](docs/env/env.md)
 
 ## install
 
