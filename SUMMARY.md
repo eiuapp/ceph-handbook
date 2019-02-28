@@ -10,6 +10,7 @@
 ## env
 
 * [环境](docs/env/env.md)
+* [常用命令](docs/command/command.md)
 
 ## install
 
@@ -18,7 +19,11 @@
         * [carmstrong/multinode-ceph-vagrant](docs/installation/vagrant/carmstrong/multinode-ceph-vagrant.md)
         * [oprypin/vagrant-ceph-quickstart](docs/installation/vagrant/oprypin/vagrant-ceph-quickstart.md)
     * [quick install](docs/installation/quick-install.md)
+    * [添加osd](docs/installation/add-osds-with-quick-install.md)
+    * [添加rgw实例](docs/installation/add-an-rgw-instance-with-quick-install.md)
+    
     * [Installation (ceph-deploy)](ceph-deploy.md)
+
     * [Installation 常见报错](docs/installation/install-faq.md)
 
 ## Intro to Ceph
