@@ -19,6 +19,7 @@
         * [oprypin/vagrant-ceph-quickstart](docs/installation/vagrant/oprypin/vagrant-ceph-quickstart.md)
     * [quick install](docs/installation/quick-install.md)
     * [Installation (ceph-deploy)](ceph-deploy.md)
+    * [Installation 常见报错](docs/installation/install-faq.md)
 
 ## Intro to Ceph
 
