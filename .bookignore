@@ -8,3 +8,4 @@ _unused/*
 deploy.sh
 _book/gitbook/images/*
 docs/carmstrong/*.log
+.gitlab-ci.yml
