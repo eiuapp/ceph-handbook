@@ -35,6 +35,12 @@
 ## configuration
 
 * [configuration/common](docs/master/rados/configuration/common.md)
+
+## RADOSGW
+
+* [使用RADOSGW提供ceph的Swift接口](docs/radosgw/swift/authentication.md)
+
+
 <!-- - [预检](docs/start/quick-start-preflight.md) -->
 
 
