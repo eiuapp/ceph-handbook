@@ -41,6 +41,9 @@
 * [使用RADOSGW提供ceph的Swift接口](docs/radosgw/swift/authentication.md)
 
 
+## 常见问题
+
+* [时间不一致](docs/faq/ntpdate.md)
 <!-- - [预检](docs/start/quick-start-preflight.md) -->
 
 
