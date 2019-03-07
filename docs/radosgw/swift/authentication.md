@@ -147,5 +147,6 @@ ubuntu@controller:~$
 ```
 
 ## ref
+- http://docs.ceph.com/docs/master/install/install-ceph-gateway/
 - http://docs.ceph.com/docs/mimic/radosgw/swift/auth/
 - http://qinghua.github.io/ceph-radosgw/

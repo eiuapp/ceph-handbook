@@ -38,7 +38,11 @@
 
 ## RADOSGW
 
+## radosgw 与 swift
+
 * [使用RADOSGW提供ceph的Swift接口](docs/radosgw/swift/authentication.md)
+* [swift获取auth](docs/radosgw/swift/radosgw-swift-get-auth.md)
+* [swift上传文件](docs/radosgw/swift/radosgw-swift-upload.md)
 
 
 ## 常见问题
