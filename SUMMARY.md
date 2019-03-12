@@ -43,12 +43,15 @@
 * [使用RADOSGW提供ceph的Swift接口](docs/radosgw/swift/authentication.md)
 * [swift获取auth](docs/radosgw/swift/radosgw-swift-get-auth.md)
 * [swift上传文件](docs/radosgw/swift/radosgw-swift-upload.md)
+* [(未完成)ceph集成openstack swift](docs/radosgw/swift/openstack-swift-with-ceph-backend-radosgw.md)
 
 
 ## 常见问题
 
 * [时间不一致](docs/faq/ntpdate.md)
-<!-- - [预检](docs/start/quick-start-preflight.md) -->
+* [修改rgw配置生效](docs/faq/rgw-conf-change.md)
+* [查找服务名称](docs/faq/get-service-name.md)
+
 
 
 
