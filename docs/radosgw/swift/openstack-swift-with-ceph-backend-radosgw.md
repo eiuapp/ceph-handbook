@@ -353,6 +353,77 @@ root@ceph-client:/home/admin#
 
 报错了，啥问题
 
+#### 重新配置
+
+还是参考官网 http://docs.ceph.com/docs/master/radosgw/keystone/ 
+
+ceph rgw 节点直接修改
+
+```
+root@ceph-client:/etc/ceph# ls
+ceph.client.admin.keyring  ceph.client.rgw.ceph-client.keyring  ceph.conf  rbdmap  tmpaKLOQJ  tmpqMjag3
+root@ceph-client:/etc/ceph# cat ceph.conf 
+[global]
+fsid = 87aa8ebd-2782-415d-bf23-ad2eb89b61c6
+mon_initial_members = ceph-server-1, ceph-server-2, ceph-server-3
+mon_host = 192.168.0.130,192.168.0.111,192.168.0.105
+auth_cluster_required = cephx
+auth_service_required = cephx
+auth_client_required = cephx
+
+osd pool default size = 2
+mon_clock_drift_allowed = 1
+
+[client.rgw.ceph-client]
+rgw_frontends = "civetweb port=8080"
+
+rgw keystone api version = 3
+rgw keystone url = http://192.168.0.51:5000 
+rgw keystone admin user = admin
+rgw keystone admin password = openstack
+rgw keystone admin domain = default
+rgw keystone admin project = admin
+rgw keystone accepted roles = admin, user 
+rgw keystone token cache size = 500
+rgw s3 auth use keystone = true
+rgw keystone revocation interval = 60
+rgw keystone implicit tenants = true
+
+root@ceph-client:/etc/ceph# systemctl restart ceph-radosgw@rgw.ceph-client
+root@ceph-client:/etc/ceph# systemctl status ceph-radosgw@rgw.ceph-client
+```
+
+因为这里只设置了 admin 的role 所以，现在只有admin用户可以通过这个认证
+
+swift client 节点
+
+```
+root@controller:~# . admin-openrc 
+root@controller:~# swift list
+root@controller:~# . demo-openrc 
+root@controller:~# swift list
+Account GET failed: http://ceph-rgw-client:8080/swift/v1?format=json 401 Unauthorized  [first 60 chars of response] {"Code":"AccessDenied","RequestId":"tx000000000000000000003-
+Failed Transaction ID: tx000000000000000000003-005c877aed-5ebf-default
+root@controller:~# 
+```
+
+看到了吧，由于 demo 用户的 role是 user 而不是 admin, 所以，这里会认证失败的。
+
+怎么让 demo 也可以通过 keystone 认证，当然是在 `rgw keystone accepted roles ` 加上 `user` 变成下面的样子
+
+`rgw keystone accepted roles = admin, user` 
+
+然后重启rgw, 效果如下。
+
+```
+root@controller:~# . demo-openrc 
+root@controller:~# swift list
+root@controller:~# 
+```
+
+当然，我们也看到了 admin和demo用户 现在是没有container的，是一个全空的用户。
+
+
 
 
 ### swift client 验证

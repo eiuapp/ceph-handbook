@@ -43,7 +43,7 @@
 * [使用RADOSGW提供ceph的Swift接口](docs/radosgw/swift/authentication.md)
 * [swift获取auth](docs/radosgw/swift/radosgw-swift-get-auth.md)
 * [swift上传文件](docs/radosgw/swift/radosgw-swift-upload.md)
-* [(未完成)ceph集成openstack swift](docs/radosgw/swift/openstack-swift-with-ceph-backend-radosgw.md)
+* [ceph集成openstack swift](docs/radosgw/swift/openstack-swift-with-ceph-backend-radosgw.md)
 
 
 ## 常见问题
