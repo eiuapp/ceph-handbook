@@ -53,6 +53,7 @@
 * [查找服务名称](docs/faq/get-service-name.md)
 * [查找用户信息](docs/radosgw/swift/get-user-info.md)
 * [支持断点续传](docs/radosgw/basic.md)
+* [ceph-deploy osd create时报错](docs/faq/ceph-deploy-osd-error.md)
 
 
 
