@@ -199,6 +199,10 @@ vm外挂磁盘
     vgremove
     pvremove
 
+ceph-deplop
+====
 
+    ceph-deploy disk list ceph-server-2 # 列出ceph-server-2节点磁盘
+    
 ## ref
 - https://my.oschina.net/guol/blog/1928348
