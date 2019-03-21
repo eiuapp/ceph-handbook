@@ -12,10 +12,15 @@
 
 ## env
 
-swift client: 192.168.0.51
-keystone: 192.168.0.51
-ceph-rgw: 192.168.0.134
-ceph-admin: 192.168.0.185
+基于 之前 add-an-rgw-instance-with-quick-install ，因此有：
+
+- ceph rgw 的 http 接口是： http://ceph-client:8080/
+- ceph-client ip 是： 192.168.0.134 ，以下只用此IP表示 ceph rgw 接口。
+- ceph-admin: 192.168.0.185
+- keystone: 192.168.0.51 
+
+swift client : 192.168.0.51, 此上必须有 swift 命令
+
 
 ## step
 
@@ -284,7 +289,7 @@ root@controller:~#
 
 可参考[这里](/docs/faq/rgw-conf-change.html)
 
-#### 修改配置
+#### (可跳过)修改配置
 
 ```
 root@ceph-client:/home/admin# mkdir /var/ceph/nss -p
@@ -319,7 +324,7 @@ nss_db_path = /var/ceph/nss
 root@ceph-client:/home/admin# 
 ```
 
-#### 重启 rgw 服务
+#### (可跳过)重启 rgw 服务
 
 ```
 root@ceph-client:/home/admin# systemctl restart ceph-radosgw@rgw.ceph-client
@@ -353,7 +358,39 @@ root@ceph-client:/home/admin#
 
 报错了，啥问题
 
-#### 重新配置
+#### (可跳过)swift client 验证
+
+```
+root@controller:/home/ubuntu# ls
+ceph-swiftuser1-container1-object-1.txt  ceph-swiftuser1-container1-object-1.txt.bak  ceph-swift-user1-openrc  ceph-swift-user1-openrc.password  hello.txt
+root@controller:/home/ubuntu# . ceph-swift-user1-openrc
+root@controller:/home/ubuntu# swift list -v 
+Account GET failed: http://ceph-rgw-client:8080/swift/v1?format=json 401 Unauthorized  [first 60 chars of response] {"Code":"AccessDenied","RequestId":"tx00000000000000000001f-
+Failed Transaction ID: tx00000000000000000001f-005c862b5a-5e2c-default
+root@controller:/home/ubuntu# cat ceph-swift-user1-openrc
+username=swiftuser1
+subusername=swiftsubuser1
+displayname=swiftuser1displayname
+password=8Us5blLxYeh77cqWQR9qhgWT3e8BMOu8zokeKB3k
+root@controller:/home/ubuntu# . ceph-swift-user1-openrc
+root@controller:/home/ubuntu# swift list -v 
+Account GET failed: http://ceph-rgw-client:8080/swift/v1?format=json 401 Unauthorized  [first 60 chars of response] {"Code":"AccessDenied","RequestId":"tx000000000000000000021-
+Failed Transaction ID: tx000000000000000000021-005c862e4a-5e2c-default
+root@controller:/home/ubuntu# ls
+ceph-swiftuser1-container1-object-1.txt  ceph-swiftuser1-container1-object-1.txt.bak  ceph-swift-user1-openrc  ceph-swift-user1-openrc.password  hello.txt
+root@controller:/home/ubuntu# . ceph-swift-user1-openrc
+root@controller:/home/ubuntu# . ceph-swift-user1-openrc
+root@controller:/home/ubuntu# swift list -v 
+HTTPConnectionPool(host='ceph-rgw-client', port=8080): Max retries exceeded with url: /swift/v1?format=json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fb1ca95f490>: Failed to establish a new connection: [Errno 111] Connection refused',))
+root@controller:/home/ubuntu# telnet 192.168.0.134 8080
+Trying 192.168.0.134...
+telnet: Unable to connect to remote host: Connection refused
+root@controller:/home/ubuntu# 
+```
+
+
+
+### 重新配置
 
 还是参考官网 http://docs.ceph.com/docs/master/radosgw/keystone/ 
 
@@ -393,6 +430,8 @@ root@ceph-client:/etc/ceph# systemctl restart ceph-radosgw@rgw.ceph-client
 root@ceph-client:/etc/ceph# systemctl status ceph-radosgw@rgw.ceph-client
 ```
 
+### swift client 验证
+
 因为这里只设置了 admin 的role 所以，现在只有admin用户可以通过这个认证
 
 swift client 节点
@@ -424,37 +463,20 @@ root@controller:~#
 当然，我们也看到了 admin和demo用户 现在是没有container的，是一个全空的用户。
 
 
+### horizon 上传文件
 
-
-### swift client 验证
+通过chrome访问 https://192.168.0.51/horizon/ 上传一些文件
 
 ```
-root@controller:/home/ubuntu# ls
-ceph-swiftuser1-container1-object-1.txt  ceph-swiftuser1-container1-object-1.txt.bak  ceph-swift-user1-openrc  ceph-swift-user1-openrc.password  hello.txt
-root@controller:/home/ubuntu# . ceph-swift-user1-openrc
-root@controller:/home/ubuntu# swift list -v 
-Account GET failed: http://ceph-rgw-client:8080/swift/v1?format=json 401 Unauthorized  [first 60 chars of response] {"Code":"AccessDenied","RequestId":"tx00000000000000000001f-
-Failed Transaction ID: tx00000000000000000001f-005c862b5a-5e2c-default
-root@controller:/home/ubuntu# cat ceph-swift-user1-openrc
-username=swiftuser1
-subusername=swiftsubuser1
-displayname=swiftuser1displayname
-password=8Us5blLxYeh77cqWQR9qhgWT3e8BMOu8zokeKB3k
-root@controller:/home/ubuntu# . ceph-swift-user1-openrc
-root@controller:/home/ubuntu# swift list -v 
-Account GET failed: http://ceph-rgw-client:8080/swift/v1?format=json 401 Unauthorized  [first 60 chars of response] {"Code":"AccessDenied","RequestId":"tx000000000000000000021-
-Failed Transaction ID: tx000000000000000000021-005c862e4a-5e2c-default
-root@controller:/home/ubuntu# ls
-ceph-swiftuser1-container1-object-1.txt  ceph-swiftuser1-container1-object-1.txt.bak  ceph-swift-user1-openrc  ceph-swift-user1-openrc.password  hello.txt
-root@controller:/home/ubuntu# . ceph-swift-user1-openrc
-root@controller:/home/ubuntu# . ceph-swift-user1-openrc
-root@controller:/home/ubuntu# swift list -v 
-HTTPConnectionPool(host='ceph-rgw-client', port=8080): Max retries exceeded with url: /swift/v1?format=json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fb1ca95f490>: Failed to establish a new connection: [Errno 111] Connection refused',))
-root@controller:/home/ubuntu# telnet 192.168.0.134 8080
-Trying 192.168.0.134...
-telnet: Unable to connect to remote host: Connection refused
-root@controller:/home/ubuntu# 
+root@controller:~# . demo-openrc 
+root@controller:~# swift list
+root@controller:~# swift list
+helloworld
+root@controller:~# swift list helloworld 
+DingTalk_v4.6.8.281.exe
+root@controller:~# 
 ```
+
 
 
 

@@ -52,6 +52,7 @@
 * [修改rgw配置生效](docs/faq/rgw-conf-change.md)
 * [查找服务名称](docs/faq/get-service-name.md)
 * [查找用户信息](docs/radosgw/swift/get-user-info.md)
+* [支持断点续传](docs/radosgw/basic.md)
 
 
 
