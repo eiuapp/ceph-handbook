@@ -44,6 +44,7 @@
 * [swift获取auth](docs/radosgw/swift/radosgw-swift-get-auth.md)
 * [swift上传文件](docs/radosgw/swift/radosgw-swift-upload.md)
 * [ceph集成openstack swift](docs/radosgw/swift/openstack-swift-with-ceph-backend-radosgw.md)
+* [ceph与openstack-keystone-v3和swift集成](docs/radosgw/swift/ceph-radosgw-with-openstack-keystone-v3.md)
 
 
 ## 常见问题
@@ -54,7 +55,7 @@
 * [查找用户信息](docs/radosgw/swift/get-user-info.md)
 * [支持断点续传](docs/radosgw/basic.md)
 * [ceph-deploy osd create时报错](docs/faq/ceph-deploy-osd-error.md)
-
+* [swift-list临时出错](docs/faq/swift-list-error.md)
 
 
 
