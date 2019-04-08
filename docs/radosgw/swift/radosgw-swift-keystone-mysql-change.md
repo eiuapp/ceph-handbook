@@ -63,6 +63,8 @@ root@controller:/home/ubuntu#
 
 那说明，ceph本身有问题
 
+**注意：此时rgw接口依然是有效的，所以仅通过 http://192.168.0.134:8080/ 可访问来判断ceph集群是否正常，是无依据的。**
+
 来到 ceph-admin 节点 0.185 
 
 ```

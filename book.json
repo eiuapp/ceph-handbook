@@ -26,7 +26,8 @@
         "lightbox",
         "adsense",
         "disqus",
-        "ga"
+        "ga",
+        "baiduana"
     ],
     "pluginsConfig": {
         "theme-default": {
@@ -79,6 +80,9 @@
         },
         "disqus": {
             "shortName": "whoami"
+        },
+        "baidu": {
+            "token": "108be826b9faa2f792cdae4a29d274bb"
         }
     }
 }
