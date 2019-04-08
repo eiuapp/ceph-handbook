@@ -7,8 +7,15 @@
 
 - ceph rgw 的 http 接口是： http://ceph-client:8080/
 - ceph-client ip 是： 192.168.0.134 ，以下只用此IP表示 ceph rgw 接口。
-- ceph用户一个
+- ceph用户一个。注意：此用户是直接通过，`radosgw-admin user create` 创建，并非 keystone 用户。
 
+- endpoint 中 service 是： 
+
+- rgw 节点配置文件/etc/ceph.conf 并没有配置：
+
+```
+swift account in url = true
+```
 
 ## step
 
