@@ -57,7 +57,7 @@
 * [支持断点续传](docs/radosgw/basic.md)
 * [ceph-deploy osd create时报错](docs/faq/ceph-deploy-osd-error.md)
 * [swift-list临时出错](docs/faq/swift-list-error.md)
-
+* [常见问题-心远何方](docs/faq/faq-wangzhijian.md)
 
 
 <!-- *   [Intro to Ceph](../intro/)
