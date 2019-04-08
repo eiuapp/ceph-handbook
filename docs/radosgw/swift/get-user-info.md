@@ -1,5 +1,5 @@
 
-获取用户信息
+### 获取用户信息
 
 
 ```
@@ -53,6 +53,28 @@ root@ceph-client:/etc/ceph# radosgw-admin user info --uid="swiftuser1"
 
 root@ceph-client:/etc/ceph# 
 ```
+
+### 建个 openrc 文件
+
+```
+root@controller:/home/ubuntu# cat ceph-swift-user1-openrc
+username=swiftuser1
+subusername=swiftsubuser1
+displayname=swiftuser1displayname
+password=G8jTHyahPudXOQ0Dv3oDn3wq9fMKnbcc9e4IumZO
+root@controller:/home/ubuntu# . ceph-swift-user1-openrc
+```
+
+### 获取上面的password
+
+要获取上面的password等字段，则通过：
+
+- `radosgw-admin user info --uid="swiftuser1"` 
+
+### 生成并替换password
+
+- `sudo radosgw-admin key create --subuser="${username}:${subusername}" --key-type=swift --gen-secret` 生成并替换
+
 
 ## ref
 - https://keithtenzer.com/2017/03/30/openstack-swift-integration-with-ceph/
