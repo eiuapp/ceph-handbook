@@ -4,9 +4,6 @@
 
 - [前言](README.md)
 
-<!-- ## 环境配置
-
-- [ceph 环境配置](docs/env.md) -->
 ## env
 
 * [环境](docs/env/env.md)
@@ -38,15 +35,15 @@
 
 ## RADOSGW
 
-## radosgw 与 swift
-
-* [使用RADOSGW提供ceph的Swift接口](docs/radosgw/swift/authentication.md)
-* [swift获取auth](docs/radosgw/swift/radosgw-swift-get-auth.md)
-* [swift上传文件](docs/radosgw/swift/radosgw-swift-upload.md)
-* [ceph集成openstack swift](docs/radosgw/swift/openstack-swift-with-ceph-backend-radosgw.md)
-* [ceph与openstack-keystone-v3和swift集成](docs/radosgw/swift/ceph-radosgw-with-openstack-keystone-v3.md)
-* [(非keystone认证)swift生成并获取tmp url](docs/radosgw/swift/radosgw-swift-tmp-url-no-keystone.md)
-* [(keystone认证)swift生成并获取tmp url](docs/radosgw/swift/radosgw-swift-tmp-url-keystone.md)
+* [radosgw 与 swift]()
+    * [使用RADOSGW提供ceph的Swift接口](docs/radosgw/swift/authentication.md)
+    * [swift获取auth](docs/radosgw/swift/radosgw-swift-get-auth.md)
+    * [swift上传文件](docs/radosgw/swift/radosgw-swift-upload.md)
+    * [ceph集成openstack swift](docs/radosgw/swift/openstack-swift-with-ceph-backend-radosgw.md)
+    * [ceph与openstack-keystone-v3和swift集成](docs/radosgw/swift/ceph-radosgw-with-openstack-keystone-v3.md)
+* [tmp url]()
+    * [(非keystone认证)swift生成并获取tmp url](docs/radosgw/swift/radosgw-swift-tmp-url-no-keystone.md)
+    * [(keystone认证)swift生成并获取tmp url](docs/radosgw/swift/radosgw-swift-tmp-url-keystone.md)
 
 ## 常见问题
 
@@ -57,50 +54,9 @@
 * [支持断点续传](docs/radosgw/basic.md)
 * [ceph-deploy osd create时报错](docs/faq/ceph-deploy-osd-error.md)
 * [swift-list临时出错](docs/faq/swift-list-error.md)
+* [keystone更换mysql](docs/radosgw/swift/radosgw-swift-keystone-mysql-change.md)
 * [常见问题-心远何方](docs/faq/faq-wangzhijian.md)
 
-
-<!-- *   [Intro to Ceph](../intro/)
-*   [Installation (ceph-deploy)](../)
-    *   [Preflight](#)
-        *   [Ceph-deploy Setup](#ceph-deploy-setup)
-            *   [Debian/Ubuntu](#debian-ubuntu)
-            *   [RHEL/CentOS](#rhel-centos)
-            *   [openSUSE](#opensuse)
-        *   [Ceph Node Setup](#ceph-node-setup)
-            *   [Install NTP](#install-ntp)
-            *   [Install SSH Server](#install-ssh-server)
-            *   [Create a Ceph Deploy User](#create-a-ceph-deploy-user)
-            *   [Enable Password-less SSH](#enable-password-less-ssh)
-            *   [Enable Networking On Bootup](#enable-networking-on-bootup)
-            *   [Ensure Connectivity](#ensure-connectivity)
-            *   [Open Required Ports](#open-required-ports)
-            *   [TTY](#tty)
-            *   [SELinux](#selinux)
-            *   [Priorities/Preferences](#priorities-preferences)
-        *   [Summary](#summary)
-    *   [Storage Cluster Quick Start](../quick-ceph-deploy/)
-    *   [Block Device Quick Start](../quick-rbd/)
-    *   [Filesystem Quick Start](../quick-cephfs/)
-    *   [Object Storage Quick Start](../quick-rgw/)
-*   [Installation (Manual)](../../install/)
-*   [Installation (Kubernetes + Helm)](../kube-helm/)
-*   [Ceph Storage Cluster](../../rados/)
-*   [Ceph Filesystem](../../cephfs/)
-*   [Ceph Block Device](../../rbd/)
-*   [Ceph Object Gateway](../../radosgw/)
-*   [Ceph Manager Daemon](../../mgr/)
-*   [Ceph Manager Dashboard](../../mgr/dashboard/)
-*   [API Documentation](../../api/)
-*   [Architecture](../../architecture/)
-*   [Developer Guide](../../dev/)
-*   [Ceph Internals](../../dev/internals/)
-*   [Governance](../../governance/)
-*   [ceph-volume](../../ceph-volume/)
-*   [Ceph Releases](../../releases/)
-*   [Glossary](../../glossary/)
-
-*   [Index](../../genindex/) -->
 
 <!-- ## 未来
 
