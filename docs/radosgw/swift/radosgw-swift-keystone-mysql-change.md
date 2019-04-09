@@ -306,4 +306,24 @@ abcd
 root@controller:/home/ubuntu# 
 ```
 
+也就是说，keystone认证 开启与否，与，原生用户认证相冲突。个人感觉，应该是可以同时兼容的，但是这次mysql迁移，导致不兼容了。
 
+下面操作，展示的就是 keystone 认证生效，前后，的对比。
+
+```
+root@controller:/home/ubuntu# . ceph-swift-user1-openrc
+root@controller:/home/ubuntu# swift -A http://192.168.0.134:8080/auth/v1.0 -U ${username}:${subusername} -K ${password}  list swiftuser1-container1
+ceph-swiftuser1-container1-object-1.txt
+dao.txt
+guo.txt
+root@controller:/home/ubuntu# . admin-openrc 
+root@controller:/home/ubuntu# swift list
+Authorization Failure. Authorization failed: An unexpected error prevented the server from fulfilling your request. (HTTP 500) (Request-ID: req-c8535798-84cc-4571-8624-c179f992236a)
+root@controller:/home/ubuntu# . admin-openrc 
+root@controller:/home/ubuntu# swift list
+abcd
+root@controller:/home/ubuntu# . ceph-swift-user1-openrc
+root@controller:/home/ubuntu# swift -A http://192.168.0.134:8080/auth/v1.0 -U ${username}:${subusername} -K ${password}  list swiftuser1-container1
+Authorization Failure. Authorization failed: Method Not Allowed (HTTP 405)
+root@controller:/home/ubuntu# 
+```
