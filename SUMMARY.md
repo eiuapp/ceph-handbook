@@ -46,7 +46,8 @@
     * [(非keystone认证)swift生成并获取tmp url](docs/radosgw/swift/radosgw-swift-tmp-url-no-keystone.md)
     * [(keystone认证)swift生成并获取tmp url](docs/radosgw/swift/radosgw-swift-tmp-url-keystone.md)
 * [user]()
-    * [radosgw用户信息](docs/radosgw/swift/radosgw-user-info.md)
+    * [radosgw用户信息](docs/radosgw/swift/get-user-info.md)
+    
 ## 常见问题
 
 * [时间不一致](docs/faq/ntpdate.md)
