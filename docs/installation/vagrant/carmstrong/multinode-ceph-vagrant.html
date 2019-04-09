@@ -1,0 +1,1520 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>carmstrong/multinode-ceph-vagrant · Ceph Handbook - Ceph 实践指南 by eiuapp</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="eiuapp">
+        
+        
+    
+    <link rel="stylesheet" href="../../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-prism/prism-ghcolors.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-lightbox/lightbox.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-disqus/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../oprypin/vagrant-ceph-quickstart.html" />
+    
+    
+    <link rel="prev" href="../README.md" />
+    
+
+    
+        <link rel="shortcut icon" href='../../../../favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="bookmark" href='../../../../favicon.ico' type="image/x-icon">
+    
+    
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"repo":"eiuapp/ceph-handbook","types":["star"],"size":"small"};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://eiuapp.github.io/ceph-handbook" target="_blank" class="custom-link">Ceph Handbook</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        <li class="header">序言</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../../">
+            
+                <a href="../../../../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">env</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../../env/env.html">
+            
+                <a href="../../../env/env.html">
+            
+                    
+                        <b>2.1.</b>
+                    
+                    环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../../command/command.html">
+            
+                <a href="../../../command/command.html">
+            
+                    
+                        <b>2.2.</b>
+                    
+                    常用命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">install</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                        <b>3.1.</b>
+                    
+                    安装
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../README.md">
+            
+                <span>
+            
+                    
+                        <b>3.1.1.</b>
+                    
+                    vagrant install
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="3.1.1.1" data-path="multinode-ceph-vagrant.html">
+            
+                <a href="multinode-ceph-vagrant.html">
+            
+                    
+                        <b>3.1.1.1.</b>
+                    
+                    carmstrong/multinode-ceph-vagrant
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.2" data-path="../oprypin/vagrant-ceph-quickstart.html">
+            
+                <a href="../oprypin/vagrant-ceph-quickstart.html">
+            
+                    
+                        <b>3.1.1.2.</b>
+                    
+                    oprypin/vagrant-ceph-quickstart
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../../quick-install.html">
+            
+                <a href="../../quick-install.html">
+            
+                    
+                        <b>3.1.2.</b>
+                    
+                    quick install
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../../add-osds-with-quick-install.html">
+            
+                <a href="../../add-osds-with-quick-install.html">
+            
+                    
+                        <b>3.1.3.</b>
+                    
+                    添加osd
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../../add-an-rgw-instance-with-quick-install.html">
+            
+                <a href="../../add-an-rgw-instance-with-quick-install.html">
+            
+                    
+                        <b>3.1.4.</b>
+                    
+                    添加rgw实例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="../../../../ceph-deploy.md">
+            
+                <span>
+            
+                    
+                        <b>3.1.5.</b>
+                    
+                    Installation (ceph-deploy)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" data-path="../../install-faq.html">
+            
+                <a href="../../install-faq.html">
+            
+                    
+                        <b>3.1.6.</b>
+                    
+                    Installation 常见报错
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Intro to Ceph</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../../../hardware-recommendations.html">
+            
+                <a href="../../../hardware-recommendations.html">
+            
+                    
+                        <b>4.1.</b>
+                    
+                    硬件推荐
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">configuration</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../../../master/rados/configuration/common.html">
+            
+                <a href="../../../master/rados/configuration/common.html">
+            
+                    
+                        <b>5.1.</b>
+                    
+                    configuration/common
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">RADOSGW</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" >
+            
+                <span>
+            
+                    
+                        <b>6.1.</b>
+                    
+                    radosgw 与 swift
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../../../radosgw/swift/authentication.html">
+            
+                <a href="../../../radosgw/swift/authentication.html">
+            
+                    
+                        <b>6.1.1.</b>
+                    
+                    使用RADOSGW提供ceph的Swift接口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../../../radosgw/swift/radosgw-swift-get-auth.html">
+            
+                <a href="../../../radosgw/swift/radosgw-swift-get-auth.html">
+            
+                    
+                        <b>6.1.2.</b>
+                    
+                    swift获取auth
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.3" data-path="../../../radosgw/swift/radosgw-swift-upload.html">
+            
+                <a href="../../../radosgw/swift/radosgw-swift-upload.html">
+            
+                    
+                        <b>6.1.3.</b>
+                    
+                    swift上传文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.4" data-path="../../../radosgw/swift/openstack-swift-with-ceph-backend-radosgw.html">
+            
+                <a href="../../../radosgw/swift/openstack-swift-with-ceph-backend-radosgw.html">
+            
+                    
+                        <b>6.1.4.</b>
+                    
+                    ceph集成openstack swift
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.5" data-path="../../../radosgw/swift/ceph-radosgw-with-openstack-keystone-v3.html">
+            
+                <a href="../../../radosgw/swift/ceph-radosgw-with-openstack-keystone-v3.html">
+            
+                    
+                        <b>6.1.5.</b>
+                    
+                    ceph与openstack-keystone-v3和swift集成
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" >
+            
+                <span>
+            
+                    
+                        <b>6.2.</b>
+                    
+                    tmp url
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="../../../radosgw/swift/radosgw-swift-setup-tmp-url.html">
+            
+                <a href="../../../radosgw/swift/radosgw-swift-setup-tmp-url.html">
+            
+                    
+                        <b>6.2.1.</b>
+                    
+                    设置Temporary URL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="../../../radosgw/swift/radosgw-swift-tmp-url-no-keystone.html">
+            
+                <a href="../../../radosgw/swift/radosgw-swift-tmp-url-no-keystone.html">
+            
+                    
+                        <b>6.2.2.</b>
+                    
+                    (非keystone认证)swift生成并获取tmp url
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.3" data-path="../../../radosgw/swift/radosgw-swift-tmp-url-keystone.html">
+            
+                <a href="../../../radosgw/swift/radosgw-swift-tmp-url-keystone.html">
+            
+                    
+                        <b>6.2.3.</b>
+                    
+                    (keystone认证)swift生成并获取tmp url
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" >
+            
+                <span>
+            
+                    
+                        <b>6.3.</b>
+                    
+                    user
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.3.1" data-path="../../../radosgw/swift/get-user-info.html">
+            
+                <a href="../../../radosgw/swift/get-user-info.html">
+            
+                    
+                        <b>6.3.1.</b>
+                    
+                    radosgw用户信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">常见问题</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../../../faq/ntpdate.html">
+            
+                <a href="../../../faq/ntpdate.html">
+            
+                    
+                        <b>7.1.</b>
+                    
+                    时间不一致
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../../../faq/rgw-conf-change.html">
+            
+                <a href="../../../faq/rgw-conf-change.html">
+            
+                    
+                        <b>7.2.</b>
+                    
+                    修改rgw配置生效
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="../../../faq/get-service-name.html">
+            
+                <a href="../../../faq/get-service-name.html">
+            
+                    
+                        <b>7.3.</b>
+                    
+                    查找服务名称
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="../../../radosgw/swift/get-user-info.html">
+            
+                <a href="../../../radosgw/swift/get-user-info.html">
+            
+                    
+                        <b>7.4.</b>
+                    
+                    查找用户信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="../../../radosgw/basic.html">
+            
+                <a href="../../../radosgw/basic.html">
+            
+                    
+                        <b>7.5.</b>
+                    
+                    支持断点续传
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.6" data-path="../../../faq/ceph-deploy-osd-error.html">
+            
+                <a href="../../../faq/ceph-deploy-osd-error.html">
+            
+                    
+                        <b>7.6.</b>
+                    
+                    ceph-deploy osd create时报错
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.7" data-path="../../../faq/swift-list-error.html">
+            
+                <a href="../../../faq/swift-list-error.html">
+            
+                    
+                        <b>7.7.</b>
+                    
+                    swift-list临时出错
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.8" data-path="../../../radosgw/swift/radosgw-swift-keystone-mysql-change.html">
+            
+                <a href="../../../radosgw/swift/radosgw-swift-keystone-mysql-change.html">
+            
+                    
+                        <b>7.8.</b>
+                    
+                    keystone更换mysql
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.9" data-path="../../../faq/faq-wangzhijian.html">
+            
+                <a href="../../../faq/faq-wangzhijian.html">
+            
+                    
+                        <b>7.9.</b>
+                    
+                    常见问题-心远何方
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../../.." >carmstrong/multinode-ceph-vagrant</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <html><head></head><body><p>&#x6839;&#x636E; <a href="https://github.com/carmstrong/multinode-ceph-vagrant" target="_blank">https://github.com/carmstrong/multinode-ceph-vagrant</a> &#x5B89;&#x88C5; ceph &#x5F00;&#x53D1;&#x73AF;&#x5883;</p>
+<h2 id="env">env</h2>
+<ul>
+<li>os: windows 10</li>
+<li>&#x547D;&#x4EE4;&#x884C;&#xFF1A; git-bash&#x6216;&#x8005;cmder&#x6216;&#x8005;cmd</li>
+<li>virtual: 6.0.4</li>
+<li>vagrant: 2.2.3</li>
+<li>vagrant box: ubuntu/bionic64</li>
+<li>ceph&#xFF1A;V12.2.11 LUMINOUS</li>
+<li>ceph-deploy&#xFF1A;1.5.38</li>
+</ul>
+<p>&#x67B6;&#x6784;&#x90E8;&#x7F72;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x90E8;&#x4EF6;</th>
+<th style="text-align:left">OSD</th>
+<th style="text-align:left">Monitor</th>
+<th style="text-align:left">Managers</th>
+<th style="text-align:left">MDSs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">ceph-admin</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">ceph-client</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">ceph-server-1</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">ceph-server-2</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">ceph-server-3</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="clone-repo">clone repo</h2>
+<pre class="language-"><code>git clone https://github.com/carmstrong/multinode-ceph-vagrant &amp;&amp; cd multinode-ceph-vagrant
+</code></pre><h2 id="vagrant-plugin">vagrant plugin</h2>
+<pre class="language-"><code>vagrant plugin install vagrant-cachier
+vagrant plugin install vagrant-hostmanager
+</code></pre><h2 id="vagrant-box-add">vagrant box add</h2>
+<p>&#x63D0;&#x524D;&#x4E0B;&#x8F7D;&#x597D;&#x5B98;&#x65B9;&#x7684; ubuntu/bionic64 </p>
+<pre class="language-"><code>vagrant box list
+vagrant box add ./ubuntu-18.04/bionic-server-cloudimg-amd64-vagrant.box  --name ubuntu/bionic64
+vagrant box list
+</code></pre><h2 id="add-your-vagrant-key-to-the-ssh-agent">Add your Vagrant key to the SSH agent</h2>
+<pre class="language-"><code>DELL@DESKTOP-MQ9CENU MINGW64 /f/tom/ceph/multinode-ceph-vagrant (master)
+$ ssh-add -k ~/.vagrant.d/insecure_private_key
+Could not open a connection to your authentication agent.
+
+DELL@DESKTOP-MQ9CENU MINGW64 /f/tom/ceph/multinode-ceph-vagrant (master)
+$ ssh-add -K ~/.vagrant.d/insecure_private_key
+Could not open a connection to your authentication agent.
+
+DELL@DESKTOP-MQ9CENU MINGW64 /f/tom/ceph/multinode-ceph-vagrant (master)
+$
+</code></pre><p>&#x8FD9;&#x91CC;&#x660E;&#x663E;&#x6CA1;&#x6709;&#x6210;&#x529F;&#x3002;</p>
+<p>&#x662F;&#x4E0D;&#x662F;&#x56E0;&#x4E3A;&#x6211;&#x7684;&#x73AF;&#x5883;&#x4E2D;&#xFF0C;&#x4E4B;&#x524D;&#x6709;&#x8FC7; <code>~/.vagrant.d/insecure_private_key</code> ? </p>
+<p>&#x6211;&#x8FD9;&#x91CC;&#x5148;&#x8DF3;&#x8FC7;&#x8FD9;&#x4E00;&#x6B65;</p>
+<pre class="language-"><code>DELL@DESKTOP-MQ9CENU MINGW64 /f/tom/ceph/multinode-ceph-vagrant (master)
+$ ls ~/.vagrant.d/insecure_private_key
+/c/Users/DELL/.vagrant.d/insecure_private_key
+
+DELL@DESKTOP-MQ9CENU MINGW64 /f/tom/ceph/multinode-ceph-vagrant (master)
+$
+</code></pre><p>&#x5176;&#x5B9E;&#x8FD9;&#x4E00;&#x6B65;&#xFF0C;&#x5C31;&#x662F;&#x4E3A;&#x4E86;&#x8BA9;&#x540E;&#x9762;&#x7684; <code>vagrant ssh ceph-admin</code> &#x7B49;&#x751F;&#x6548;&#x3002;</p>
+<p>&#x800C; <code>vagrant ssh ceph-admin</code> &#x7684;&#x539F;&#x7406;&#xFF0C;&#x5C31;&#x662F;&#x4F7F;&#x7528; <code>~/.vagrant.d/insecure_private_key</code> &#x53BB;&#x767B;&#x5F55; ceph-admin &#x4E2D;&#x7684; vagrant &#x7528;&#x6237;&#x3002;</p>
+<p>&#x4F60;&#x53EF;&#x4EE5;&#x7528;&#x8FD9;&#x4E2A;&#x539F;&#x7406;&#xFF0C;&#x5728; xshell &#x4E2D;&#x5BFC;&#x5165; <code>~/.vagrant.d/insecure_private_key</code> &#xFF0C;&#x7136;&#x540E;&#x767B;&#x5F55; ceph-admin&#xFF0C;ceph-client&#xFF0C;ceph-server-1 &#x7B49;&#x673A;&#x5668; &#x4E2D;&#x7684; vagrant &#x7528;&#x6237;&#x3002;</p>
+<h2 id="start-the-vms">Start the VMs</h2>
+<p>This instructs Vagrant to start the VMs and install <code>ceph-deploy</code> on the admin machine.</p>
+<pre class="language-"><code class="lang-console">$ vagrant up
+</code></pre>
+<h2 id="create-the-cluster">Create the cluster</h2>
+<p>We&apos;ll create a simple cluster and make sure it&apos;s healthy. Then, we&apos;ll expand it.</p>
+<p>First, we need to get an interactive shell on the admin machine:</p>
+<pre class="language-"><code class="lang-console">$ vagrant ssh ceph-admin
+</code></pre>
+<p>The <code>ceph-deploy</code> tool will write configuration files and logs to the current directory. So, let&apos;s create a directory for the new cluster:</p>
+<pre class="language-"><code class="lang-console">vagrant@ceph-admin:~$ mkdir test-cluster &amp;&amp; cd test-cluster
+</code></pre>
+<pre class="language-"><code>vagrant@ceph-admin:~/test-cluster$ ceph-deploy --version
+1.5.38
+vagrant@ceph-admin:~/test-cluster$
+</code></pre><p>Let&apos;s prepare the machines:</p>
+<pre class="language-"><code class="lang-console">vagrant@ceph-admin:~/test-cluster$ ceph-deploy new ceph-server-1 ceph-server-2 ceph-server-3
+</code></pre>
+<p>&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x53EF;&#x80FD;&#x4F1A;&#x62A5;&#x9519;&#xFF1A;</p>
+<pre class="language-"><code class="lang-shell">vagrant@ceph-admin:~/test-cluster$ ceph-deploy new ceph-server-1 ceph-server-2 ceph-server-3
+<span class="token punctuation">[</span>ceph_deploy.conf<span class="token punctuation">]</span><span class="token punctuation">[</span>DEBUG <span class="token punctuation">]</span> found configuration <span class="token function">file</span> at: /home/vagrant/.cephdeploy.conf
+<span class="token punctuation">[</span>ceph_deploy.cli<span class="token punctuation">]</span><span class="token punctuation">[</span>INFO  <span class="token punctuation">]</span> Invoked <span class="token punctuation">(</span>1.5.38<span class="token punctuation">)</span>: /usr/bin/ceph-deploy new ceph-server-1 ceph-server-2 ceph-server-3
+<span class="token punctuation">[</span>ceph_deploy.cli<span class="token punctuation">]</span><span class="token punctuation">[</span>INFO  <span class="token punctuation">]</span> ceph-deploy options:
+<span class="token punctuation">[</span>ceph_deploy.cli<span class="token punctuation">]</span><span class="token punctuation">[</span>INFO  <span class="token punctuation">]</span>  username                      <span class="token keyword">:</span> None
+<span class="token punctuation">[</span>ceph_deploy.cli<span class="token punctuation">]</span><span class="token punctuation">[</span>INFO  <span class="token punctuation">]</span>  verbose                       <span class="token keyword">:</span> False
+<span class="token punctuation">[</span>ceph_deploy.cli<span class="token punctuation">]</span><span class="token punctuation">[</span>INFO  <span class="token punctuation">]</span>  overwrite_conf                <span class="token keyword">:</span> False
+<span class="token punctuation">[</span>ceph_deploy.cli<span class="token punctuation">]</span><span class="token punctuation">[</span>INFO  <span class="token punctuation">]</span>  quiet                         <span class="token keyword">:</span> False
+<span class="token punctuation">[</span>ceph_deploy.cli<span class="token punctuation">]</span><span class="token punctuation">[</span>INFO  <span class="token punctuation">]</span>  cd_conf                       <span class="token keyword">:</span> <span class="token operator">&lt;</span>ceph_deploy.conf.cephdeploy.Conf instance at 0x7f3c7ba5afc8<span class="token operator">&gt;</span>
+<span class="token punctuation">[</span>ceph_deploy.cli<span class="token punctuation">]</span><span class="token punctuation">[</span>INFO  <span class="token punctuation">]</span>  cluster                       <span class="token keyword">:</span> ceph
+<span class="token punctuation">[</span>ceph_deploy.cli<span class="token punctuation">]</span><span class="token punctuation">[</span>INFO  <span class="token punctuation">]</span>  ssh_copykey                   <span class="token keyword">:</span> True
+<span class="token punctuation">[</span>ceph_deploy.cli<span class="token punctuation">]</span><span class="token punctuation">[</span>INFO  <span class="token punctuation">]</span>  mon                           <span class="token keyword">:</span> <span class="token punctuation">[</span><span class="token string">&apos;ceph-server-1&apos;</span>, <span class="token string">&apos;ceph-server-2&apos;</span>, <span class="token string">&apos;ceph-server-3&apos;</span><span class="token punctuation">]</span>
+<span class="token punctuation">[</span>ceph_deploy.cli<span class="token punctuation">]</span><span class="token punctuation">[</span>INFO  <span class="token punctuation">]</span>  func                          <span class="token keyword">:</span> <span class="token operator">&lt;</span>function new at 0x7f3c7bed1578<span class="token operator">&gt;</span>
+<span class="token punctuation">[</span>ceph_deploy.cli<span class="token punctuation">]</span><span class="token punctuation">[</span>INFO  <span class="token punctuation">]</span>  public_network                <span class="token keyword">:</span> None
+<span class="token punctuation">[</span>ceph_deploy.cli<span class="token punctuation">]</span><span class="token punctuation">[</span>INFO  <span class="token punctuation">]</span>  ceph_conf                     <span class="token keyword">:</span> None
+<span class="token punctuation">[</span>ceph_deploy.cli<span class="token punctuation">]</span><span class="token punctuation">[</span>INFO  <span class="token punctuation">]</span>  cluster_network               <span class="token keyword">:</span> None
+<span class="token punctuation">[</span>ceph_deploy.cli<span class="token punctuation">]</span><span class="token punctuation">[</span>INFO  <span class="token punctuation">]</span>  default_release               <span class="token keyword">:</span> False
+<span class="token punctuation">[</span>ceph_deploy.cli<span class="token punctuation">]</span><span class="token punctuation">[</span>INFO  <span class="token punctuation">]</span>  fsid                          <span class="token keyword">:</span> None
+<span class="token punctuation">[</span>ceph_deploy.new<span class="token punctuation">]</span><span class="token punctuation">[</span>DEBUG <span class="token punctuation">]</span> Creating new cluster named ceph
+<span class="token punctuation">[</span>ceph_deploy.new<span class="token punctuation">]</span><span class="token punctuation">[</span>INFO  <span class="token punctuation">]</span> making sure passwordless SSH succeeds
+<span class="token punctuation">[</span>ceph-server-1<span class="token punctuation">]</span><span class="token punctuation">[</span>DEBUG <span class="token punctuation">]</span> connected to host: ceph-admin
+<span class="token punctuation">[</span>ceph-server-1<span class="token punctuation">]</span><span class="token punctuation">[</span>INFO  <span class="token punctuation">]</span> Running command: <span class="token function">ssh</span> -CT -o BatchMode<span class="token operator">=</span>yes ceph-server-1
+<span class="token punctuation">[</span>ceph_deploy.new<span class="token punctuation">]</span><span class="token punctuation">[</span>WARNIN<span class="token punctuation">]</span> could not connect via SSH
+<span class="token punctuation">[</span>ceph_deploy.new<span class="token punctuation">]</span><span class="token punctuation">[</span>INFO  <span class="token punctuation">]</span> creating a passwordless id_rsa.pub key <span class="token function">file</span>
+<span class="token punctuation">[</span>ceph_deploy.new<span class="token punctuation">]</span><span class="token punctuation">[</span>DEBUG <span class="token punctuation">]</span> connected to host: ceph-admin
+<span class="token punctuation">[</span>ceph_deploy.new<span class="token punctuation">]</span><span class="token punctuation">[</span>INFO  <span class="token punctuation">]</span> Running command: ssh-keygen -t rsa -N  -f /home/vagrant/.ssh/id_rsa
+<span class="token punctuation">[</span>ceph_deploy.new<span class="token punctuation">]</span><span class="token punctuation">[</span>DEBUG <span class="token punctuation">]</span> Generating public/private rsa key pair.
+<span class="token punctuation">[</span>ceph_deploy.new<span class="token punctuation">]</span><span class="token punctuation">[</span>DEBUG <span class="token punctuation">]</span> Your identification has been saved <span class="token keyword">in</span> /home/vagrant/.ssh/id_rsa.
+<span class="token punctuation">[</span>ceph_deploy.new<span class="token punctuation">]</span><span class="token punctuation">[</span>DEBUG <span class="token punctuation">]</span> Your public key has been saved <span class="token keyword">in</span> /home/vagrant/.ssh/id_rsa.pub.
+<span class="token punctuation">[</span>ceph_deploy.new<span class="token punctuation">]</span><span class="token punctuation">[</span>DEBUG <span class="token punctuation">]</span> The key fingerprint is:
+<span class="token punctuation">[</span>ceph_deploy.new<span class="token punctuation">]</span><span class="token punctuation">[</span>DEBUG <span class="token punctuation">]</span> SHA256:JXlwZhhC4h1ous7ywvgUEZLfqt6fUFVcS09NcTB17iI vagrant@ceph-admin
+<span class="token punctuation">[</span>ceph_deploy.new<span class="token punctuation">]</span><span class="token punctuation">[</span>DEBUG <span class="token punctuation">]</span> The key<span class="token string">&apos;s randomart image is:
+[ceph_deploy.new][DEBUG ] +---[RSA 2048]----+
+[ceph_deploy.new][DEBUG ] |... .o+ ++=o .===|
+[ceph_deploy.new][DEBUG ] |.. ooo ooB. +  +o|
+[ceph_deploy.new][DEBUG ] | ..+. ..o o. .  .|
+[ceph_deploy.new][DEBUG ] |  o.. .  +     . |
+[ceph_deploy.new][DEBUG ] |  .o .  S   E . .|
+[ceph_deploy.new][DEBUG ] |  o..        . . |
+[ceph_deploy.new][DEBUG ] |o+..             |
+[ceph_deploy.new][DEBUG ] |=o+ . .          |
+[ceph_deploy.new][DEBUG ] |.*o..o           |
+[ceph_deploy.new][DEBUG ] +----[SHA256]-----+
+[ceph_deploy.new][INFO  ] will connect again with password prompt
+The authenticity of host &apos;</span>ceph-server-1 <span class="token punctuation">(</span>172.21.12.12<span class="token punctuation">)</span><span class="token string">&apos; can&apos;</span>t be established.
+ECDSA key fingerprint is SHA256:E9BwMCErur/NOG8wmkAUbl1j/q4gYtIKA2d1NBN0NQU.
+Are you sure you want to <span class="token keyword">continue</span> connecting <span class="token punctuation">(</span>yes/no<span class="token punctuation">)</span>? <span class="token function">yes</span>
+Warning: Permanently added <span class="token string">&apos;ceph-server-1,172.21.12.12&apos;</span> <span class="token punctuation">(</span>ECDSA<span class="token punctuation">)</span> to the list of known hosts.
+vagrant@ceph-server-1: Permission denied <span class="token punctuation">(</span>publickey<span class="token punctuation">)</span>.
+<span class="token punctuation">[</span>ceph_deploy<span class="token punctuation">]</span><span class="token punctuation">[</span>ERROR <span class="token punctuation">]</span> RuntimeError: connecting to host: ceph-server-1 resulted <span class="token keyword">in</span> errors: HostNotFound ceph-server-1
+
+vagrant@ceph-admin:~/test-cluster$
+</code></pre>
+<p>&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6211;&#x5148;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A; snapshot</p>
+<pre class="language-"><code>DELL@DESKTOP-MQ9CENU MINGW64 /f/tom/ceph/multinode-ceph-vagrant (master)
+$ vagrant snapshot save ceph-admin init
+==&gt; ceph-admin: Snapshotting the machine as &apos;init&apos;...
+==&gt; ceph-admin: Snapshot saved! You can restore the snapshot at any time by
+==&gt; ceph-admin: using `vagrant snapshot restore`. You can delete it using
+==&gt; ceph-admin: `vagrant snapshot delete`.
+
+DELL@DESKTOP-MQ9CENU MINGW64 /f/tom/ceph/multinode-ceph-vagrant (master)
+$ vagrant snapshot list ceph-admin
+init
+
+DELL@DESKTOP-MQ9CENU MINGW64 /f/tom/ceph/multinode-ceph-vagrant (master)
+$ vagrant snapshot save ceph-client init
+==&gt; ceph-client: Snapshotting the machine as &apos;init&apos;...
+==&gt; ceph-client: Snapshot saved! You can restore the snapshot at any time by
+==&gt; ceph-client: using `vagrant snapshot restore`. You can delete it using
+==&gt; ceph-client: `vagrant snapshot delete`.
+
+DELL@DESKTOP-MQ9CENU MINGW64 /f/tom/ceph/multinode-ceph-vagrant (master)
+$ vagrant snapshot save ceph-server-1 init
+==&gt; ceph-server-1: Snapshotting the machine as &apos;init&apos;...
+==&gt; ceph-server-1: Snapshot saved! You can restore the snapshot at any time by
+==&gt; ceph-server-1: using `vagrant snapshot restore`. You can delete it using
+==&gt; ceph-server-1: `vagrant snapshot delete`.
+
+DELL@DESKTOP-MQ9CENU MINGW64 /f/tom/ceph/multinode-ceph-vagrant (master)
+$ vagrant snapshot save ceph-server-2 init
+==&gt; ceph-server-2: Snapshotting the machine as &apos;init&apos;...
+==&gt; ceph-server-2: Snapshot saved! You can restore the snapshot at any time by
+==&gt; ceph-server-2: using `vagrant snapshot restore`. You can delete it using
+==&gt; ceph-server-2: `vagrant snapshot delete`.
+
+DELL@DESKTOP-MQ9CENU MINGW64 /f/tom/ceph/multinode-ceph-vagrant (master)
+$ vagrant snapshot save ceph-server-3 init
+==&gt; ceph-server-3: Snapshotting the machine as &apos;init&apos;...
+==&gt; ceph-server-3: Snapshot saved! You can restore the snapshot at any time by
+==&gt; ceph-server-3: using `vagrant snapshot restore`. You can delete it using
+==&gt; ceph-server-3: `vagrant snapshot delete`.
+</code></pre><p>&#x770B;&#x4E00;&#x4E0B;&#x4E4B;&#x524D;&#x7684;&#x90A3;&#x4E2A;&#x62A5;&#x9519;&#x3002;&#x5E94;&#x8BE5;&#x5C31;&#x662F;&#x4ECE; ceph-admin &#x8FDE;&#x63A5; ceph-server-1 &#x7684;&#x65F6;&#x5019; &#x51FA;&#x9519;&#x4E86;&#x3002;</p>
+<p>&#x770B;&#x8FC7;&#x7A0B;&#xFF0C;&#x5E94;&#x8BE5;&#x662F; ceph-admin &#x81EA;&#x5DF1;&#x5EFA;&#x7ACB;&#x4E86;&#x4E00;&#x4E2A; id_rsa &#x7136;&#x540E;&#xFF0C;&#x5E0C;&#x671B;&#x901A;&#x8FC7;&#x81EA;&#x5DF1;&#x5EFA;&#x7ACB;&#x7684;&#x8FD9;&#x4E2A; id_rsa &#x53BB;&#x767B;&#x5F55; ceph-server-1 &#x3002;</p>
+<pre class="language-"><code>vagrant@ceph-admin:~/test-cluster$ ll ~/.ssh/
+total 24
+drwx------ 2 vagrant vagrant 4096 Feb 23 02:11 ./
+drwxr-xr-x 6 vagrant vagrant 4096 Feb 23 02:11 ../
+-rw-r--r-- 1 vagrant vagrant  409 Feb 19 16:00 authorized_keys
+-rw------- 1 vagrant vagrant 1679 Feb 23 02:11 id_rsa
+-rw-r--r-- 1 vagrant vagrant  400 Feb 23 02:11 id_rsa.pub
+-rw-r--r-- 1 vagrant vagrant  666 Feb 23 02:21 known_hosts
+vagrant@ceph-admin:~/test-cluster$ cat ~/.ssh/id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCtVkEjX/fomoDRPyBgGlmLX24yjXz83zxeB5Zb7Hmk2bpJNyEKnHmexuoCfxGkulQEtVGzsFxO4fdx1pLWZsJAkGIvAq7KZ41LLAeOCPSxB8CaGLGXdtpnDUgyGdGk88qOfWo+vCHqY2M7Vt3HKbtypb6lXsLBOsNiQStWavSPN1afipF9weuxn8nNvJZNKkHVbfzI6C0dVnFxzBTsEoyS1GBi1pTGuZyVmY8pYj7i47A3qVidUQuFIkQ9VZXIZ5RGuw/AaAvM4KaQ+qilu1NN0yCihHlQFLf8QtRvJou2JqYPDMHvNqQ1qDb056an1KOkoAvkAToHEnykyTNsb5Cn vagrant@ceph-admin
+vagrant@ceph-admin:~/test-cluster$
+</code></pre><p>&#x90A3;&#x6211;&#x4EEC;&#x53BB; ceph-server-1 &#x4E2D;&#x53BB;&#x770B;&#x4E00;&#x4E0B;&#xFF0C;&#x662F;&#x5426;&#x5728; &#x5176;&#x4E0B;&#x7684; .ssh/authorized_keys &#x6587;&#x4EF6;&#x5185;&#x5BB9;</p>
+<pre class="language-"><code>vagrant@ceph-server-1:~$ ll .ssh/
+total 12
+drwx------ 2 vagrant vagrant 4096 Feb 19 16:00 ./
+drwxr-xr-x 5 vagrant vagrant 4096 Feb 22 10:26 ../
+-rw-r--r-- 1 vagrant vagrant  409 Feb 19 16:00 authorized_keys
+vagrant@ceph-server-1:~$ cat .ssh/authorized_keys
+ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA6NF8iallvQVp22WDkTkyrtvp9eWW6A8YVr+kz4TjGYe7gHzIw+niNltGEFHzD8+v1I2YJ6oXevct1YeS0o9HZyN1Q9qgCgzUFtdOKLv6IedplqoPkcmF0aYet2PkEDo3MlTBckFXPITAMzF8dJSIFo9D8HfdOV0IAdx4O7PtixWKn5y2hMNG0zQPyUecp4pzC6kivAIhyfHilFR61RGL+GPXQ2MWZWFYbAGjyiYJnAmCP3NOTd0jMZEnDkbUvxhMmBYSdETk1rRgm+R4LOzFUGaHqHDLKLX+FIPKcF96hrucXzcWyLbIbEgE98OHlnVYCzRdK8jlqm8tehUc9c9WhQ== vagrant insecure public key
+vagrant@ceph-server-1:~$
+</code></pre><p>&#x5F88;&#x660E;&#x663E;&#xFF0C;ceph-server-1 &#x7684; /home/vagrant/.ssh/authorized_keys &#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x4E2D;&#x5E76;&#x6CA1;&#x6709; ceph-admin &#x7684; /home/vagrant/.ssh/id_rsa.pub &#x7684;&#x5185;&#x5BB9;&#x3002;&#x8FD9;&#x81EA;&#x7136;&#x5C31;&#x65E0;&#x6CD5;&#x767B;&#x5F55;&#x3002;</p>
+<p>&#x90A3;&#x4E48;&#x95EE;&#x9898;&#x51FA;&#x5728;&#x54EA;&#x91CC;&#x4E86;&#xFF1F;</p>
+<p>&#x56DE;&#x5934;&#x518D;&#x770B;&#x4E00;&#x4E0B;<a href="http://docs.ceph.com/docs/master/start/quick-start-preflight/#enable-password-less-ssh" target="_blank">&#x9884;&#x68C0;/CEPH &#x8282;&#x70B9;&#x5B89;&#x88C5;/&#x5141;&#x8BB8;&#x65E0;&#x5BC6;&#x7801; SSH &#x767B;&#x5F55;</a> &#xFF0C;&#x8FD9;&#x9700;&#x8981; ceph-admin &#x7684; &#x5141;&#x8BB8;&#x65E0;&#x5BC6;&#x7801; SSH &#x767B;&#x5F55;&#xFF0C;&#x9700;&#x8981;&#x8BBE;&#x7F6E; /home/vagrant/.ssh/config &#x6587;&#x4EF6;&#x3002;</p>
+<p>&#x800C; ceph-server-1 &#x4E2D;&#x6CA1;&#x6709;&#x8FD9;&#x4E2A; config &#x6587;&#x4EF6;&#x3002;</p>
+<pre class="language-"><code>vagrant@ceph-server-1:~$ ls .ssh/
+authorized_keys
+vagrant@ceph-server-1:~$
+</code></pre><p>&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x624B;&#x5DE5;&#x5B8C;&#x6210;&#x4E00;&#x4E0B;&#x5427;&#x3002;&#x6211;&#x8FD9;&#x91CC;&#x901A;&#x8FC7;&#x5199;&#x5165;&#x5404; ceph &#x8282;&#x70B9; &#x7684; /home/vagrant/.ssh/authorized_keys &#x6587;&#x4EF6;&#x5B8C;&#x6210;&#x3002;&#x4E0B;&#x4EE5; ceph-server-2 &#x4E3A;&#x4F8B;&#xFF1A;</p>
+<pre class="language-"><code>vagrant@ceph-server-2:~$ echo &quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCtVkEjX/fomoDRPyBgGlmLX24yjXz83zxeB5Zb7Hmk2bpJNyEKnHmexuoCfxGkulQEtVGzsFxO4fdx1pLWZsJAkGIvAq7KZ41LLAeOCPSxB8CaGLGXdtpnDUgyGdGk88qOfWo+vCHqY2M7Vt3HKbtypb6lXsLBOsNiQStWavSPN1afipF9weuxn8nNvJZNKkHVbfzI6C0dVnFxzBTsEoyS1GBi1pTGuZyVmY8pYj7i47A3qVidUQuFIkQ9VZXIZ5RGuw/AaAvM4KaQ+qilu1NN0yCihHlQFLf8QtRvJou2JqYPDMHvNqQ1qDb056an1KOkoAvkAToHEnykyTNsb5Cn vagrant@ceph-admin&quot; &gt;&gt; .ssh/authorized_keys
+</code></pre><p>&#x518D;<code>ceph-deploy new ceph-server-1 ceph-server-2 ceph-server-3</code>&#x751F;&#x6210;&#x4E86; <code>ceph.conf</code> &#x548C; <code>ceph.mon.keyring</code></p>
+<pre class="language-"><code>vagrant@ceph-admin:~/test-cluster$ ceph-deploy new ceph-server-1 ceph-server-2 ceph-server-3
+[ceph_deploy.conf][DEBUG ] found configuration file at: /home/vagrant/.cephdeploy.conf
+[ceph_deploy.cli][INFO  ] Invoked (1.5.38): /usr/bin/ceph-deploy new ceph-server-1 ceph-server-2 ceph-server-3
+[ceph_deploy.cli][INFO  ] ceph-deploy options:
+[ceph_deploy.cli][INFO  ]  username                      : None
+[ceph_deploy.cli][INFO  ]  verbose                       : False
+[ceph_deploy.cli][INFO  ]  overwrite_conf                : False
+[ceph_deploy.cli][INFO  ]  quiet                         : False
+[ceph_deploy.cli][INFO  ]  cd_conf                       : <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ceph_deploy.conf.cephdeploy.Conf</span> <span class="token attr-name">instance</span> <span class="token attr-name">at</span> <span class="token attr-name">0x7f8dd8634fc8</span><span class="token punctuation">&gt;</span></span>
+[ceph_deploy.cli][INFO  ]  cluster                       : ceph
+[ceph_deploy.cli][INFO  ]  ssh_copykey                   : True
+[ceph_deploy.cli][INFO  ]  mon                           : [&apos;ceph-server-1&apos;, &apos;ceph-server-2&apos;, &apos;ceph-server-3&apos;]
+[ceph_deploy.cli][INFO  ]  func                          : <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>function</span> <span class="token attr-name">new</span> <span class="token attr-name">at</span> <span class="token attr-name">0x7f8dd8aab578</span><span class="token punctuation">&gt;</span></span>
+[ceph_deploy.cli][INFO  ]  public_network                : None
+[ceph_deploy.cli][INFO  ]  ceph_conf                     : None
+[ceph_deploy.cli][INFO  ]  cluster_network               : None
+[ceph_deploy.cli][INFO  ]  default_release               : False
+[ceph_deploy.cli][INFO  ]  fsid                          : None
+[ceph_deploy.new][DEBUG ] Creating new cluster named ceph
+[ceph_deploy.new][INFO  ] making sure passwordless SSH succeeds
+[ceph-server-1][DEBUG ] connected to host: ceph-admin 
+[ceph-server-1][INFO  ] Running command: ssh -CT -o BatchMode=yes ceph-server-1
+[ceph-server-1][DEBUG ] connection detected need for sudo
+[ceph-server-1][DEBUG ] connected to host: ceph-server-1 
+[ceph-server-1][DEBUG ] detect platform information from remote host
+[ceph-server-1][DEBUG ] detect machine type
+[ceph-server-1][DEBUG ] find the location of an executable
+[ceph-server-1][INFO  ] Running command: sudo /bin/ip link show
+[ceph-server-1][INFO  ] Running command: sudo /bin/ip addr show
+[ceph-server-1][DEBUG ] IP addresses found: [u&apos;172.21.12.12&apos;, u&apos;10.0.2.15&apos;]
+[ceph_deploy.new][DEBUG ] Resolving host ceph-server-1
+[ceph_deploy.new][DEBUG ] Monitor ceph-server-1 at 172.21.12.12
+[ceph_deploy.new][INFO  ] making sure passwordless SSH succeeds
+[ceph-server-2][DEBUG ] connected to host: ceph-admin 
+[ceph-server-2][INFO  ] Running command: ssh -CT -o BatchMode=yes ceph-server-2
+[ceph-server-2][DEBUG ] connection detected need for sudo
+[ceph-server-2][DEBUG ] connected to host: ceph-server-2 
+[ceph-server-2][DEBUG ] detect platform information from remote host
+[ceph-server-2][DEBUG ] detect machine type
+[ceph-server-2][DEBUG ] find the location of an executable
+[ceph-server-2][INFO  ] Running command: sudo /bin/ip link show
+[ceph-server-2][INFO  ] Running command: sudo /bin/ip addr show
+[ceph-server-2][DEBUG ] IP addresses found: [u&apos;172.21.12.13&apos;, u&apos;10.0.2.15&apos;]
+[ceph_deploy.new][DEBUG ] Resolving host ceph-server-2
+[ceph_deploy.new][DEBUG ] Monitor ceph-server-2 at 172.21.12.13
+[ceph_deploy.new][INFO  ] making sure passwordless SSH succeeds
+[ceph-server-3][DEBUG ] connected to host: ceph-admin 
+[ceph-server-3][INFO  ] Running command: ssh -CT -o BatchMode=yes ceph-server-3
+[ceph-server-3][DEBUG ] connection detected need for sudo
+[ceph-server-3][DEBUG ] connected to host: ceph-server-3 
+[ceph-server-3][DEBUG ] detect platform information from remote host
+[ceph-server-3][DEBUG ] detect machine type
+[ceph-server-3][DEBUG ] find the location of an executable
+[ceph-server-3][INFO  ] Running command: sudo /bin/ip link show
+[ceph-server-3][INFO  ] Running command: sudo /bin/ip addr show
+[ceph-server-3][DEBUG ] IP addresses found: [u&apos;10.0.2.15&apos;, u&apos;172.21.12.14&apos;]
+[ceph_deploy.new][DEBUG ] Resolving host ceph-server-3
+[ceph_deploy.new][DEBUG ] Monitor ceph-server-3 at 172.21.12.14
+[ceph_deploy.new][DEBUG ] Monitor initial members are [&apos;ceph-server-1&apos;, &apos;ceph-server-2&apos;, &apos;ceph-server-3&apos;]
+[ceph_deploy.new][DEBUG ] Monitor addrs are [&apos;172.21.12.12&apos;, &apos;172.21.12.13&apos;, &apos;172.21.12.14&apos;]
+[ceph_deploy.new][DEBUG ] Creating a random mon key...
+[ceph_deploy.new][DEBUG ] Writing monitor keyring to ceph.mon.keyring...
+[ceph_deploy.new][DEBUG ] Writing initial config to ceph.conf...
+vagrant@ceph-admin:~/test-cluster$ ls
+ceph-deploy-ceph.log  ceph.conf  ceph.mon.keyring
+vagrant@ceph-admin:~/test-cluster$
+</code></pre><p>Now, we have to change a default setting. For our initial cluster, we are only going to have two <a href="http://docs.ceph.com/docs/master/architecture/#the-ceph-storage-cluster" target="_blank">object storage daemons</a>. We need to tell Ceph to allow us to achieve an <code>active + clean</code> state with just two Ceph OSDs. Add <code>osd pool default size = 2</code> to <code>./ceph.conf</code>.</p>
+<p>Because we&apos;re dealing with multiple VMs sharing the same host, we can expect to see more clock skew. We can tell Ceph that we&apos;d like to tolerate slightly more clock skew by adding the following section to <code>ceph.conf</code>:</p>
+<pre class="language-"><code>mon_clock_drift_allowed = 1
+</code></pre><p>After these few changes, the file should look similar to:</p>
+<pre class="language-"><code>[global]
+fsid = 7acac25d-2bd8-4911-807e-e35377e741bf
+mon_initial_members = ceph-server-1, ceph-server-2, ceph-server-3
+mon_host = 172.21.12.12,172.21.12.13,172.21.12.14
+auth_cluster_required = cephx
+auth_service_required = cephx
+auth_client_required = cephx
+osd pool default size = 2
+mon_clock_drift_allowed = 1
+</code></pre><p>&#x5B9E;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<pre class="language-"><code>vagrant@ceph-admin:~/test-cluster$ echo &quot;osd pool default size = 2&quot; &gt;&gt; ceph.conf 
+vagrant@ceph-admin:~/test-cluster$ echo &quot;mon_clock_drift_allowed = 1&quot; &gt;&gt; ceph.conf 
+vagrant@ceph-admin:~/test-cluster$ cat ceph.conf 
+[global]
+fsid = c49c3fb1-cfb9-4f16-adfd-ba93b44bd3b5
+mon_initial_members = ceph-server-1, ceph-server-2, ceph-server-3
+mon_host = 172.21.12.12,172.21.12.13,172.21.12.14
+auth_cluster_required = cephx
+auth_service_required = cephx
+auth_client_required = cephx
+
+osd pool default size = 2
+mon_clock_drift_allowed = 1
+vagrant@ceph-admin:~/test-cluster$
+</code></pre><h2 id="install-ceph">Install Ceph</h2>
+<p>We&apos;re finally ready to install!</p>
+<p>Note here that we specify the Ceph release we&apos;d like to install, which is <a href="http://docs.ceph.com/docs/master/releases/luminous/" target="_blank">luminous</a>.</p>
+<pre class="language-"><code class="lang-console">vagrant@ceph-admin:~/test-cluster$ ceph-deploy install --release=luminous ceph-admin ceph-server-1 ceph-server-2 ceph-server-3 ceph-client
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x547D;&#x4EE4;&#x5427;&#x3002;&#x65E5;&#x5FD7;&#x653E;&#x5728; <code>./multinode-ceph-vagrant-install-log-part-2.log</code> &#x548C; <code>./multinode-ceph-vagrant-install-log-part-3.log</code> &#x4E2D;</p>
+<p>&#x6700;&#x540E;&#x7684;&#x8F93;&#x51FA;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code>[ceph-client][DEBUG ] Created symlink /etc/systemd/system/multi-user.target.wants/ceph-mds.target &#x2192; /lib/systemd/system/ceph-mds.target.
+[ceph-client][DEBUG ] Created symlink /etc/systemd/system/ceph.target.wants/ceph-mds.target &#x2192; /lib/systemd/system/ceph-mds.target.
+[ceph-client][DEBUG ] Processing triggers for libc-bin (2.27-3ubuntu1) ...
+[ceph-client][DEBUG ] Processing triggers for ureadahead (0.100.0-20) ...
+[ceph-client][DEBUG ] Processing triggers for systemd (237-3ubuntu10.13) ...
+[ceph-client][INFO  ] Running command: sudo ceph --version
+[ceph-client][DEBUG ] ceph version 12.2.8 (ae699615bac534ea496ee965ac6192cb7e0e07c0) luminous (stable)
+vagrant@ceph-admin:~/test-cluster$
+</code></pre><p><code>ceph -v</code> &#x4E00;&#x4E0B;</p>
+<pre class="language-"><code>vagrant@ceph-admin:~/test-cluster$ ceph -v
+ceph version 12.2.8 (ae699615bac534ea496ee965ac6192cb7e0e07c0) luminous (stable)
+vagrant@ceph-admin:~/test-cluster$
+</code></pre><h2 id="configure-monitor-and-osd-services">Configure monitor and OSD services</h2>
+<p>Next, we add a monitor node:</p>
+<pre class="language-"><code class="lang-console">vagrant@ceph-admin:~/test-cluster$ ceph-deploy mon create-initial
+</code></pre>
+<p>&#x751F;&#x6210;&#x4E86;&#x51E0;&#x4E2A;&#x65B0;&#x6587;&#x4EF6;</p>
+<pre class="language-"><code>vagrant@ceph-admin:~/test-cluster$ ls
+ceph-deploy-ceph.log  ceph.bootstrap-mds.keyring  ceph.bootstrap-mgr.keyring  ceph.bootstrap-osd.keyring  ceph.bootstrap-rgw.keyring  ceph.client.admin.keyring  ceph.conf  ceph.mon.keyring
+vagrant@ceph-admin:~/test-cluster$
+</code></pre><p>&#x5177;&#x4F53;&#x65E5;&#x5FD7;&#x5728; <code>./multinode-ceph-vagrant-install-log-part-4.log</code> &#x4E2D;</p>
+<p>And our two OSDs. For these, we need to log into the server machines directly:</p>
+<pre class="language-"><code class="lang-console">vagrant@ceph-admin:~/test-cluster$ ssh ceph-server-2 &quot;sudo mkdir /var/local/osd0 &amp;&amp; sudo chown ceph:ceph /var/local/osd0&quot;
+</code></pre>
+<pre class="language-"><code class="lang-console">vagrant@ceph-admin:~/test-cluster$ ssh ceph-server-3 &quot;sudo mkdir /var/local/osd1 &amp;&amp; sudo chown ceph:ceph /var/local/osd1&quot;
+</code></pre>
+<p>Now we can prepare and activate the OSDs:</p>
+<pre class="language-"><code class="lang-console">vagrant@ceph-admin:~/test-cluster$ ceph-deploy osd prepare ceph-server-2:/var/local/osd0 ceph-server-3:/var/local/osd1
+vagrant@ceph-admin:~/test-cluster$ ceph-deploy osd activate ceph-server-2:/var/local/osd0 ceph-server-3:/var/local/osd1
+</code></pre>
+<p>&#x5177;&#x4F53;&#x65E5;&#x5FD7;&#x5728; <code>`./multinode-ceph-vagrant-install-log-part-5.log</code> &#x4E2D;</p>
+<h2 id="configuration-and-status">Configuration and status</h2>
+<p>We can copy our config file and admin key to all the nodes, so each one can use the <code>ceph</code> CLI.</p>
+<pre class="language-"><code class="lang-console">vagrant@ceph-admin:~/test-cluster$ ceph-deploy admin ceph-admin ceph-server-1 ceph-server-2 ceph-server-3 ceph-client
+</code></pre>
+<p>&#x5177;&#x4F53;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code>vagrant@ceph-admin:~/test-cluster$ ceph-deploy admin ceph-admin ceph-server-1 ceph-server-2 ceph-server-3 ceph-client
+[ceph_deploy.conf][DEBUG ] found configuration file at: /home/vagrant/.cephdeploy.conf
+[ceph_deploy.cli][INFO  ] Invoked (1.5.38): /usr/bin/ceph-deploy admin ceph-admin ceph-server-1 ceph-server-2 ceph-server-3 ceph-client
+[ceph_deploy.cli][INFO  ] ceph-deploy options:
+[ceph_deploy.cli][INFO  ]  username                      : None
+[ceph_deploy.cli][INFO  ]  verbose                       : False
+[ceph_deploy.cli][INFO  ]  overwrite_conf                : False
+[ceph_deploy.cli][INFO  ]  quiet                         : False
+[ceph_deploy.cli][INFO  ]  cd_conf                       : <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ceph_deploy.conf.cephdeploy.Conf</span> <span class="token attr-name">instance</span> <span class="token attr-name">at</span> <span class="token attr-name">0x7fb642da7a28</span><span class="token punctuation">&gt;</span></span>
+[ceph_deploy.cli][INFO  ]  cluster                       : ceph
+[ceph_deploy.cli][INFO  ]  client                        : [&apos;ceph-admin&apos;, &apos;ceph-server-1&apos;, &apos;ceph-server-2&apos;, &apos;ceph-server-3&apos;, &apos;ceph-client&apos;]
+[ceph_deploy.cli][INFO  ]  func                          : <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>function</span> <span class="token attr-name">admin</span> <span class="token attr-name">at</span> <span class="token attr-name">0x7fb6436ac0c8</span><span class="token punctuation">&gt;</span></span>
+[ceph_deploy.cli][INFO  ]  ceph_conf                     : None
+[ceph_deploy.cli][INFO  ]  default_release               : False
+[ceph_deploy.admin][DEBUG ] Pushing admin keys and conf to ceph-admin
+[ceph-admin][DEBUG ] connection detected need for sudo
+[ceph-admin][DEBUG ] connected to host: ceph-admin 
+[ceph-admin][DEBUG ] detect platform information from remote host
+[ceph-admin][DEBUG ] detect machine type
+[ceph-admin][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+[ceph_deploy.admin][DEBUG ] Pushing admin keys and conf to ceph-server-1
+[ceph-server-1][DEBUG ] connection detected need for sudo
+[ceph-server-1][DEBUG ] connected to host: ceph-server-1 
+[ceph-server-1][DEBUG ] detect platform information from remote host
+[ceph-server-1][DEBUG ] detect machine type
+[ceph-server-1][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+[ceph_deploy.admin][DEBUG ] Pushing admin keys and conf to ceph-server-2
+[ceph-server-2][DEBUG ] connection detected need for sudo
+[ceph-server-2][DEBUG ] connected to host: ceph-server-2 
+[ceph-server-2][DEBUG ] detect platform information from remote host
+[ceph-server-2][DEBUG ] detect machine type
+[ceph-server-2][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+[ceph_deploy.admin][DEBUG ] Pushing admin keys and conf to ceph-server-3
+[ceph-server-3][DEBUG ] connection detected need for sudo
+[ceph-server-3][DEBUG ] connected to host: ceph-server-3 
+[ceph-server-3][DEBUG ] detect platform information from remote host
+[ceph-server-3][DEBUG ] detect machine type
+[ceph-server-3][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+[ceph_deploy.admin][DEBUG ] Pushing admin keys and conf to ceph-client
+[ceph-client][DEBUG ] connection detected need for sudo
+[ceph-client][DEBUG ] connected to host: ceph-client 
+[ceph-client][DEBUG ] detect platform information from remote host
+[ceph-client][DEBUG ] detect machine type
+[ceph-client][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+vagrant@ceph-admin:~/test-cluster$ ls
+ceph-deploy-ceph.log  ceph.bootstrap-mds.keyring  ceph.bootstrap-mgr.keyring  ceph.bootstrap-osd.keyring  ceph.bootstrap-rgw.keyring  ceph.client.admin.keyring  ceph.conf  ceph.mon.keyring
+vagrant@ceph-admin:~/test-cluster$ ls /etc/ceph/ -l
+total 12
+-rw------- 1 root root  63 Feb 23 03:43 ceph.client.admin.keyring
+-rw-r--r-- 1 root root 313 Feb 23 03:43 ceph.conf
+-rw-r--r-- 1 root root  92 Jan 29 09:32 rbdmap
+-rw------- 1 root root   0 Feb 23 03:43 tmpXyXDGy
+vagrant@ceph-admin:~/test-cluster$ date
+Sat Feb 23 03:43:31 UTC 2019
+vagrant@ceph-admin:~/test-cluster$ ls
+ceph-deploy-ceph.log  ceph.bootstrap-mds.keyring  ceph.bootstrap-mgr.keyring  ceph.bootstrap-osd.keyring  ceph.bootstrap-rgw.keyring  ceph.client.admin.keyring  ceph.conf  ceph.mon.keyring
+vagrant@ceph-admin:~/test-cluster$
+</code></pre><p>&#x770B; /etc/ceph/ &#x6587;&#x4EF6;&#x65F6;&#x95F4;&#xFF0C;&#x77E5;&#x9053;&#xFF0C;&#x662F;&#x521A;&#x521A;&#x5199;&#x5165;&#x7684;&#x3002;</p>
+<p>&#x7136;&#x540E;&#x53BB; ceph-server-3 &#x4E2D;&#x68C0;&#x67E5;&#x4E00;&#x4E0B;&#x3002;</p>
+<pre class="language-"><code>vagrant@ceph-server-3:~$ ceph -v
+ceph version 12.2.8 (ae699615bac534ea496ee965ac6192cb7e0e07c0) luminous (stable)
+vagrant@ceph-server-3:~$ ls /etc/ceph/ -l
+total 12
+-rw------- 1 root root  63 Feb 23 03:43 ceph.client.admin.keyring
+-rw-r--r-- 1 root root 313 Feb 23 03:43 ceph.conf
+-rw-r--r-- 1 root root  92 Jan 29 09:32 rbdmap
+-rw------- 1 root root   0 Feb 23 03:34 tmpADlUqE
+vagrant@ceph-server-3:~$ date
+Sat Feb 23 03:43:48 UTC 2019
+vagrant@ceph-server-3:~$
+</code></pre><p>&#x6CA1;&#x6BDB;&#x75C5;&#x3002;</p>
+<p>We also should make sure the keyring is readable:</p>
+<pre class="language-"><code class="lang-console">vagrant@ceph-admin:~/test-cluster$ sudo chmod +r /etc/ceph/ceph.client.admin.keyring
+vagrant@ceph-admin:~/test-cluster$ ssh ceph-server-1 sudo chmod +r /etc/ceph/ceph.client.admin.keyring
+vagrant@ceph-admin:~/test-cluster$ ssh ceph-server-2 sudo chmod +r /etc/ceph/ceph.client.admin.keyring
+vagrant@ceph-admin:~/test-cluster$ ssh ceph-server-3 sudo chmod +r /etc/ceph/ceph.client.admin.keyring
+</code></pre>
+<p>Finally, check on the health of the cluster:</p>
+<p>&#x6211;&#x7684;&#x4E0E;&#x6587;&#x6863;&#x7684;&#x4E0D;&#x540C;&#x3002;</p>
+<ul>
+<li>&#x6587;&#x6863;&#x7684;&#xFF1A;</li>
+</ul>
+<pre class="language-"><code class="lang-console">vagrant@ceph-admin:~/test-cluster$ ceph health
+</code></pre>
+<p>You should see something similar to this once it&apos;s healthy:</p>
+<pre class="language-"><code class="lang-console">vagrant@ceph-admin:~/test-cluster$ ceph health
+HEALTH_OK
+vagrant@ceph-admin:~/test-cluster$ ceph -s
+    cluster 18197927-3d77-4064-b9be-bba972b00750
+     health HEALTH_OK
+     monmap e2: 3 mons at {ceph-server-1=172.21.12.12:6789/0,ceph-server-2=172.21.12.13:6789/0,ceph-server-3=172.21.12.14:6789/0}, election epoch 6, quorum 0,1,2 ceph-server-1,ceph-server-2,ceph-server-3
+     osdmap e9: 2 osds: 2 up, 2 in
+      pgmap v13: 192 pgs, 3 pools, 0 bytes data, 0 objects
+            12485 MB used, 64692 MB / 80568 MB avail
+                 192 active+clean
+</code></pre>
+<p>Notice that we have two OSDs (<code>osdmap e9: 2 osds: 2 up, 2 in</code>) and all of the <a href="http://docs.ceph.com/docs/master/rados/operations/placement-groups/" target="_blank">placement groups</a> (pgs) are reporting as <code>active+clean</code>.</p>
+<ul>
+<li>&#x6211;&#x7684;&#xFF1A;</li>
+</ul>
+<pre class="language-"><code>vagrant@ceph-admin:~/test-cluster$ ceph health
+HEALTH_WARN no active mgr
+vagrant@ceph-admin:~/test-cluster$ ceph -s
+  cluster:
+    id:     c49c3fb1-cfb9-4f16-adfd-ba93b44bd3b5
+    health: HEALTH_WARN
+            no active mgr
+
+  services:
+    mon: 3 daemons, quorum ceph-server-1,ceph-server-2,ceph-server-3
+    mgr: no daemons active
+    osd: 2 osds: 2 up, 2 in
+
+  data:
+    pools:   0 pools, 0 pgs
+    objects: 0 objects, 0B
+    usage:   0B used, 0B / 0B avail
+    pgs:     
+
+vagrant@ceph-admin:~/test-cluster$
+</code></pre><p>&#x8BF4;&#x660E;&#x6211;&#x4EEC;&#x6CA1;&#x6709;&#x5B89;&#x88C5; mgr , &#x90A3;&#x5B89;&#x88C5;&#x4E00;&#x4E0B;&#xFF1A;</p>
+<p>&#x5B89;&#x88C5;&#x5728; ceph-server-1 .</p>
+<pre class="language-"><code>vagrant@ceph-admin:~/test-cluster$ ceph-deploy mgr create ceph-server-1
+[ceph_deploy.conf][DEBUG ] found configuration file at: /home/vagrant/.cephdeploy.conf
+[ceph_deploy.cli][INFO  ] Invoked (1.5.38): /usr/bin/ceph-deploy mgr create ceph-server-1
+[ceph_deploy.cli][INFO  ] ceph-deploy options:
+[ceph_deploy.cli][INFO  ]  username                      : None
+[ceph_deploy.cli][INFO  ]  verbose                       : False
+[ceph_deploy.cli][INFO  ]  mgr                           : [(&apos;ceph-server-1&apos;, &apos;ceph-server-1&apos;)]
+[ceph_deploy.cli][INFO  ]  overwrite_conf                : False
+[ceph_deploy.cli][INFO  ]  subcommand                    : create
+[ceph_deploy.cli][INFO  ]  quiet                         : False
+[ceph_deploy.cli][INFO  ]  cd_conf                       : <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ceph_deploy.conf.cephdeploy.Conf</span> <span class="token attr-name">instance</span> <span class="token attr-name">at</span> <span class="token attr-name">0x7f79d921e2d8</span><span class="token punctuation">&gt;</span></span>
+[ceph_deploy.cli][INFO  ]  cluster                       : ceph
+[ceph_deploy.cli][INFO  ]  func                          : <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>function</span> <span class="token attr-name">mgr</span> <span class="token attr-name">at</span> <span class="token attr-name">0x7f79d91e69b0</span><span class="token punctuation">&gt;</span></span>
+[ceph_deploy.cli][INFO  ]  ceph_conf                     : None
+[ceph_deploy.cli][INFO  ]  default_release               : False
+[ceph_deploy.mgr][DEBUG ] Deploying mgr, cluster ceph hosts ceph-server-1:ceph-server-1
+[ceph-server-1][DEBUG ] connection detected need for sudo
+[ceph-server-1][DEBUG ] connected to host: ceph-server-1 
+[ceph-server-1][DEBUG ] detect platform information from remote host
+[ceph-server-1][DEBUG ] detect machine type
+[ceph_deploy.mgr][INFO  ] Distro info: Ubuntu 18.04 bionic
+[ceph_deploy.mgr][DEBUG ] remote host will use systemd
+[ceph_deploy.mgr][DEBUG ] deploying mgr bootstrap to ceph-server-1
+[ceph-server-1][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+[ceph-server-1][WARNIN] mgr keyring does not exist yet, creating one
+[ceph-server-1][DEBUG ] create a keyring file
+[ceph-server-1][DEBUG ] create path if it doesn&apos;t exist
+[ceph-server-1][INFO  ] Running command: sudo ceph --cluster ceph --name client.bootstrap-mgr --keyring /var/lib/ceph/bootstrap-mgr/ceph.keyring auth get-or-create mgr.ceph-server-1 mon allow profile mgr osd allow * mds allow * -o /var/lib/ceph/mgr/ceph-ceph-server-1/keyring
+[ceph-server-1][INFO  ] Running command: sudo systemctl enable ceph-mgr@ceph-server-1
+[ceph-server-1][WARNIN] Created symlink /etc/systemd/system/ceph-mgr.target.wants/ceph-mgr@ceph-server-1.service &#x2192; /lib/systemd/system/ceph-mgr@.service.
+[ceph-server-1][INFO  ] Running command: sudo systemctl start ceph-mgr@ceph-server-1
+[ceph-server-1][INFO  ] Running command: sudo systemctl enable ceph.target
+vagrant@ceph-admin:~/test-cluster$ ceph -s
+  cluster:
+    id:     c49c3fb1-cfb9-4f16-adfd-ba93b44bd3b5
+    health: HEALTH_OK
+
+  services:
+    mon: 3 daemons, quorum ceph-server-1,ceph-server-2,ceph-server-3
+    mgr: ceph-server-1(active)
+    osd: 2 osds: 2 up, 2 in
+
+  data:
+    pools:   0 pools, 0 pgs
+    objects: 0 objects, 0B
+    usage:   2.00GiB used, 18.0GiB / 20GiB avail
+    pgs:     
+
+vagrant@ceph-admin:~/test-cluster$
+</code></pre><p>Congratulations!</p>
+<p>&#x597D;&#x4E86;&#xFF0C;&#x5230;&#x8FD9;&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x4E00;&#x4E2A;&#x57FA;&#x672C;&#x7684;ceph&#x73AF;&#x5883;&#x7684;&#x5DF2;&#x7ECF;&#x642D;&#x5EFA;&#x597D;&#x4E86;&#xFF01;</p>
+<p>&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#xFF0C;&#x6700;&#x597D;&#x5FEB;&#x7167;&#x4E00;&#x4E0B;&#x3002;</p>
+<pre class="language-"><code>$ vagrant snapshot save ceph-admin basic
+$ vagrant snapshot save ceph-client basic
+$ vagrant snapshot save ceph-server-1 basic
+$ vagrant snapshot save ceph-server-2 basic
+$ vagrant snapshot save ceph-server-3 basic
+</code></pre><h2 id="expanding-the-cluster-&#xFF08;&#x6CA1;&#x6709;&#x5B9E;&#x8DF5;&#xFF09;">Expanding the cluster &#xFF08;&#x6CA1;&#x6709;&#x5B9E;&#x8DF5;&#xFF09;</h2>
+<p>To more closely model a production cluster, we&apos;re going to add one more OSD daemon and a <a href="http://docs.ceph.com/docs/master/man/8/ceph-mds/" target="_blank">Ceph Metadata Server</a>. We&apos;ll also add monitors to all hosts instead of just one.</p>
+<h3 id="add-an-osd">Add an OSD</h3>
+<pre class="language-"><code class="lang-console">vagrant@ceph-admin:~/test-cluster$ ssh ceph-server-1 &quot;sudo mkdir /var/local/osd2 &amp;&amp; sudo chown ceph:ceph /var/local/osd2&quot;
+</code></pre>
+<p>Now, from the admin node, we prepare and activate the OSD:</p>
+<pre class="language-"><code class="lang-console">vagrant@ceph-admin:~/test-cluster$ ceph-deploy osd prepare ceph-server-1:/var/local/osd2
+vagrant@ceph-admin:~/test-cluster$ ceph-deploy osd activate ceph-server-1:/var/local/osd2
+</code></pre>
+<p>Watch the rebalancing:</p>
+<pre class="language-"><code class="lang-console">vagrant@ceph-admin:~/test-cluster$ ceph -w
+</code></pre>
+<p>You should eventually see it return to an <code>active+clean</code> state, but this time with 3 OSDs:</p>
+<pre class="language-"><code class="lang-console">vagrant@ceph-admin:~/test-cluster$ ceph -w
+    cluster 18197927-3d77-4064-b9be-bba972b00750
+     health HEALTH_OK
+     monmap e2: 3 mons at {ceph-server-1=172.21.12.12:6789/0,ceph-server-2=172.21.12.13:6789/0,ceph-server-3=172.21.12.14:6789/0}, election epoch 30, quorum 0,1,2 ceph-server-1,ceph-server-2,ceph-server-3
+     osdmap e38: 3 osds: 3 up, 3 in
+      pgmap v415: 192 pgs, 3 pools, 0 bytes data, 0 objects
+            18752 MB used, 97014 MB / 118 GB avail
+                 192 active+clean
+</code></pre>
+<h3 id="add-metadata-server">Add metadata server</h3>
+<p>Let&apos;s add a metadata server to server1:</p>
+<pre class="language-"><code class="lang-console">vagrant@ceph-admin:~/test-cluster$ ceph-deploy mds create ceph-server-1
+</code></pre>
+<h2 id="add-more-monitors&#xFF08;&#x6CA1;&#x6709;&#x5B9E;&#x8DF5;&#xFF09;">Add more monitors&#xFF08;&#x6CA1;&#x6709;&#x5B9E;&#x8DF5;&#xFF09;</h2>
+<p>We add monitors to servers 2 and 3.</p>
+<pre class="language-"><code class="lang-console">vagrant@ceph-admin:~/test-cluster$ ceph-deploy mon create ceph-server-2 ceph-server-3
+</code></pre>
+<p>Watch the quorum status, and ensure it&apos;s happy:</p>
+<pre class="language-"><code class="lang-console">vagrant@ceph-admin:~/test-cluster$ ceph quorum_status --format json-pretty
+</code></pre>
+<h2 id="install-ceph-object-gateway&#xFF08;&#x6CA1;&#x6709;&#x5B9E;&#x8DF5;&#xFF09;">Install Ceph Object Gateway&#xFF08;&#x6CA1;&#x6709;&#x5B9E;&#x8DF5;&#xFF09;</h2>
+<p>TODO</p>
+<h2 id="play-around">Play around!</h2>
+<p>Now that we have everything set up, let&apos;s actually use the cluster. We&apos;ll use the ceph-client machine for this.</p>
+<h3 id="create-a-block-device">Create a block device</h3>
+<pre class="language-"><code class="lang-console">$ vagrant ssh ceph-client
+vagrant@ceph-client:~$ sudo rbd create foo --size 4096 -m ceph-server-1
+vagrant@ceph-client:~$ sudo rbd map foo --pool rbd --name client.admin -m ceph-server-1
+vagrant@ceph-client:~$ sudo mkfs.ext4 -m0 /dev/rbd/rbd/foo
+vagrant@ceph-client:~$ sudo mkdir /mnt/ceph-block-device
+vagrant@ceph-client:~$ sudo mount /dev/rbd/rbd/foo /mnt/ceph-block-device
+</code></pre>
+<h3 id="create-a-mount-with-ceph-fs">Create a mount with Ceph FS</h3>
+<p>TODO</p>
+<h3 id="store-a-blob-object">Store a blob object</h3>
+<p>TODO</p>
+<h2 id="cleanup&#xFF08;&#x6CA1;&#x6709;&#x5B9E;&#x8DF5;&#xFF09;">Cleanup&#xFF08;&#x6CA1;&#x6709;&#x5B9E;&#x8DF5;&#xFF09;</h2>
+<p>When you&apos;re all done, tell Vagrant to destroy the VMs.</p>
+<pre class="language-"><code class="lang-console">$ vagrant destroy -f
+</code></pre>
+<footer class="page-footer"><span class="copyright"><p><a href="https://github.com/eiuapp/ceph-handbook" target="_blank">Ceph&#x5B9E;&#x8DF5;&#x6307;&#x5357;</a> | <a href="https://github.com/eiuapp/ceph-handbook" target="_blank">Ceph&#x5B9E;&#x8DF5;&#x6307;&#x5357;</a></p><p><a href="https://res.cloudinary.com/dmtixvmgt/image/upload/v1539022273/wechat-qrcode_cml5dm.jpg" data-lightbox="2fd927ee-fa64-4eca-8ed5-6bd72b573a3c" target="_blank">&#x70B9;&#x51FB;&#x5173;&#x6CE8;&#x3010;servicemesher&#x3011;&#x516C;&#x4F17;&#x53F7;&#x56DE;&#x590D;&#x3010;&#x52A0;&#x7FA4;&#x3011;&#x52A0;&#x5165;&#x5B66;&#x4E60;&#x7FA4;</a> | </p>Copyright &#xA9; <a href="https://eiuapp.github.io" target="_blank">eiuapp.github.io</a> 2017-2019 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification"> Updated at 
+2019-04-09 09:00:25
+</span></footer></body></html>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../README.md" class="navigation navigation-prev " aria-label="Previous page: vagrant install">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../oprypin/vagrant-ceph-quickstart.html" class="navigation navigation-next " aria-label="Next page: oprypin/vagrant-ceph-quickstart">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"carmstrong/multinode-ceph-vagrant","level":"3.1.1.1","depth":3,"next":{"title":"oprypin/vagrant-ceph-quickstart","level":"3.1.1.2","depth":3,"path":"docs/installation/vagrant/oprypin/vagrant-ceph-quickstart.md","ref":"docs/installation/vagrant/oprypin/vagrant-ceph-quickstart.md","articles":[]},"previous":{"title":"vagrant install","level":"3.1.1","depth":2,"path":"docs/installation/vagrant/README.md","ref":"docs/installation/vagrant/README.md","articles":[{"title":"carmstrong/multinode-ceph-vagrant","level":"3.1.1.1","depth":3,"path":"docs/installation/vagrant/carmstrong/multinode-ceph-vagrant.md","ref":"docs/installation/vagrant/carmstrong/multinode-ceph-vagrant.md","articles":[]},{"title":"oprypin/vagrant-ceph-quickstart","level":"3.1.1.2","depth":3,"path":"docs/installation/vagrant/oprypin/vagrant-ceph-quickstart.md","ref":"docs/installation/vagrant/oprypin/vagrant-ceph-quickstart.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["github","codesnippet","splitter","page-toc-button","editlink","back-to-top-button","-lunr","-search","search-plus","github-buttons@2.1.0","favicon@^0.0.2","tbfed-pagefooter@^0.0.1","3-ba","theme-default","-highlight","prism","prism-themes","sitemap-general","lightbox","adsense","disqus","ga"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"<p><a href=https://github.com/eiuapp/ceph-handbook>Ceph实践指南</a> | <a href=https://github.com/eiuapp/ceph-handbook>Ceph实践指南</a></p><p><a href=https://res.cloudinary.com/dmtixvmgt/image/upload/v1539022273/wechat-qrcode_cml5dm.jpg data-lightbox=2fd927ee-fa64-4eca-8ed5-6bd72b573a3c>点击关注【servicemesher】公众号回复【加群】加入学习群</a> | </p>Copyright © <a href=https://eiuapp.github.io>eiuapp.github.io</a> 2017-2019","modify_label":" Updated at ","modify_format":"YYYY-MM-DD HH:mm:ss"},"prism":{"lang":{"shell":"bash"},"css":["prism-themes/themes/prism-ghcolors.css"]},"disqus":{"useIdentifier":false,"shortName":"whoami"},"github":{"url":"https://github.com/eiuapp/ceph-handbook"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/eiuapp/ceph-handbook/blob/master/"},"splitter":{},"adsense":{"client":"ca-pub-4029167986768912","slot":"2445941692","format":"auto","element":".page-inner section","position":"bottom"},"codesnippet":{},"sitemap-general":{"prefix":"https://eiuapp.github.io/ceph-handbook/"},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico"},"lightbox":{"jquery":true},"page-toc-button":{},"back-to-top-button":{},"prism-themes":{},"github-buttons":{"repo":"eiuapp/ceph-handbook","types":["star"],"size":"small"},"3-ba":{"configuration":"auto","token":"108be826b9faa2f792cdae4a29d274bb"},"ga":{"configuration":"auto","token":"UA-93485976-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{}},"theme":"default","author":"eiuapp","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ceph Handbook - Ceph 实践指南 by eiuapp","language":"zh-hans","links":{"sidebar":{"Ceph Handbook":"https://eiuapp.github.io/ceph-handbook"}},"gitbook":"*","description":"Ceph Handbook - Ceph 实践指南 2019年 by eiuapp "},"file":{"path":"docs/installation/vagrant/carmstrong/multinode-ceph-vagrant.md","mtime":"2019-04-09T09:00:25.483Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-09T09:01:23.515Z"},"basePath":"../../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../../../gitbook/gitbook.js"></script>
+    <script src="../../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-editlink/plugin.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-3-ba/plugin.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-lightbox/jquery.min.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-lightbox/lightbox.min.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-adsense/plugin.js"></script>
+        
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-disqus/plugin.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

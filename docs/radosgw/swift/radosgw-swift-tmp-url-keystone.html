@@ -1,0 +1,1508 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>(keystone认证)swift生成并获取tmp url · Ceph Handbook - Ceph 实践指南 by eiuapp</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="eiuapp">
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-prism/prism-ghcolors.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-lightbox/lightbox.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-disqus/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="radosgw-swift-tmp-url-no-keystone.html" />
+    
+
+    
+        <link rel="shortcut icon" href='../../../favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="bookmark" href='../../../favicon.ico' type="image/x-icon">
+    
+    
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"repo":"eiuapp/ceph-handbook","types":["star"],"size":"small"};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://eiuapp.github.io/ceph-handbook" target="_blank" class="custom-link">Ceph Handbook</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        <li class="header">序言</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">env</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../env/env.html">
+            
+                <a href="../../env/env.html">
+            
+                    
+                        <b>2.1.</b>
+                    
+                    环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../command/command.html">
+            
+                <a href="../../command/command.html">
+            
+                    
+                        <b>2.2.</b>
+                    
+                    常用命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">install</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../installation/">
+            
+                <a href="../../installation/">
+            
+                    
+                        <b>3.1.</b>
+                    
+                    安装
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../../installation/vagrant/README.md">
+            
+                <span>
+            
+                    
+                        <b>3.1.1.</b>
+                    
+                    vagrant install
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1.1" data-path="../../installation/vagrant/carmstrong/multinode-ceph-vagrant.html">
+            
+                <a href="../../installation/vagrant/carmstrong/multinode-ceph-vagrant.html">
+            
+                    
+                        <b>3.1.1.1.</b>
+                    
+                    carmstrong/multinode-ceph-vagrant
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.2" data-path="../../installation/vagrant/oprypin/vagrant-ceph-quickstart.html">
+            
+                <a href="../../installation/vagrant/oprypin/vagrant-ceph-quickstart.html">
+            
+                    
+                        <b>3.1.1.2.</b>
+                    
+                    oprypin/vagrant-ceph-quickstart
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../../installation/quick-install.html">
+            
+                <a href="../../installation/quick-install.html">
+            
+                    
+                        <b>3.1.2.</b>
+                    
+                    quick install
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../../installation/add-osds-with-quick-install.html">
+            
+                <a href="../../installation/add-osds-with-quick-install.html">
+            
+                    
+                        <b>3.1.3.</b>
+                    
+                    添加osd
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../../installation/add-an-rgw-instance-with-quick-install.html">
+            
+                <a href="../../installation/add-an-rgw-instance-with-quick-install.html">
+            
+                    
+                        <b>3.1.4.</b>
+                    
+                    添加rgw实例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="../../../ceph-deploy.md">
+            
+                <span>
+            
+                    
+                        <b>3.1.5.</b>
+                    
+                    Installation (ceph-deploy)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" data-path="../../installation/install-faq.html">
+            
+                <a href="../../installation/install-faq.html">
+            
+                    
+                        <b>3.1.6.</b>
+                    
+                    Installation 常见报错
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Intro to Ceph</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../../hardware-recommendations.html">
+            
+                <a href="../../hardware-recommendations.html">
+            
+                    
+                        <b>4.1.</b>
+                    
+                    硬件推荐
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">configuration</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../../master/rados/configuration/common.html">
+            
+                <a href="../../master/rados/configuration/common.html">
+            
+                    
+                        <b>5.1.</b>
+                    
+                    configuration/common
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">RADOSGW</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" >
+            
+                <span>
+            
+                    
+                        <b>6.1.</b>
+                    
+                    radosgw 与 swift
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="authentication.html">
+            
+                <a href="authentication.html">
+            
+                    
+                        <b>6.1.1.</b>
+                    
+                    使用RADOSGW提供ceph的Swift接口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="radosgw-swift-get-auth.html">
+            
+                <a href="radosgw-swift-get-auth.html">
+            
+                    
+                        <b>6.1.2.</b>
+                    
+                    swift获取auth
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.3" data-path="radosgw-swift-upload.html">
+            
+                <a href="radosgw-swift-upload.html">
+            
+                    
+                        <b>6.1.3.</b>
+                    
+                    swift上传文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.4" data-path="openstack-swift-with-ceph-backend-radosgw.html">
+            
+                <a href="openstack-swift-with-ceph-backend-radosgw.html">
+            
+                    
+                        <b>6.1.4.</b>
+                    
+                    ceph集成openstack swift
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.5" data-path="ceph-radosgw-with-openstack-keystone-v3.html">
+            
+                <a href="ceph-radosgw-with-openstack-keystone-v3.html">
+            
+                    
+                        <b>6.1.5.</b>
+                    
+                    ceph与openstack-keystone-v3和swift集成
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" >
+            
+                <span>
+            
+                    
+                        <b>6.2.</b>
+                    
+                    tmp url
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="radosgw-swift-setup-tmp-url.html">
+            
+                <a href="radosgw-swift-setup-tmp-url.html">
+            
+                    
+                        <b>6.2.1.</b>
+                    
+                    设置Temporary URL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="radosgw-swift-tmp-url-no-keystone.html">
+            
+                <a href="radosgw-swift-tmp-url-no-keystone.html">
+            
+                    
+                        <b>6.2.2.</b>
+                    
+                    (非keystone认证)swift生成并获取tmp url
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="6.2.3" data-path="radosgw-swift-tmp-url-keystone.html">
+            
+                <a href="radosgw-swift-tmp-url-keystone.html">
+            
+                    
+                        <b>6.2.3.</b>
+                    
+                    (keystone认证)swift生成并获取tmp url
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" >
+            
+                <span>
+            
+                    
+                        <b>6.3.</b>
+                    
+                    user
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.3.1" data-path="get-user-info.html">
+            
+                <a href="get-user-info.html">
+            
+                    
+                        <b>6.3.1.</b>
+                    
+                    radosgw用户信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">常见问题</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../../faq/ntpdate.html">
+            
+                <a href="../../faq/ntpdate.html">
+            
+                    
+                        <b>7.1.</b>
+                    
+                    时间不一致
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../../faq/rgw-conf-change.html">
+            
+                <a href="../../faq/rgw-conf-change.html">
+            
+                    
+                        <b>7.2.</b>
+                    
+                    修改rgw配置生效
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="../../faq/get-service-name.html">
+            
+                <a href="../../faq/get-service-name.html">
+            
+                    
+                        <b>7.3.</b>
+                    
+                    查找服务名称
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="get-user-info.html">
+            
+                <a href="get-user-info.html">
+            
+                    
+                        <b>7.4.</b>
+                    
+                    查找用户信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="../basic.html">
+            
+                <a href="../basic.html">
+            
+                    
+                        <b>7.5.</b>
+                    
+                    支持断点续传
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.6" data-path="../../faq/ceph-deploy-osd-error.html">
+            
+                <a href="../../faq/ceph-deploy-osd-error.html">
+            
+                    
+                        <b>7.6.</b>
+                    
+                    ceph-deploy osd create时报错
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.7" data-path="../../faq/swift-list-error.html">
+            
+                <a href="../../faq/swift-list-error.html">
+            
+                    
+                        <b>7.7.</b>
+                    
+                    swift-list临时出错
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.8" data-path="radosgw-swift-keystone-mysql-change.html">
+            
+                <a href="radosgw-swift-keystone-mysql-change.html">
+            
+                    
+                        <b>7.8.</b>
+                    
+                    keystone更换mysql
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.9" data-path="../../faq/faq-wangzhijian.html">
+            
+                <a href="../../faq/faq-wangzhijian.html">
+            
+                    
+                        <b>7.9.</b>
+                    
+                    常见问题-心远何方
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >(keystone认证)swift生成并获取tmp url</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <html><head></head><body><p>&#x5F53;&#x7528;&#x6237;&#x901A;&#x8FC7;keystone&#x8BA4;&#x8BC1;&#x65F6;&#xFF0C;&#x8BBE;&#x7F6E;&#x5E76;&#x751F;&#x6210;tmp url</p>
+<p><strong>&#x6CE8;&#x610F;&#xFF1A;&#x672C;&#x6587;&#x6CA1;&#x6709;&#x64CD;&#x4F5C;&#x6210;&#x529F;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x672C;&#x6587;&#x53EA;&#x662F;&#x8BB0;&#x5F55;&#xFF0C;&#x6CA1;&#x6709;&#x7ED9;&#x51FA;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x3002;</strong></p>
+<h2 id="step">step</h2>
+<p>tmp_url.py &#x5185;&#x5BB9;&#x5982;&#x4E0B;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;&#x62FF; token ----------------------------------------------&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">import</span> requests
+<span class="token keyword">import</span> json
+
+URL <span class="token operator">=</span> <span class="token string">&apos;http://192.168.0.51:5000/v3/auth/tokens&apos;</span>
+body <span class="token operator">=</span>  <span class="token punctuation">{</span>
+            <span class="token string">&quot;auth&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                <span class="token string">&quot;identity&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                    <span class="token string">&quot;methods&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                        <span class="token string">&quot;password&quot;</span>
+                    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    <span class="token string">&quot;password&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                        <span class="token string">&quot;user&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                            <span class="token string">&quot;name&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;admin&quot;</span><span class="token punctuation">,</span>
+                            <span class="token string">&quot;domain&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                                <span class="token string">&quot;name&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;default&quot;</span>
+                            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                            <span class="token string">&quot;password&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;openstack&quot;</span>
+                        <span class="token punctuation">}</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token string">&quot;scope&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                    <span class="token string">&quot;project&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                        <span class="token string">&quot;domain&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                            <span class="token string">&quot;name&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;default&quot;</span>
+                        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                        <span class="token string">&quot;name&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;admin&quot;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+body <span class="token operator">=</span> json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>body<span class="token punctuation">)</span>
+headers <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">&apos;Content-Type&apos;</span><span class="token punctuation">:</span><span class="token string">&apos;application/json&apos;</span><span class="token punctuation">}</span>
+res <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>URL<span class="token punctuation">,</span>data<span class="token operator">=</span>body<span class="token punctuation">,</span>headers<span class="token operator">=</span>headers<span class="token punctuation">)</span>
+token <span class="token operator">=</span>res<span class="token punctuation">.</span>headers<span class="token punctuation">[</span><span class="token string">&apos;X-Subject-Token&apos;</span><span class="token punctuation">]</span>
+project_id <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>res<span class="token punctuation">.</span>content<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string">&quot;token&quot;</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">&quot;project&quot;</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">&quot;id&quot;</span><span class="token punctuation">]</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>headers<span class="token punctuation">[</span><span class="token string">&apos;X-Subject-Token&apos;</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;&#x4E0A;&#x4F20;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x5148;&#x51C6;&#x5907;&#x4E2A;&#x6587;&#x4EF6;&#x54DF;&#x3002;&#x5982;&#x679C;&#x5DF2;&#x7ECF;&#x6709;&#x6587;&#x4EF6;&#xFF0C;&#x6B64;&#x6B65;&#x53EF;&#x5FFD;&#x7565;------------------------------------------------&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">&apos;abc.txt&apos;</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+    data <span class="token operator">=</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+URL <span class="token operator">=</span> <span class="token string">&apos;http://192.168.0.134:8080/swift/v1/123/abc.txt&apos;</span>
+headers <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">&apos;X-Auth-Token&apos;</span><span class="token punctuation">:</span>token<span class="token punctuation">}</span>
+res <span class="token operator">=</span> requests<span class="token punctuation">.</span>put<span class="token punctuation">(</span>URL<span class="token punctuation">,</span>headers<span class="token operator">=</span>headers<span class="token punctuation">,</span>data<span class="token operator">=</span>data<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>headers<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>status_code<span class="token punctuation">)</span>
+
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;&#x8BBE;&#x7F6E;Temp URL------------------------------------------------&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">import</span> hmac
+<span class="token keyword">from</span> hashlib <span class="token keyword">import</span> sha1
+<span class="token keyword">from</span> time <span class="token keyword">import</span> time
+
+
+URL <span class="token operator">=</span> <span class="token string">&apos;http://192.168.0.134:8080/swift/v1/&apos;</span>
+headers <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">&apos;X-Auth-Token&apos;</span><span class="token punctuation">:</span>token<span class="token punctuation">,</span> <span class="token string">&apos;X-Account-Meta-Temp-URL-Key&apos;</span><span class="token punctuation">:</span><span class="token string">&quot;hello&quot;</span><span class="token punctuation">}</span>
+res <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>URL<span class="token punctuation">,</span>headers<span class="token operator">=</span>headers<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>headers<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>status_code<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;&#x67E5;&#x770B;&#x6709;&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;&#x6210;&#x529F;------------------------------------------------&quot;</span><span class="token punctuation">)</span>
+
+URL <span class="token operator">=</span> <span class="token string">&apos;http://192.168.0.134:8080/swift/v1/&apos;</span>
+headers <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">&apos;X-Auth-Token&apos;</span><span class="token punctuation">:</span>token<span class="token punctuation">,</span> <span class="token string">&apos;X-Account-Meta-Temp-URL-Key&apos;</span><span class="token punctuation">:</span><span class="token string">&quot;hello&quot;</span><span class="token punctuation">}</span>
+res <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>URL<span class="token punctuation">,</span>headers<span class="token operator">=</span>headers<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>headers<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>status_code<span class="token punctuation">)</span>
+
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;&#x751F;&#x6210; tmp url------------------------------------------------&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">import</span> hmac
+<span class="token keyword">from</span> hashlib <span class="token keyword">import</span> sha1
+<span class="token keyword">from</span> time <span class="token keyword">import</span> time
+
+method <span class="token operator">=</span> <span class="token string">&apos;GET&apos;</span>
+host <span class="token operator">=</span> <span class="token string">&apos;http://192.168.0.134:8080/swift&apos;</span>
+duration_in_seconds <span class="token operator">=</span> <span class="token number">300</span>  <span class="token comment"># Duration for which the url is valid</span>
+expires <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> duration_in_seconds<span class="token punctuation">)</span>
+path <span class="token operator">=</span> <span class="token string">&apos;/v1/123/abc.txt&apos;</span>
+key <span class="token operator">=</span> <span class="token string">&apos;hello&apos;</span>
+hmac_body <span class="token operator">=</span> <span class="token string">&apos;%s\n%s\n%s&apos;</span> <span class="token operator">%</span> <span class="token punctuation">(</span>method<span class="token punctuation">,</span> expires<span class="token punctuation">,</span> path<span class="token punctuation">)</span>
+key <span class="token operator">=</span> <span class="token builtin">bytes</span><span class="token punctuation">(</span>key <span class="token punctuation">,</span> <span class="token string">&apos;utf-8&apos;</span><span class="token punctuation">)</span>
+hmac_body <span class="token operator">=</span> <span class="token builtin">bytes</span><span class="token punctuation">(</span>hmac_body<span class="token punctuation">,</span> <span class="token string">&apos;utf-8&apos;</span><span class="token punctuation">)</span>
+sig <span class="token operator">=</span> hmac<span class="token punctuation">.</span>new<span class="token punctuation">(</span>key<span class="token punctuation">,</span> hmac_body<span class="token punctuation">,</span> sha1<span class="token punctuation">)</span><span class="token punctuation">.</span>hexdigest<span class="token punctuation">(</span><span class="token punctuation">)</span>
+rest_uri <span class="token operator">=</span> <span class="token string">&quot;{host}{path}?temp_url_sig={sig}&amp;temp_url_expires={expires}&quot;</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>
+             host<span class="token operator">=</span>host<span class="token punctuation">,</span> path<span class="token operator">=</span>path<span class="token punctuation">,</span> sig<span class="token operator">=</span>sig<span class="token punctuation">,</span> expires<span class="token operator">=</span>expires<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>rest_uri<span class="token punctuation">)</span>
+</code></pre>
+<h3 id="&#x751F;&#x6210;tmp-url&#x90E8;&#x5206;&#x5982;&#x4E0B;&#xFF1A;">&#x751F;&#x6210;tmp url&#x90E8;&#x5206;&#x5982;&#x4E0B;&#xFF1A;</h3>
+<pre class="language-"><code class="lang-python">method <span class="token operator">=</span> <span class="token string">&apos;GET&apos;</span>
+host <span class="token operator">=</span> <span class="token string">&apos;http://192.168.0.134:8080/swift&apos;</span>
+duration_in_seconds <span class="token operator">=</span> <span class="token number">300</span>  <span class="token comment"># Duration for which the url is valid</span>
+expires <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> duration_in_seconds<span class="token punctuation">)</span>
+path <span class="token operator">=</span> <span class="token string">&apos;/v1/123/abc.txt&apos;</span>
+key <span class="token operator">=</span> <span class="token string">&apos;hello&apos;</span>
+hmac_body <span class="token operator">=</span> <span class="token string">&apos;%s\n%s\n%s&apos;</span> <span class="token operator">%</span> <span class="token punctuation">(</span>method<span class="token punctuation">,</span> expires<span class="token punctuation">,</span> path<span class="token punctuation">)</span>
+key <span class="token operator">=</span> <span class="token builtin">bytes</span><span class="token punctuation">(</span>key <span class="token punctuation">,</span> <span class="token string">&apos;utf-8&apos;</span><span class="token punctuation">)</span>
+hmac_body <span class="token operator">=</span> <span class="token builtin">bytes</span><span class="token punctuation">(</span>hmac_body<span class="token punctuation">,</span> <span class="token string">&apos;utf-8&apos;</span><span class="token punctuation">)</span>
+sig <span class="token operator">=</span> hmac<span class="token punctuation">.</span>new<span class="token punctuation">(</span>key<span class="token punctuation">,</span> hmac_body<span class="token punctuation">,</span> sha1<span class="token punctuation">)</span><span class="token punctuation">.</span>hexdigest<span class="token punctuation">(</span><span class="token punctuation">)</span>
+rest_uri <span class="token operator">=</span> <span class="token string">&quot;{host}{path}?temp_url_sig={sig}&amp;temp_url_expires={expires}&quot;</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>
+             host<span class="token operator">=</span>host<span class="token punctuation">,</span> path<span class="token operator">=</span>path<span class="token punctuation">,</span> sig<span class="token operator">=</span>sig<span class="token punctuation">,</span> expires<span class="token operator">=</span>expires<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>rest_uri<span class="token punctuation">)</span>
+</code></pre>
+<p>python tmp_url.py </p>
+<pre class="language-"><code>------------------------------------------------
+Traceback (most recent call last):
+  File &quot;tmp_url.py&quot;, line 118, in <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>module</span><span class="token punctuation">&gt;</span></span>
+    sig = hmac.new(key, hmac_body, sha1).hexdigest()
+  File &quot;/root/.pyenv/versions/3.7.2/lib/python3.7/hmac.py&quot;, line 153, in new
+    return HMAC(key, msg, digestmod)
+  File &quot;/root/.pyenv/versions/3.7.2/lib/python3.7/hmac.py&quot;, line 49, in __init__
+    raise TypeError(&quot;key: expected bytes or bytearray, but got %r&quot; % type(key).__name__)
+TypeError: key: expected bytes or bytearray, but got &apos;str&apos;
+</code></pre><p>&#x53C2;&#x8003; <a href="https://stackoverflow.com/questions/31848293/python3-and-hmac-how-to-handle-string-not-being-binary" target="_blank">https://stackoverflow.com/questions/31848293/python3-and-hmac-how-to-handle-string-not-being-binary</a></p>
+<p>&#x77E5;&#x9053;&#xFF0C;&#x8981;&#x5C06; key, hmac_body&#x8F6C;&#x6210;bytes</p>
+<pre class="language-"><code>key = bytes(key , &apos;utf-8&apos;)
+hmac_body = bytes(hmac_body, &apos;utf-8&apos;)
+</code></pre><h3 id="&#x8FD0;&#x884C;&#x540E;&#xFF0C;&#x5F97;&#x5230;">&#x8FD0;&#x884C;&#x540E;&#xFF0C;&#x5F97;&#x5230;</h3>
+<p><a href="http://192.168.0.134:8080/swift/v1/123/abc.txt?temp_url_sig=8acedc3134554c69de5d3fb42cbd9981dc9a16e4&amp;temp_url_expires=1554286239" target="_blank">http://192.168.0.134:8080/swift/v1/123/abc.txt?temp_url_sig=8acedc3134554c69de5d3fb42cbd9981dc9a16e4&amp;temp_url_expires=1554286239</a></p>
+<p>&#x4F46;&#x662F;&#xFF0C;&#x653E;&#x5230; chrome &#x4E2D;&#xFF1A;</p>
+<p>&#x663E;&#x793A; </p>
+<p>AccessDenied</p>
+<p>&#x4EC0;&#x4E48;&#x60C5;&#x51B5;&#xFF1F;</p>
+<h3 id="update-your-keystone-endpoint">update your Keystone endpoint</h3>
+<h4 id="&#x67E5;&#x4E00;&#x4E0B;">&#x67E5;&#x4E00;&#x4E0B;</h4>
+<pre class="language-"><code>root@controller:/home/ubuntu# . admin-openrc 
+root@controller:/home/ubuntu# openstack endpoint list
++----------------------------------+-----------+--------------+--------------+---------+-----------+--------------------------------------+
+| ID                               | Region    | Service Name | Service Type | Enabled | Interface | URL                                  |
++----------------------------------+-----------+--------------+--------------+---------+-----------+--------------------------------------+
+| 1c1c7306ea024eb98fae578ed1383f99 | RegionOne | keystone     | identity     | True    | internal  | http://controller:5000/v3/           |
+| 4fa93f815d64428697bcc41e56f38d94 | RegionOne | swift        | object-store | True    | internal  | http://ceph-rgw-client:8080/swift/v1 |
+| 5be5403aecb9418aa73288b0f56e1315 | RegionOne | swift        | object-store | True    | public    | http://ceph-rgw-client:8080/swift/v1 |
+| b7df0ccdceba42ce8272d26882627e33 | RegionOne | swift        | object-store | True    | admin     | http://ceph-rgw-client:8080/swift/v1 |
+| b9499be1f9ac4ad8ad9705f2e1a13847 | RegionOne | keystone     | identity     | True    | public    | http://controller:5000/v3/           |
+| badb42c672534b8290a37b828b758c9d | RegionOne | keystone     | identity     | True    | admin     | http://controller:5000/v3/           |
++----------------------------------+-----------+--------------+--------------+---------+-----------+--------------------------------------+
+root@controller:/home/ubuntu#
+</code></pre><h4 id="&#x65B9;&#x5411;">&#x65B9;&#x5411;</h4>
+<p>&#x6839;&#x636E; <a href="http://docs.ceph.com/docs/master/radosgw/swift/tempurl/" target="_blank">http://docs.ceph.com/docs/master/radosgw/swift/tempurl/</a> &#x7684;&#x63D0;&#x793A;&#x7684;   update your Keystone endpoint to the URL suffix /v1/AUTH_%(tenant_id)s (instead of just /v1). &#x64CD;&#x4F5C;</p>
+<p>&#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;&#x5728; keystone v3 &#x4E2D;&#x5DF2;&#x7ECF;&#x6CA1;&#x6709; tenant_id &#x4E86;&#xFF0C;&#x66FF;&#x6362;&#x6210; project_id &#x3002;</p>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x628A; swift &#x7684; endpoint &#x7531;&#xFF1A; <a href="http://ceph-rgw-client:8080/swift/v1" target="_blank">http://ceph-rgw-client:8080/swift/v1</a> &#x66FF;&#x6362;&#x6210; <a href="http://ceph-rgw-client:8080/swift/v1/AUTH_%(project_id)s" target="_blank">http://ceph-rgw-client:8080/swift/v1/AUTH_%(project_id)s</a></p>
+<h4 id="&#x66F4;&#x65B0;endpoint&#x6709;2&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;">&#x66F4;&#x65B0;endpoint&#x6709;2&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;</h4>
+<ul>
+<li>&#x6570;&#x636E;&#x5E93;&#x65B9;&#x5F0F;</li>
+</ul>
+<p>database: keystone
+table: endpoint</p>
+<ul>
+<li>&#x547D;&#x4EE4;&#x884C;&#x65B9;&#x5F0F;&#x4FEE;&#x6539;&#x53C2;&#x8003;</li>
+</ul>
+<p><a href="https://docs.openstack.org/python-openstackclient/pike/cli/command-objects/endpoint.html" target="_blank">https://docs.openstack.org/python-openstackclient/pike/cli/command-objects/endpoint.html</a></p>
+<p>&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x4E0D;&#x77E5;&#x9053;keystone&#x5BF9;&#x5E94;&#x7684;mysql&#x5B89;&#x88C5;&#x5728;&#x54EA;&#x91CC;&#xFF08;&#x4E5F;&#x4E0D;&#x9700;&#x8981;&#x77E5;&#x9053;&#xFF09;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;&#x6211;&#x4EEC;&#x9009;&#x62E9;&#x547D;&#x4EE4;&#x884C;&#x65B9;&#x5F0F;</p>
+<h4 id="&#x64CD;&#x4F5C;">&#x64CD;&#x4F5C;</h4>
+<!-- hello
+openstack endpoint set --url "http://ceph-rgw-client:8080/swift/v1" 4fa93f815d64428697bcc41e56f38d94 
+openstack endpoint set --url "http://ceph-rgw-client:8080/swift/v1" 5be5403aecb9418aa73288b0f56e1315 
+openstack endpoint set --url "http://ceph-rgw-client:8080/swift/v1" b7df0ccdceba42ce8272d26882627e33  -->
+<!-- hello
+openstack endpoint set --url "http://ceph-rgw-client:8080/swift/v1/AUTH_%(project_id)s" 4fa93f815d64428697bcc41e56f38d94 
+openstack endpoint set --url "http://ceph-rgw-client:8080/swift/v1/AUTH_%(project_id)s" 5be5403aecb9418aa73288b0f56e1315 
+openstack endpoint set --url "http://ceph-rgw-client:8080/swift/v1/AUTH_%(project_id)s" b7df0ccdceba42ce8272d26882627e33  -->
+<pre class="language-"><code>root@controller:/home/ubuntu# openstack endpoint set --url &quot;http://ceph-rgw-client:8080/swift/v1/AUTH_%(project_id)s&quot; 4fa93f815d64428697bcc41e56f38d94 
+root@controller:/home/ubuntu# openstack endpoint set --url &quot;http://ceph-rgw-client:8080/swift/v1/AUTH_%(project_id)s&quot; 5be5403aecb9418aa73288b0f56e1315 
+root@controller:/home/ubuntu# openstack endpoint set --url &quot;http://ceph-rgw-client:8080/swift/v1/AUTH_%(project_id)s&quot; b7df0ccdceba42ce8272d26882627e33 
+root@controller:/home/ubuntu# openstack endpoint list
++----------------------------------+-----------+--------------+--------------+---------+-----------+----------------------------------------------------------+
+| ID                               | Region    | Service Name | Service Type | Enabled | Interface | URL                                                      |
++----------------------------------+-----------+--------------+--------------+---------+-----------+----------------------------------------------------------+
+| 1c1c7306ea024eb98fae578ed1383f99 | RegionOne | keystone     | identity     | True    | internal  | http://controller:5000/v3/                               |
+| 4fa93f815d64428697bcc41e56f38d94 | RegionOne | swift        | object-store | True    | internal  | http://ceph-rgw-client:8080/swift/v1/AUTH_%(project_id)s |
+| 5be5403aecb9418aa73288b0f56e1315 | RegionOne | swift        | object-store | True    | public    | http://ceph-rgw-client:8080/swift/v1/AUTH_%(project_id)s |
+| b7df0ccdceba42ce8272d26882627e33 | RegionOne | swift        | object-store | True    | admin     | http://ceph-rgw-client:8080/swift/v1/AUTH_%(project_id)s |
+| b9499be1f9ac4ad8ad9705f2e1a13847 | RegionOne | keystone     | identity     | True    | public    | http://controller:5000/v3/                               |
+| badb42c672534b8290a37b828b758c9d | RegionOne | keystone     | identity     | True    | admin     | http://controller:5000/v3/                               |
++----------------------------------+-----------+--------------+--------------+---------+-----------+----------------------------------------------------------+
+root@controller:/home/ubuntu#
+</code></pre><p>url &#x8981;&#x52A0; &#x53CC;&#x5F15;&#x53F7;&#xFF0C;&#x5426;&#x5219;&#x62A5;&#x9519;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code>root@controller:/home/ubuntu# openstack endpoint set --url http://ceph-rgw-client:8080/swift/v1/AUTH_%(project_id)s  4fa93f815d64428697bcc41e56f38d94 
+bash: syntax error near unexpected token `(&apos;
+root@controller:/home/ubuntu#
+</code></pre><p>&#x67E5;&#x8BE2;&#xFF0C;&#x8FD9;&#x65F6;&#xFF0C;&#x4F1A;&#x62A5;&#x9519;</p>
+<pre class="language-"><code>root@controller:/home/ubuntu# . admin-openrc 
+root@controller:/home/ubuntu# swift list
+Account not found
+root@controller:/home/ubuntu#
+</code></pre><p>&#x56DE;&#x5934;&#x518D;&#x770B;&#x6587;&#x6863;&#xFF0C;&#x53D1;&#x73B0;&#xFF0C;&#x662F;&#x4E0D;&#x662F;&#x8981;&#x540C;&#x65F6;&#x4FEE;&#x6539; rgw&#x8282;&#x70B9;&#x7684; /etc/ceph.conf &#x6587;&#x4EF6;&#x3002;</p>
+<p>&#x5B9E;&#x9645;&#x8BC1;&#x660E;&#xFF0C;&#x662F;&#x7684;&#x3002;&#x4E24;&#x4E2A;&#x5730;&#x65B9;&#x8981;&#x540C;&#x65F6;&#x4FEE;&#x6539;&#x3002;&#x4E24;&#x5904;&#x662F;&#x76F8;&#x4E92;&#x914D;&#x5408;&#x7684;&#x3002;&#x5982;&#x679C;&#x53EA;&#x4FEE;&#x6539;&#x5176;&#x4E2D;&#x4E00;&#x5904;&#xFF0C;&#x5219;&#x90FD;&#x4F1A;&#x62A5;&#x9519;&#x3002;</p>
+<p>&#x5177;&#x4F53;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>/etc/ceph.conf</li>
+</ul>
+<pre class="language-"><code>root@ceph-client:/etc/ceph# cat ceph.conf 
+[global]
+fsid = 87aa8ebd-2782-415d-bf23-ad2eb89b61c6
+mon_initial_members = ceph-server-1, ceph-server-2, ceph-server-3
+mon_host = 192.168.0.130,192.168.0.111,192.168.0.105
+auth_cluster_required = cephx
+auth_service_required = cephx
+auth_client_required = cephx
+osd pool default size = 2
+mon_clock_drift_allowed = 1
+rgw swift account in url = true
+
+[client.rgw.ceph-client]
+rgw_frontends = &quot;civetweb port=8080&quot;
+
+rgw keystone api version = 3
+rgw keystone url = http://192.168.0.51:5000 
+rgw keystone admin user = admin
+rgw keystone admin password = openstack
+rgw keystone admin domain = default
+rgw keystone admin project = admin
+rgw keystone accepted roles = admin, user 
+rgw keystone token cache size = 500
+rgw s3 auth use keystone = true
+rgw keystone revocation interval = 60
+rgw keystone implicit tenants = true
+
+root@ceph-client:/etc/ceph# 
+root@ceph-client:/etc/ceph# sudo systemctl restart ceph-radosgw@rgw.ceph-client.service
+</code></pre><ul>
+<li>openstack endpoint list</li>
+</ul>
+<pre class="language-"><code>root@controller:/home/ubuntu# . admin-openrc 
+root@controller:/home/ubuntu# openstack endpoint list | grep object-store
+| 4fa93f815d64428697bcc41e56f38d94 | RegionOne | swift        | object-store | True    | internal  | http://ceph-rgw-client:8080/swift/v1/AUTH_%(project_id)s |
+| 5be5403aecb9418aa73288b0f56e1315 | RegionOne | swift        | object-store | True    | public    | http://ceph-rgw-client:8080/swift/v1/AUTH_%(project_id)s |
+| b7df0ccdceba42ce8272d26882627e33 | RegionOne | swift        | object-store | True    | admin     | http://ceph-rgw-client:8080/swift/v1/AUTH_%(project_id)s |
+root@controller:/home/ubuntu#
+</code></pre><p>&#x8FD9;&#x6837;&#x5C31;&#x610F;&#x5473;&#x7740;&#xFF1A;</p>
+<p>&#x4E0A;&#x4F20;&#x4E0B;&#x8F7D;URL &#x7531; <a href="http://192.168.0.134:8080/swift/v1/" target="_blank">http://192.168.0.134:8080/swift/v1/</a> &#x66F4;&#x65B0;&#x4E3A;&#xFF1A; <a href="http://192.168.0.134:8080/swift/v1/AUTH_%(project_id)s/" target="_blank">http://192.168.0.134:8080/swift/v1/AUTH_%(project_id)s/</a>  ( &#x5C31;&#x662F;&#x591A;&#x52A0;   AUTH_(project_id)s/   )</p>
+<p>&#x56E0;&#x4E3A;&#x4FEE;&#x6539;&#x4E86; ceph.conf &#xFF0C;&#x90A3;&#x628A;&#x914D;&#x7F6E;&#x5206;&#x53D1;&#x4E00;&#x4E0B;&#x3002;</p>
+<p>ceph-admin&#x8282;&#x70B9;&#xFF1A;</p>
+<pre class="language-"><code>admin@ceph-admin:~/test-cluster$ ceph-deploy --overwrite-conf config push ceph-admin ceph-client ceph-server-1 ceph-server-2 ceph-server-3
+</code></pre><p>&#x7136;&#x540E;&#xFF0C;&#x518D;&#x9A8C;&#x8BC1;&#x4E00;&#x4E0B;&#x3002;&#xFF08;&#x56E0;&#x4E3A;&#x5728;ceph-admin&#x8282;&#x70B9;&#x65E0;&#x6CD5;&#x8FD0;&#x884C;<code>ssh ceph-server-1</code> &#x547D;&#x4EE4;&#xFF0C;&#x53D1;&#x73B0; ceph-server-1 &#x8282;&#x70B9;&#x6709;&#x95EE;&#x9898;&#xFF0C;&#x8981;&#x4FEE;&#x590D;&#x8FD9;&#x4E2A;ssh&#x95EE;&#x9898;&#xFF0C;&#x6240;&#x4EE5;&#x6682;&#x505C;&#x4E86;&#x3002;&#xFF09;</p>
+<h3 id="&#x6362;&#x601D;&#x8DEF;&#xFF0C;&#x5BF9;&#x6BD4;&#x65E5;&#x5FD7;&#x60C5;&#x51B5;">&#x6362;&#x601D;&#x8DEF;&#xFF0C;&#x5BF9;&#x6BD4;&#x65E5;&#x5FD7;&#x60C5;&#x51B5;</h3>
+<ul>
+<li>tail -f  /var/log/ceph/ceph-client.rgw.ceph-client.log</li>
+</ul>
+<h4 id="&#x539F;&#x751F;&#x7528;&#x6237;-tmp-url-&#x65E5;&#x5FD7;">&#x539F;&#x751F;&#x7528;&#x6237; tmp url &#x65E5;&#x5FD7;</h4>
+<pre class="language-"><code>2019-04-09 10:46:18.303 7fa3d7a12700  1 ====== starting new request req=0x7fa3d7a09830 =====
+2019-04-09 10:46:18.987 7fa3d7a12700  1 ====== req done req=0x7fa3d7a09830 op status=1902 http_status=204 ======
+2019-04-09 10:46:18.987 7fa3d7a12700  1 civetweb: 0x205c000: 192.168.0.158 - - [09/Apr/2019:10:46:18 +0800] &quot;POST /swift/v1/ HTTP/1.1&quot; 204 265 - python-requests/2.21.0
+2019-04-09 10:46:18.995 7fa3d7a12700  1 ====== starting new request req=0x7fa3d7a09830 =====
+2019-04-09 10:46:19.003 7fa3d7a12700  1 ====== req done req=0x7fa3d7a09830 op status=0 http_status=200 ======
+2019-04-09 10:46:19.003 7fa3d7a12700  1 civetweb: 0x205c000: 192.168.0.158 - - [09/Apr/2019:10:46:18 +0800] &quot;GET /swift/v1/ HTTP/1.1&quot; 200 755 - python-requests/2.21.0
+</code></pre><p>chrome&#xFF1A; <a href="http://192.168.0.134:8080/swift/v1/swiftuser1-container1/ceph-swiftuser1-container1-object-1.txt?temp_url_sig=b9a878f2293eb67ddf2f68ee044fd1445791d596&amp;temp_url_expires=1554778278" target="_blank">http://192.168.0.134:8080/swift/v1/swiftuser1-container1/ceph-swiftuser1-container1-object-1.txt?temp_url_sig=b9a878f2293eb67ddf2f68ee044fd1445791d596&amp;temp_url_expires=1554778278</a></p>
+<pre class="language-"><code>2019-04-09 10:46:34.251 7fa3d7211700  1 ====== starting new request req=0x7fa3d7208830 =====
+2019-04-09 10:46:34.259 7fa3d7211700  1 ====== req done req=0x7fa3d7208830 op status=0 http_status=200 ======
+2019-04-09 10:46:34.259 7fa3d7211700  1 civetweb: 0x205c9d8: 192.168.0.158 - - [09/Apr/2019:10:46:34 +0800] &quot;GET /swift/v1/swiftuser1-container1/ceph-swiftuser1-container1-object-1.txt?temp_url_sig=b9a878f2293eb67ddf2f68ee044fd1445791d596&amp;temp_url_expires=1554778278 HTTP/1.1&quot; 200 538 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+2019-04-09 10:46:42.351 7fa3d8a14700  0 ERROR: keystone revocation processing returned error r=-5
+</code></pre><h4 id="keystone-&#x7528;&#x6237;-&#x65E5;&#x5FD7;">keystone &#x7528;&#x6237; &#x65E5;&#x5FD7;</h4>
+<pre class="language-"><code>2019-04-09 10:44:46.925 7fa3d7a12700  1 ====== starting new request req=0x7fa3d7a09830 =====
+2019-04-09 10:44:47.477 7fa3d7a12700  0 validated token: demo:demo expires: 1555987486
+2019-04-09 10:44:47.825 7fa3d7a12700  1 ====== req done req=0x7fa3d7a09830 op status=1902 http_status=204 ======
+2019-04-09 10:44:47.825 7fa3d7a12700  1 civetweb: 0x205c000: 192.168.0.158 - - [09/Apr/2019:10:44:46 +0800] &quot;POST /swift/v1 HTTP/1.1&quot; 204 265 - python-requests/2.21.0
+2019-04-09 10:44:47.837 7fa3d7a12700  1 ====== starting new request req=0x7fa3d7a09830 =====
+2019-04-09 10:44:47.849 7fa3d7a12700  1 ====== req done req=0x7fa3d7a09830 op status=0 http_status=200 ======
+2019-04-09 10:44:47.849 7fa3d7a12700  1 civetweb: 0x205c000: 192.168.0.158 - - [09/Apr/2019:10:44:47 +0800] &quot;GET /swift/v1 HTTP/1.1&quot; 200 762 - python-requests/2.21.0
+</code></pre><p>chrome&#xFF1A; <a href="http://192.168.0.134:8080/swift/v1/abcd/hello.txt?temp_url_sig=d5b943ad55c2aa8ed3d391bd917d99be84f9fa9f&amp;temp_url_expires=1554778187" target="_blank">http://192.168.0.134:8080/swift/v1/abcd/hello.txt?temp_url_sig=d5b943ad55c2aa8ed3d391bd917d99be84f9fa9f&amp;temp_url_expires=1554778187</a></p>
+<pre class="language-"><code>2019-04-09 10:45:22.138 7fa3d7a12700  1 ====== starting new request req=0x7fa3d7a09830 =====
+2019-04-09 10:45:22.142 7fa3d7a12700  1 ====== req done req=0x7fa3d7a09830 op status=0 http_status=403 ======
+2019-04-09 10:45:22.142 7fa3d7a12700  1 civetweb: 0x205c000: 192.168.0.158 - - [09/Apr/2019:10:45:22 +0800] &quot;GET /swift/v1/abcd/hello.txt?temp_url_sig=d5b943ad55c2aa8ed3d391bd917d99be84f9fa9f&amp;temp_url_expires=1554778187 HTTP/1.1&quot; 403 318 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+</code></pre><p>&#x8FD4;&#x56DE;&#x7684;&#x662F; 403 &#x8D44;&#x6E90;&#x4E0D;&#x53EF;&#x7528;. &#x561B;&#x610F;&#x601D;&#xFF1F;</p>
+<h3 id="&#x67E5;&#x770B;-rgw&#x7528;&#x6237;&#x4E0E;-keystone&#x7528;&#x6237;&#x7684;&#x533A;&#x522B;">&#x67E5;&#x770B; rgw&#x7528;&#x6237;&#x4E0E; keystone&#x7528;&#x6237;&#x7684;&#x533A;&#x522B;</h3>
+<p>&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x4EE5; rgw&#x7528;&#x6237; swiftuser1 &#x4E0E; keystone&#x7528;&#x6237; a9e83dfd0fa14ec4b2e47842f2d5797a&#xFF08;demo&#xFF09;&#x4E3A;&#x4F8B;&#x5B50;&#xFF0C;&#x8FDB;&#x884C;&#x5C55;&#x793A;</p>
+<ul>
+<li>a9e83dfd0fa14ec4b2e47842f2d5797a</li>
+</ul>
+<pre class="language-"><code>admin@ceph-admin:~$ radosgw-admin user info --uid &quot;a9e83dfd0fa14ec4b2e47842f2d5797a\$a9e83dfd0fa14ec4b2e47842f2d5797a&quot;
+{
+    &quot;user_id&quot;: &quot;a9e83dfd0fa14ec4b2e47842f2d5797a$a9e83dfd0fa14ec4b2e47842f2d5797a&quot;,
+    &quot;display_name&quot;: &quot;demo&quot;,
+    &quot;email&quot;: &quot;&quot;,
+    &quot;suspended&quot;: 0,
+    &quot;max_buckets&quot;: 1000,
+    &quot;auid&quot;: 0,
+    &quot;subusers&quot;: [],
+    &quot;keys&quot;: [],
+    &quot;swift_keys&quot;: [],
+    &quot;caps&quot;: [],
+    &quot;op_mask&quot;: &quot;read, write, delete&quot;,
+    &quot;default_placement&quot;: &quot;&quot;,
+    &quot;placement_tags&quot;: [],
+    &quot;bucket_quota&quot;: {
+        &quot;enabled&quot;: false,
+        &quot;check_on_raw&quot;: false,
+        &quot;max_size&quot;: -1,
+        &quot;max_size_kb&quot;: 0,
+        &quot;max_objects&quot;: -1
+    },
+    &quot;user_quota&quot;: {
+        &quot;enabled&quot;: false,
+        &quot;check_on_raw&quot;: false,
+        &quot;max_size&quot;: -1,
+        &quot;max_size_kb&quot;: 0,
+        &quot;max_objects&quot;: -1
+    },
+    &quot;temp_url_keys&quot;: [
+        {
+            &quot;key&quot;: 0,
+            &quot;val&quot;: &quot;demohelloworld&quot;
+        }
+    ],
+    &quot;type&quot;: &quot;keystone&quot;,
+    &quot;mfa_ids&quot;: []
+}
+
+admin@ceph-admin:~$
+</code></pre><ul>
+<li>swiftuser1</li>
+</ul>
+<pre class="language-"><code>admin@ceph-admin:~$ radosgw-admin user info --uid &quot;swiftuser1&quot;
+{
+    &quot;user_id&quot;: &quot;swiftuser1&quot;,
+    &quot;display_name&quot;: &quot;swiftuser1displayname&quot;,
+    &quot;email&quot;: &quot;&quot;,
+    &quot;suspended&quot;: 0,
+    &quot;max_buckets&quot;: 1000,
+    &quot;auid&quot;: 0,
+    &quot;subusers&quot;: [
+        {
+            &quot;id&quot;: &quot;swiftuser1:swiftsubuser1&quot;,
+            &quot;permissions&quot;: &quot;full-control&quot;
+        }
+    ],
+    &quot;keys&quot;: [],
+    &quot;swift_keys&quot;: [
+        {
+            &quot;user&quot;: &quot;swiftuser1:swiftsubuser1&quot;,
+            &quot;secret_key&quot;: &quot;G8jTHyahPudXOQ0Dv3oDn3wq9fMKnbcc9e4IumZO&quot;
+        }
+    ],
+    &quot;caps&quot;: [],
+    &quot;op_mask&quot;: &quot;read, write, delete&quot;,
+    &quot;default_placement&quot;: &quot;&quot;,
+    &quot;placement_tags&quot;: [],
+    &quot;bucket_quota&quot;: {
+        &quot;enabled&quot;: false,
+        &quot;check_on_raw&quot;: false,
+        &quot;max_size&quot;: -1,
+        &quot;max_size_kb&quot;: 0,
+        &quot;max_objects&quot;: -1
+    },
+    &quot;user_quota&quot;: {
+        &quot;enabled&quot;: false,
+        &quot;check_on_raw&quot;: false,
+        &quot;max_size&quot;: -1,
+        &quot;max_size_kb&quot;: 0,
+        &quot;max_objects&quot;: -1
+    },
+    &quot;temp_url_keys&quot;: [
+        {
+            &quot;key&quot;: 0,
+            &quot;val&quot;: &quot;hello&quot;
+        }
+    ],
+    &quot;type&quot;: &quot;rgw&quot;,
+    &quot;mfa_ids&quot;: []
+}
+
+admin@ceph-admin:~$
+</code></pre><p>&#x901A;&#x8FC7;&#x89C2;&#x5BDF;&#xFF0C;&#x77E5;&#x9053;&#xFF0C;&#x6211;&#x4EEC;&#x7684; keystone &#x7528;&#x6237;&#xFF0C;&#x6CA1;&#x6709; swift_keys &#x914D;&#x7F6E;&#x3002;</p>
+<p>&#x8FD9;&#x4E2A;&#x503C;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>sudo radosgw-admin key create --subuser=&quot;${username}:${subusername}&quot; --key-type=swift --gen-secret</code> &#x751F;&#x6210;&#x5E76;&#x66FF;&#x6362;</p>
+<p>&#x4F46;&#x662F;&#xFF0C;subuser &#x4E5F;&#x6CA1;&#x6709;&#x8BBE;&#x5B9A;&#xFF0C;&#x600E;&#x4E48;&#x529E;&#xFF1F;</p>
+<h3 id="&#x914D;&#x7F6E;-subuser-&#x548C;-swiftkeys">&#x914D;&#x7F6E; subuser &#x548C; swift_keys</h3>
+<p>&#x6211;&#x4EEC;&#x77E5;&#x9053; rgw &#x7528;&#x6237; &#x662F;&#x901A;&#x8FC7;&#x4E0B;&#x9762;&#x7684;&#x65B9;&#x5F0F;&#x521B;&#x5EFA;&#x7684;</p>
+<pre class="language-"><code>root@ceph-admin:~# cat ceph-swift-user1-openrc 
+username=swiftuser1
+subusername=swiftsubuser1
+displayname=swiftuser1displayname
+password=swiftuser1password
+root@ceph-admin:~# 
+root@ceph-admin:~# . ceph-swift-user1-openrc 
+root@ceph-admin:~# sudo radosgw-admin user create --subuser=&quot;${username}:${subusername}&quot; --uid=&quot;${username}&quot; --display-name=&quot;${displayname}&quot; --key-type=swift --secret=&quot;${password}&quot; --access=full
+</code></pre><p>&#x76F8;&#x540C;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x8BD5;&#x4E00;&#x4E0B;</p>
+<pre class="language-"><code>admin@ceph-admin:~/test-data$ cat ceph-keystone-demo 
+username=a9e83dfd0fa14ec4b2e47842f2d5797a\$a9e83dfd0fa14ec4b2e47842f2d5797a
+subusername=demo
+displayname=demo
+password=openstack
+admin@ceph-admin:~/test-data$ . ceph-keystone-demo 
+admin@ceph-admin:~/test-data$ sudo radosgw-admin user create --subuser=&quot;${username}:${subusername}&quot; --uid=&quot;${username}&quot; --display-name=&quot;${displayname}&quot; --key-type=swift --secret=&quot;${password}&quot; --access=full 
+could not create subuser: unable to create subuser, unable to store user info
+admin@ceph-admin:~/test-data$
+</code></pre><p>&#x5931;&#x8D25;&#x4E86;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#xFF0C;&#x53EA;&#x80FD;&#x5C1D;&#x8BD5; <code>sudo radosgw-admin user modify</code></p>
+<pre class="language-"><code>admin@ceph-admin:~/test-data$ radosgw-admin user modify --uid=&quot;${username}&quot; --subuser=&quot;${username}:${subusername}&quot; --display-name=&quot;${displayname}&quot; --key-type=swift --secret=&quot;${password}&quot; --access=full 
+{
+    &quot;user_id&quot;: &quot;a9e83dfd0fa14ec4b2e47842f2d5797a$a9e83dfd0fa14ec4b2e47842f2d5797a&quot;,
+    &quot;display_name&quot;: &quot;demo&quot;,
+    &quot;email&quot;: &quot;&quot;,
+    &quot;suspended&quot;: 0,
+    &quot;max_buckets&quot;: 1000,
+    &quot;auid&quot;: 0,
+    &quot;subusers&quot;: [],
+    &quot;keys&quot;: [],
+    &quot;swift_keys&quot;: [
+        {
+            &quot;user&quot;: &quot;a9e83dfd0fa14ec4b2e47842f2d5797a$a9e83dfd0fa14ec4b2e47842f2d5797a:demo&quot;,
+            &quot;secret_key&quot;: &quot;openstack&quot;
+        }
+    ],
+    &quot;caps&quot;: [],
+    &quot;op_mask&quot;: &quot;read, write, delete&quot;,
+    &quot;default_placement&quot;: &quot;&quot;,
+    &quot;placement_tags&quot;: [],
+    &quot;bucket_quota&quot;: {
+        &quot;enabled&quot;: false,
+        &quot;check_on_raw&quot;: false,
+        &quot;max_size&quot;: -1,
+        &quot;max_size_kb&quot;: 0,
+        &quot;max_objects&quot;: -1
+    },
+    &quot;user_quota&quot;: {
+        &quot;enabled&quot;: false,
+        &quot;check_on_raw&quot;: false,
+        &quot;max_size&quot;: -1,
+        &quot;max_size_kb&quot;: 0,
+        &quot;max_objects&quot;: -1
+    },
+    &quot;temp_url_keys&quot;: [
+        {
+            &quot;key&quot;: 0,
+            &quot;val&quot;: &quot;demohelloworld&quot;
+        }
+    ],
+    &quot;type&quot;: &quot;keystone&quot;,
+    &quot;mfa_ids&quot;: []
+}
+
+admin@ceph-admin:~/test-data$
+</code></pre><p>&#x5728; swift-client &#x8282;&#x70B9;&#x5C1D;&#x8BD5;&#x4E00;&#x4E0B;&#xFF0C;&#x83B7;&#x53D6; token</p>
+<pre class="language-"><code>root@controller:/home/ubuntu# curl -X GET -H &quot;X-Auth-User:a9e83dfd0fa14ec4b2e47842f2d5797a\$a9e83dfd0fa14ec4b2e47842f2d5797a:demo&quot; -H &quot;X-Auth-Key:openstack&quot;  http://192.168.0.134:8080/auth -v
+Note: Unnecessary use of -X or --request, GET is already inferred.
+*   Trying 192.168.0.134...
+* Connected to 192.168.0.134 (192.168.0.134) port 8080 (#0)
+&gt; GET /auth HTTP/1.1
+&gt; Host: 192.168.0.134:8080
+&gt; User-Agent: curl/7.47.0
+&gt; Accept: */*
+&gt; X-Auth-User:a9e83dfd0fa14ec4b2e47842f2d5797a$a9e83dfd0fa14ec4b2e47842f2d5797a:demo
+&gt; X-Auth-Key:openstack
+&gt; 
+&lt; HTTP/1.1 204 No Content
+&lt; X-Storage-Url: http://192.168.0.134:8080/swift/v1
+&lt; X-Storage-Token: AUTH_rgwtk4600000061396538336466643066613134656334623265343738343266326435373937612461396538336466643066613134656334623265343738343266326435373937613a64656d6fbdfd3ea012e50d803494ad5c0458533bfeb782742194c86f788ad18a56ed51c3ac0523fb
+&lt; X-Auth-Token: AUTH_rgwtk4600000061396538336466643066613134656334623265343738343266326435373937612461396538336466643066613134656334623265343738343266326435373937613a64656d6fbdfd3ea012e50d803494ad5c0458533bfeb782742194c86f788ad18a56ed51c3ac0523fb
+&lt; X-Trans-Id: tx00000000000000000001f-005cac42b4-39385-default
+&lt; X-Openstack-Request-Id: tx00000000000000000001f-005cac42b4-39385-default
+&lt; Content-Type: application/json; charset=utf-8
+&lt; Date: Tue, 09 Apr 2019 06:59:00 GMT
+&lt; 
+* Connection #0 to host 192.168.0.134 left intact
+root@controller:/home/ubuntu#
+</code></pre><p>&#x62FF;&#x5230;&#x4E86;&#x3002;</p>
+<p>&#x5229;&#x7528;token&#x8FDB;&#x884C;&#x8BBE;&#x7F6E; tmp url</p>
+<p>&#x53D1;&#x73B0;&#x4F1A;&#x62A5; 403 &#x3002;</p>
+<p>&#x518D;&#x5BF9;&#x6BD4;&#xFF0C;&#x53D1;&#x73B0; <code>&quot;subusers&quot;: []</code> &#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x7ED9;&#x8FD9;&#x4E2A; subusers &#x8BBE;&#x7F6E;&#x4E86; swift_key, &#x4F46;&#x662F;&#xFF0C;&#x6CA1;&#x6709;&#x6DFB;&#x52A0; subuser &#x7528;&#x6237;&#x3002;</p>
+<pre class="language-"><code>admin@ceph-admin:~/test-data$ radosgw-admin subuser create --uid=&quot;${username}&quot; --subuser=&quot;${username}:${subusername}&quot; --display-name=&quot;${displayname}&quot; --key-type=swift --secret=&quot;${password}&quot; --access=full  
+{
+    &quot;user_id&quot;: &quot;a9e83dfd0fa14ec4b2e47842f2d5797a$a9e83dfd0fa14ec4b2e47842f2d5797a&quot;,
+    &quot;display_name&quot;: &quot;demo&quot;,
+    &quot;email&quot;: &quot;&quot;,
+    &quot;suspended&quot;: 0,
+    &quot;max_buckets&quot;: 1000,
+    &quot;auid&quot;: 0,
+    &quot;subusers&quot;: [
+        {
+            &quot;id&quot;: &quot;a9e83dfd0fa14ec4b2e47842f2d5797a$a9e83dfd0fa14ec4b2e47842f2d5797a:demo&quot;,
+            &quot;permissions&quot;: &quot;full-control&quot;
+        }
+    ],
+    &quot;keys&quot;: [],
+    &quot;swift_keys&quot;: [
+        {
+            &quot;user&quot;: &quot;a9e83dfd0fa14ec4b2e47842f2d5797a$a9e83dfd0fa14ec4b2e47842f2d5797a:demo&quot;,
+            &quot;secret_key&quot;: &quot;openstack&quot;
+        }
+    ],
+    &quot;caps&quot;: [],
+    &quot;op_mask&quot;: &quot;read, write, delete&quot;,
+    &quot;default_placement&quot;: &quot;&quot;,
+    &quot;placement_tags&quot;: [],
+    &quot;bucket_quota&quot;: {
+        &quot;enabled&quot;: false,
+        &quot;check_on_raw&quot;: false,
+        &quot;max_size&quot;: -1,
+        &quot;max_size_kb&quot;: 0,
+        &quot;max_objects&quot;: -1
+    },
+    &quot;user_quota&quot;: {
+        &quot;enabled&quot;: false,
+        &quot;check_on_raw&quot;: false,
+        &quot;max_size&quot;: -1,
+        &quot;max_size_kb&quot;: 0,
+        &quot;max_objects&quot;: -1
+    },
+    &quot;temp_url_keys&quot;: [
+        {
+            &quot;key&quot;: 0,
+            &quot;val&quot;: &quot;demohelloworld2222222222222222222&quot;
+        }
+    ],
+    &quot;type&quot;: &quot;keystone&quot;,
+    &quot;mfa_ids&quot;: []
+}
+
+admin@ceph-admin:~/test-data$
+</code></pre><p>&#x8FD9;&#x4E0B;&#x90FD;&#x6709;&#x4E86;&#x3002;</p>
+<h4 id="&#x751F;&#x6210;-token">&#x751F;&#x6210; token</h4>
+<pre class="language-"><code>root@controller:/home/ubuntu# curl -X GET -H &quot;X-Auth-User:a9e83dfd0fa14ec4b2e47842f2d5797a\$a9e83dfd0fa14ec4b2e47842f2d5797a:demo&quot; -H &quot;X-Auth-Key:openstack&quot;  http://192.168.0.134:8080/auth -v 
+Note: Unnecessary use of -X or --request, GET is already inferred.
+*   Trying 192.168.0.134...
+* Connected to 192.168.0.134 (192.168.0.134) port 8080 (#0)
+&gt; GET /auth HTTP/1.1
+&gt; Host: 192.168.0.134:8080
+&gt; User-Agent: curl/7.47.0
+&gt; Accept: */*
+&gt; X-Auth-User:a9e83dfd0fa14ec4b2e47842f2d5797a$a9e83dfd0fa14ec4b2e47842f2d5797a:demo
+&gt; X-Auth-Key:openstack
+&gt; 
+&lt; HTTP/1.1 204 No Content
+&lt; X-Storage-Url: http://192.168.0.134:8080/swift/v1
+&lt; X-Storage-Token: AUTH_rgwtk4600000061396538336466643066613134656334623265343738343266326435373937612461396538336466643066613134656334623265343738343266326435373937613a64656d6f61190960e628bb4a7f9aad5ce3f24b168054f7204cba88919a36fd3eac665283c179bbcc
+&lt; X-Auth-Token: AUTH_rgwtk4600000061396538336466643066613134656334623265343738343266326435373937612461396538336466643066613134656334623265343738343266326435373937613a64656d6f61190960e628bb4a7f9aad5ce3f24b168054f7204cba88919a36fd3eac665283c179bbcc
+&lt; X-Trans-Id: tx0000000000000000000a2-005cac48ff-39385-default
+&lt; X-Openstack-Request-Id: tx0000000000000000000a2-005cac48ff-39385-default
+&lt; Content-Type: application/json; charset=utf-8
+&lt; Date: Tue, 09 Apr 2019 07:25:51 GMT
+&lt; 
+* Connection #0 to host 192.168.0.134 left intact
+root@controller:/home/ubuntu#
+</code></pre><h4 id="&#x751F;&#x6210;-tmp-url-key">&#x751F;&#x6210; tmp url key</h4>
+<pre class="language-"><code class="lang-python"><span class="token keyword">import</span> requests
+<span class="token keyword">import</span> json 
+
+token <span class="token operator">=</span> <span class="token string">&quot;AUTH_rgwtk4600000061396538336466643066613134656334623265343738343266326435373937612461396538336466643066613134656334623265343738343266326435373937613a64656d6f61190960e628bb4a7f9aad5ce3f24b168054f7204cba88919a36fd3eac665283c179bbcc&quot;</span>
+<span class="token keyword">import</span> hmac
+<span class="token keyword">from</span> hashlib <span class="token keyword">import</span> sha1
+<span class="token keyword">from</span> time <span class="token keyword">import</span> time
+
+key <span class="token operator">=</span> <span class="token string">&apos;demohelloworld444444444444444&apos;</span>
+
+URL <span class="token operator">=</span> <span class="token string">&apos;http://192.168.0.134:8080/swift/v1/&apos;</span>
+URL <span class="token operator">=</span> <span class="token string">&apos;http://192.168.0.134:8080/swift/v1&apos;</span>
+headers <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">&apos;X-Auth-Token&apos;</span><span class="token punctuation">:</span>token<span class="token punctuation">,</span> <span class="token string">&apos;X-Account-Meta-Temp-URL-Key&apos;</span><span class="token punctuation">:</span>key<span class="token punctuation">}</span>
+res <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>URL<span class="token punctuation">,</span>headers<span class="token operator">=</span>headers<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>headers<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>status_code<span class="token punctuation">)</span>
+
+URL <span class="token operator">=</span> <span class="token string">&apos;http://192.168.0.134:8080/swift/v1/&apos;</span>
+URL <span class="token operator">=</span> <span class="token string">&apos;http://192.168.0.134:8080/swift/v1&apos;</span>
+headers <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">&apos;X-Auth-Token&apos;</span><span class="token punctuation">:</span>token<span class="token punctuation">,</span> <span class="token string">&apos;X-Account-Meta-Temp-URL-Key&apos;</span><span class="token punctuation">:</span>key<span class="token punctuation">}</span>
+res <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>URL<span class="token punctuation">,</span>headers<span class="token operator">=</span>headers<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>headers<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>status_code<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;------------------------------------------------&quot;</span><span class="token punctuation">)</span>
+</code></pre>
+<h4 id="&#x751F;&#x6210;-tmp-url">&#x751F;&#x6210; tmp url</h4>
+<pre class="language-"><code>import hmac
+from hashlib import sha1
+from time import time 
+method = &apos;GET&apos;
+host = &apos;http://192.168.0.134:8080/swift&apos;
+# host = &apos;http://192.168.0.51:5000/v3/auth/tokens&apos;
+duration_in_seconds = 300  # Duration for which the url is valid
+expires = int(time() + duration_in_seconds)
+path = &apos;/v1/abcd/hello.txt&apos; 
+hmac_body = &apos;%s\n%s\n%s&apos; % (method, expires, path)
+key = bytes(key , &apos;utf-8&apos;)
+hmac_body = bytes(hmac_body, &apos;utf-8&apos;)
+sig = hmac.new(key, hmac_body, sha1).hexdigest()
+rest_uri = &quot;{host}{path}?temp_url_sig={sig}&amp;temp_url_expires={expires}&quot;.format(
+             host=host, path=path, sig=sig, expires=expires)
+
+print(rest_uri)
+</code></pre><p>chrome: <a href="http://192.168.0.134:8080/swift/v1/abcd/hello.txt?temp_url_sig=cfca82e1b725919ef684b2d14a36c664cdb20bf4&amp;temp_url_expires=1554795078" target="_blank">http://192.168.0.134:8080/swift/v1/abcd/hello.txt?temp_url_sig=cfca82e1b725919ef684b2d14a36c664cdb20bf4&amp;temp_url_expires=1554795078</a></p>
+<p>&#x5931;&#x8D25;&#x3002;</p>
+<h2 id="ref">ref</h2>
+<ul>
+<li><a href="http://docs.ceph.com/docs/master/radosgw/swift/tempurl/" target="_blank">http://docs.ceph.com/docs/master/radosgw/swift/tempurl/</a></li>
+<li><a href="https://blog.csdn.net/u014104588/article/details/86248675?tdsourcetag=s_pcqq_aiomsg" target="_blank">https://blog.csdn.net/u014104588/article/details/86248675?tdsourcetag=s_pcqq_aiomsg</a></li>
+<li><a href="http://docs.ceph.org.cn/radosgw/swift/tempurl/" target="_blank">http://docs.ceph.org.cn/radosgw/swift/tempurl/</a> </li>
+</ul>
+<footer class="page-footer"><span class="copyright"><p><a href="https://github.com/eiuapp/ceph-handbook" target="_blank">Ceph&#x5B9E;&#x8DF5;&#x6307;&#x5357;</a> | <a href="https://github.com/eiuapp/ceph-handbook" target="_blank">Ceph&#x5B9E;&#x8DF5;&#x6307;&#x5357;</a></p><p><a href="https://res.cloudinary.com/dmtixvmgt/image/upload/v1539022273/wechat-qrcode_cml5dm.jpg" data-lightbox="2fd927ee-fa64-4eca-8ed5-6bd72b573a3c" target="_blank">&#x70B9;&#x51FB;&#x5173;&#x6CE8;&#x3010;servicemesher&#x3011;&#x516C;&#x4F17;&#x53F7;&#x56DE;&#x590D;&#x3010;&#x52A0;&#x7FA4;&#x3011;&#x52A0;&#x5165;&#x5B66;&#x4E60;&#x7FA4;</a> | </p>Copyright &#xA9; <a href="https://eiuapp.github.io" target="_blank">eiuapp.github.io</a> 2017-2019 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification"> Updated at 
+2019-04-09 09:00:25
+</span></footer></body></html>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="radosgw-swift-tmp-url-no-keystone.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: (非keystone认证)swift生成并获取tmp url">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"(keystone认证)swift生成并获取tmp url","level":"6.2.3","depth":2,"next":{"title":"user","level":"6.3","depth":1,"ref":"","articles":[{"title":"radosgw用户信息","level":"6.3.1","depth":2,"path":"docs/radosgw/swift/get-user-info.md","ref":"docs/radosgw/swift/get-user-info.md","articles":[]}]},"previous":{"title":"(非keystone认证)swift生成并获取tmp url","level":"6.2.2","depth":2,"path":"docs/radosgw/swift/radosgw-swift-tmp-url-no-keystone.md","ref":"docs/radosgw/swift/radosgw-swift-tmp-url-no-keystone.md","articles":[]},"dir":"ltr"},"config":{"plugins":["github","codesnippet","splitter","page-toc-button","editlink","back-to-top-button","-lunr","-search","search-plus","github-buttons@2.1.0","favicon@^0.0.2","tbfed-pagefooter@^0.0.1","3-ba","theme-default","-highlight","prism","prism-themes","sitemap-general","lightbox","adsense","disqus","ga"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"<p><a href=https://github.com/eiuapp/ceph-handbook>Ceph实践指南</a> | <a href=https://github.com/eiuapp/ceph-handbook>Ceph实践指南</a></p><p><a href=https://res.cloudinary.com/dmtixvmgt/image/upload/v1539022273/wechat-qrcode_cml5dm.jpg data-lightbox=2fd927ee-fa64-4eca-8ed5-6bd72b573a3c>点击关注【servicemesher】公众号回复【加群】加入学习群</a> | </p>Copyright © <a href=https://eiuapp.github.io>eiuapp.github.io</a> 2017-2019","modify_label":" Updated at ","modify_format":"YYYY-MM-DD HH:mm:ss"},"prism":{"lang":{"shell":"bash"},"css":["prism-themes/themes/prism-ghcolors.css"]},"disqus":{"useIdentifier":false,"shortName":"whoami"},"github":{"url":"https://github.com/eiuapp/ceph-handbook"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/eiuapp/ceph-handbook/blob/master/"},"splitter":{},"adsense":{"client":"ca-pub-4029167986768912","slot":"2445941692","format":"auto","element":".page-inner section","position":"bottom"},"codesnippet":{},"sitemap-general":{"prefix":"https://eiuapp.github.io/ceph-handbook/"},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico"},"lightbox":{"jquery":true},"page-toc-button":{},"back-to-top-button":{},"prism-themes":{},"github-buttons":{"repo":"eiuapp/ceph-handbook","types":["star"],"size":"small"},"3-ba":{"configuration":"auto","token":"108be826b9faa2f792cdae4a29d274bb"},"ga":{"configuration":"auto","token":"UA-93485976-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{}},"theme":"default","author":"eiuapp","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ceph Handbook - Ceph 实践指南 by eiuapp","language":"zh-hans","links":{"sidebar":{"Ceph Handbook":"https://eiuapp.github.io/ceph-handbook"}},"gitbook":"*","description":"Ceph Handbook - Ceph 实践指南 2019年 by eiuapp "},"file":{"path":"docs/radosgw/swift/radosgw-swift-tmp-url-keystone.md","mtime":"2019-04-09T09:00:25.483Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-09T09:01:23.515Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-editlink/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-3-ba/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lightbox/jquery.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lightbox/lightbox.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-adsense/plugin.js"></script>
+        
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-disqus/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

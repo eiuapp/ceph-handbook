@@ -1,0 +1,348 @@
+
+vagrant@ceph-admin:~/test-cluster$ ceph-deploy mon create-initial
+[ceph_deploy.conf][DEBUG ] found configuration file at: /home/vagrant/.cephdeploy.conf
+[ceph_deploy.cli][INFO  ] Invoked (1.5.38): /usr/bin/ceph-deploy mon create-initial
+[ceph_deploy.cli][INFO  ] ceph-deploy options:
+[ceph_deploy.cli][INFO  ]  username                      : None
+[ceph_deploy.cli][INFO  ]  verbose                       : False
+[ceph_deploy.cli][INFO  ]  overwrite_conf                : False
+[ceph_deploy.cli][INFO  ]  subcommand                    : create-initial
+[ceph_deploy.cli][INFO  ]  quiet                         : False
+[ceph_deploy.cli][INFO  ]  cd_conf                       : <ceph_deploy.conf.cephdeploy.Conf instance at 0x7f8bfd24be18>
+[ceph_deploy.cli][INFO  ]  cluster                       : ceph
+[ceph_deploy.cli][INFO  ]  func                          : <function mon at 0x7f8bfd22e848>
+[ceph_deploy.cli][INFO  ]  ceph_conf                     : None
+[ceph_deploy.cli][INFO  ]  keyrings                      : None
+[ceph_deploy.cli][INFO  ]  default_release               : False
+[ceph_deploy.mon][DEBUG ] Deploying mon, cluster ceph hosts ceph-server-1 ceph-server-2 ceph-server-3
+[ceph_deploy.mon][DEBUG ] detecting platform for host ceph-server-1 ...
+[ceph-server-1][DEBUG ] connection detected need for sudo
+[ceph-server-1][DEBUG ] connected to host: ceph-server-1 
+[ceph-server-1][DEBUG ] detect platform information from remote host
+[ceph-server-1][DEBUG ] detect machine type
+[ceph-server-1][DEBUG ] find the location of an executable
+[ceph_deploy.mon][INFO  ] distro info: Ubuntu 18.04 bionic
+[ceph-server-1][DEBUG ] determining if provided host has same hostname in remote
+[ceph-server-1][DEBUG ] get remote short hostname
+[ceph-server-1][DEBUG ] deploying mon to ceph-server-1
+[ceph-server-1][DEBUG ] get remote short hostname
+[ceph-server-1][DEBUG ] remote hostname: ceph-server-1
+[ceph-server-1][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+[ceph-server-1][DEBUG ] create the mon path if it does not exist
+[ceph-server-1][DEBUG ] checking for done path: /var/lib/ceph/mon/ceph-ceph-server-1/done
+[ceph-server-1][DEBUG ] done path does not exist: /var/lib/ceph/mon/ceph-ceph-server-1/done
+[ceph-server-1][INFO  ] creating keyring file: /var/lib/ceph/tmp/ceph-ceph-server-1.mon.keyring
+[ceph-server-1][DEBUG ] create the monitor keyring file
+[ceph-server-1][INFO  ] Running command: sudo ceph-mon --cluster ceph --mkfs -i ceph-server-1 --keyring /var/lib/ceph/tmp/ceph-ceph-server-1.mon.keyring --setuser 64045 --setgroup 64045
+[ceph-server-1][INFO  ] unlinking keyring file /var/lib/ceph/tmp/ceph-ceph-server-1.mon.keyring
+[ceph-server-1][DEBUG ] create a done file to avoid re-doing the mon deployment
+[ceph-server-1][DEBUG ] create the init path if it does not exist
+[ceph-server-1][INFO  ] Running command: sudo systemctl enable ceph.target
+[ceph-server-1][INFO  ] Running command: sudo systemctl enable ceph-mon@ceph-server-1
+[ceph-server-1][WARNIN] Created symlink /etc/systemd/system/ceph-mon.target.wants/ceph-mon@ceph-server-1.service → /lib/systemd/system/ceph-mon@.service.
+[ceph-server-1][INFO  ] Running command: sudo systemctl start ceph-mon@ceph-server-1
+[ceph-server-1][INFO  ] Running command: sudo ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.ceph-server-1.asok mon_status
+[ceph-server-1][DEBUG ] ********************************************************************************
+[ceph-server-1][DEBUG ] status for monitor: mon.ceph-server-1
+[ceph-server-1][DEBUG ] {
+[ceph-server-1][DEBUG ]   "election_epoch": 0, 
+[ceph-server-1][DEBUG ]   "extra_probe_peers": [
+[ceph-server-1][DEBUG ]     "172.21.12.13:6789/0", 
+[ceph-server-1][DEBUG ]     "172.21.12.14:6789/0"
+[ceph-server-1][DEBUG ]   ], 
+[ceph-server-1][DEBUG ]   "feature_map": {
+[ceph-server-1][DEBUG ]     "mon": {
+[ceph-server-1][DEBUG ]       "group": {
+[ceph-server-1][DEBUG ]         "features": "0x3ffddff8eea4fffb", 
+[ceph-server-1][DEBUG ]         "num": 1, 
+[ceph-server-1][DEBUG ]         "release": "luminous"
+[ceph-server-1][DEBUG ]       }
+[ceph-server-1][DEBUG ]     }
+[ceph-server-1][DEBUG ]   }, 
+[ceph-server-1][DEBUG ]   "features": {
+[ceph-server-1][DEBUG ]     "quorum_con": "0", 
+[ceph-server-1][DEBUG ]     "quorum_mon": [], 
+[ceph-server-1][DEBUG ]     "required_con": "0", 
+[ceph-server-1][DEBUG ]     "required_mon": []
+[ceph-server-1][DEBUG ]   }, 
+[ceph-server-1][DEBUG ]   "monmap": {
+[ceph-server-1][DEBUG ]     "created": "2019-02-23 03:34:50.534769", 
+[ceph-server-1][DEBUG ]     "epoch": 0, 
+[ceph-server-1][DEBUG ]     "features": {
+[ceph-server-1][DEBUG ]       "optional": [], 
+[ceph-server-1][DEBUG ]       "persistent": []
+[ceph-server-1][DEBUG ]     }, 
+[ceph-server-1][DEBUG ]     "fsid": "c49c3fb1-cfb9-4f16-adfd-ba93b44bd3b5", 
+[ceph-server-1][DEBUG ]     "modified": "2019-02-23 03:34:50.534769", 
+[ceph-server-1][DEBUG ]     "mons": [
+[ceph-server-1][DEBUG ]       {
+[ceph-server-1][DEBUG ]         "addr": "172.21.12.12:6789/0", 
+[ceph-server-1][DEBUG ]         "name": "ceph-server-1", 
+[ceph-server-1][DEBUG ]         "public_addr": "172.21.12.12:6789/0", 
+[ceph-server-1][DEBUG ]         "rank": 0
+[ceph-server-1][DEBUG ]       }, 
+[ceph-server-1][DEBUG ]       {
+[ceph-server-1][DEBUG ]         "addr": "0.0.0.0:0/1", 
+[ceph-server-1][DEBUG ]         "name": "ceph-server-2", 
+[ceph-server-1][DEBUG ]         "public_addr": "0.0.0.0:0/1", 
+[ceph-server-1][DEBUG ]         "rank": 1
+[ceph-server-1][DEBUG ]       }, 
+[ceph-server-1][DEBUG ]       {
+[ceph-server-1][DEBUG ]         "addr": "0.0.0.0:0/2", 
+[ceph-server-1][DEBUG ]         "name": "ceph-server-3", 
+[ceph-server-1][DEBUG ]         "public_addr": "0.0.0.0:0/2", 
+[ceph-server-1][DEBUG ]         "rank": 2
+[ceph-server-1][DEBUG ]       }
+[ceph-server-1][DEBUG ]     ]
+[ceph-server-1][DEBUG ]   }, 
+[ceph-server-1][DEBUG ]   "name": "ceph-server-1", 
+[ceph-server-1][DEBUG ]   "outside_quorum": [
+[ceph-server-1][DEBUG ]     "ceph-server-1"
+[ceph-server-1][DEBUG ]   ], 
+[ceph-server-1][DEBUG ]   "quorum": [], 
+[ceph-server-1][DEBUG ]   "rank": 0, 
+[ceph-server-1][DEBUG ]   "state": "probing", 
+[ceph-server-1][DEBUG ]   "sync_provider": []
+[ceph-server-1][DEBUG ] }
+[ceph-server-1][DEBUG ] ********************************************************************************
+[ceph-server-1][INFO  ] monitor: mon.ceph-server-1 is running
+[ceph-server-1][INFO  ] Running command: sudo ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.ceph-server-1.asok mon_status
+[ceph_deploy.mon][DEBUG ] detecting platform for host ceph-server-2 ...
+[ceph-server-2][DEBUG ] connection detected need for sudo
+[ceph-server-2][DEBUG ] connected to host: ceph-server-2 
+[ceph-server-2][DEBUG ] detect platform information from remote host
+[ceph-server-2][DEBUG ] detect machine type
+[ceph-server-2][DEBUG ] find the location of an executable
+[ceph_deploy.mon][INFO  ] distro info: Ubuntu 18.04 bionic
+[ceph-server-2][DEBUG ] determining if provided host has same hostname in remote
+[ceph-server-2][DEBUG ] get remote short hostname
+[ceph-server-2][DEBUG ] deploying mon to ceph-server-2
+[ceph-server-2][DEBUG ] get remote short hostname
+[ceph-server-2][DEBUG ] remote hostname: ceph-server-2
+[ceph-server-2][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+[ceph-server-2][DEBUG ] create the mon path if it does not exist
+[ceph-server-2][DEBUG ] checking for done path: /var/lib/ceph/mon/ceph-ceph-server-2/done
+[ceph-server-2][DEBUG ] done path does not exist: /var/lib/ceph/mon/ceph-ceph-server-2/done
+[ceph-server-2][INFO  ] creating keyring file: /var/lib/ceph/tmp/ceph-ceph-server-2.mon.keyring
+[ceph-server-2][DEBUG ] create the monitor keyring file
+[ceph-server-2][INFO  ] Running command: sudo ceph-mon --cluster ceph --mkfs -i ceph-server-2 --keyring /var/lib/ceph/tmp/ceph-ceph-server-2.mon.keyring --setuser 64045 --setgroup 64045
+[ceph-server-2][INFO  ] unlinking keyring file /var/lib/ceph/tmp/ceph-ceph-server-2.mon.keyring
+[ceph-server-2][DEBUG ] create a done file to avoid re-doing the mon deployment
+[ceph-server-2][DEBUG ] create the init path if it does not exist
+[ceph-server-2][INFO  ] Running command: sudo systemctl enable ceph.target
+[ceph-server-2][INFO  ] Running command: sudo systemctl enable ceph-mon@ceph-server-2
+[ceph-server-2][WARNIN] Created symlink /etc/systemd/system/ceph-mon.target.wants/ceph-mon@ceph-server-2.service → /lib/systemd/system/ceph-mon@.service.
+[ceph-server-2][INFO  ] Running command: sudo systemctl start ceph-mon@ceph-server-2
+[ceph-server-2][INFO  ] Running command: sudo ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.ceph-server-2.asok mon_status
+[ceph-server-2][DEBUG ] ********************************************************************************
+[ceph-server-2][DEBUG ] status for monitor: mon.ceph-server-2
+[ceph-server-2][DEBUG ] {
+[ceph-server-2][DEBUG ]   "election_epoch": 1, 
+[ceph-server-2][DEBUG ]   "extra_probe_peers": [
+[ceph-server-2][DEBUG ]     "172.21.12.12:6789/0", 
+[ceph-server-2][DEBUG ]     "172.21.12.14:6789/0"
+[ceph-server-2][DEBUG ]   ], 
+[ceph-server-2][DEBUG ]   "feature_map": {
+[ceph-server-2][DEBUG ]     "mon": {
+[ceph-server-2][DEBUG ]       "group": {
+[ceph-server-2][DEBUG ]         "features": "0x3ffddff8eea4fffb", 
+[ceph-server-2][DEBUG ]         "num": 1, 
+[ceph-server-2][DEBUG ]         "release": "luminous"
+[ceph-server-2][DEBUG ]       }
+[ceph-server-2][DEBUG ]     }
+[ceph-server-2][DEBUG ]   }, 
+[ceph-server-2][DEBUG ]   "features": {
+[ceph-server-2][DEBUG ]     "quorum_con": "0", 
+[ceph-server-2][DEBUG ]     "quorum_mon": [], 
+[ceph-server-2][DEBUG ]     "required_con": "0", 
+[ceph-server-2][DEBUG ]     "required_mon": []
+[ceph-server-2][DEBUG ]   }, 
+[ceph-server-2][DEBUG ]   "monmap": {
+[ceph-server-2][DEBUG ]     "created": "2019-02-23 03:34:55.287878", 
+[ceph-server-2][DEBUG ]     "epoch": 0, 
+[ceph-server-2][DEBUG ]     "features": {
+[ceph-server-2][DEBUG ]       "optional": [], 
+[ceph-server-2][DEBUG ]       "persistent": []
+[ceph-server-2][DEBUG ]     }, 
+[ceph-server-2][DEBUG ]     "fsid": "c49c3fb1-cfb9-4f16-adfd-ba93b44bd3b5", 
+[ceph-server-2][DEBUG ]     "modified": "2019-02-23 03:34:55.287878", 
+[ceph-server-2][DEBUG ]     "mons": [
+[ceph-server-2][DEBUG ]       {
+[ceph-server-2][DEBUG ]         "addr": "172.21.12.12:6789/0", 
+[ceph-server-2][DEBUG ]         "name": "ceph-server-1", 
+[ceph-server-2][DEBUG ]         "public_addr": "172.21.12.12:6789/0", 
+[ceph-server-2][DEBUG ]         "rank": 0
+[ceph-server-2][DEBUG ]       }, 
+[ceph-server-2][DEBUG ]       {
+[ceph-server-2][DEBUG ]         "addr": "172.21.12.13:6789/0", 
+[ceph-server-2][DEBUG ]         "name": "ceph-server-2", 
+[ceph-server-2][DEBUG ]         "public_addr": "172.21.12.13:6789/0", 
+[ceph-server-2][DEBUG ]         "rank": 1
+[ceph-server-2][DEBUG ]       }, 
+[ceph-server-2][DEBUG ]       {
+[ceph-server-2][DEBUG ]         "addr": "0.0.0.0:0/2", 
+[ceph-server-2][DEBUG ]         "name": "ceph-server-3", 
+[ceph-server-2][DEBUG ]         "public_addr": "0.0.0.0:0/2", 
+[ceph-server-2][DEBUG ]         "rank": 2
+[ceph-server-2][DEBUG ]       }
+[ceph-server-2][DEBUG ]     ]
+[ceph-server-2][DEBUG ]   }, 
+[ceph-server-2][DEBUG ]   "name": "ceph-server-2", 
+[ceph-server-2][DEBUG ]   "outside_quorum": [], 
+[ceph-server-2][DEBUG ]   "quorum": [], 
+[ceph-server-2][DEBUG ]   "rank": 1, 
+[ceph-server-2][DEBUG ]   "state": "electing", 
+[ceph-server-2][DEBUG ]   "sync_provider": []
+[ceph-server-2][DEBUG ] }
+[ceph-server-2][DEBUG ] ********************************************************************************
+[ceph-server-2][INFO  ] monitor: mon.ceph-server-2 is running
+[ceph-server-2][INFO  ] Running command: sudo ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.ceph-server-2.asok mon_status
+[ceph_deploy.mon][DEBUG ] detecting platform for host ceph-server-3 ...
+[ceph-server-3][DEBUG ] connection detected need for sudo
+[ceph-server-3][DEBUG ] connected to host: ceph-server-3 
+[ceph-server-3][DEBUG ] detect platform information from remote host
+[ceph-server-3][DEBUG ] detect machine type
+[ceph-server-3][DEBUG ] find the location of an executable
+[ceph_deploy.mon][INFO  ] distro info: Ubuntu 18.04 bionic
+[ceph-server-3][DEBUG ] determining if provided host has same hostname in remote
+[ceph-server-3][DEBUG ] get remote short hostname
+[ceph-server-3][DEBUG ] deploying mon to ceph-server-3
+[ceph-server-3][DEBUG ] get remote short hostname
+[ceph-server-3][DEBUG ] remote hostname: ceph-server-3
+[ceph-server-3][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+[ceph-server-3][DEBUG ] create the mon path if it does not exist
+[ceph-server-3][DEBUG ] checking for done path: /var/lib/ceph/mon/ceph-ceph-server-3/done
+[ceph-server-3][DEBUG ] done path does not exist: /var/lib/ceph/mon/ceph-ceph-server-3/done
+[ceph-server-3][INFO  ] creating keyring file: /var/lib/ceph/tmp/ceph-ceph-server-3.mon.keyring
+[ceph-server-3][DEBUG ] create the monitor keyring file
+[ceph-server-3][INFO  ] Running command: sudo ceph-mon --cluster ceph --mkfs -i ceph-server-3 --keyring /var/lib/ceph/tmp/ceph-ceph-server-3.mon.keyring --setuser 64045 --setgroup 64045
+[ceph-server-3][INFO  ] unlinking keyring file /var/lib/ceph/tmp/ceph-ceph-server-3.mon.keyring
+[ceph-server-3][DEBUG ] create a done file to avoid re-doing the mon deployment
+[ceph-server-3][DEBUG ] create the init path if it does not exist
+[ceph-server-3][INFO  ] Running command: sudo systemctl enable ceph.target
+[ceph-server-3][INFO  ] Running command: sudo systemctl enable ceph-mon@ceph-server-3
+[ceph-server-3][WARNIN] Created symlink /etc/systemd/system/ceph-mon.target.wants/ceph-mon@ceph-server-3.service → /lib/systemd/system/ceph-mon@.service.
+[ceph-server-3][INFO  ] Running command: sudo systemctl start ceph-mon@ceph-server-3
+[ceph-server-3][INFO  ] Running command: sudo ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.ceph-server-3.asok mon_status
+[ceph-server-3][DEBUG ] ********************************************************************************
+[ceph-server-3][DEBUG ] status for monitor: mon.ceph-server-3
+[ceph-server-3][DEBUG ] {
+[ceph-server-3][DEBUG ]   "election_epoch": 0, 
+[ceph-server-3][DEBUG ]   "extra_probe_peers": [
+[ceph-server-3][DEBUG ]     "172.21.12.12:6789/0", 
+[ceph-server-3][DEBUG ]     "172.21.12.13:6789/0"
+[ceph-server-3][DEBUG ]   ], 
+[ceph-server-3][DEBUG ]   "feature_map": {
+[ceph-server-3][DEBUG ]     "mon": {
+[ceph-server-3][DEBUG ]       "group": {
+[ceph-server-3][DEBUG ]         "features": "0x3ffddff8eea4fffb", 
+[ceph-server-3][DEBUG ]         "num": 1, 
+[ceph-server-3][DEBUG ]         "release": "luminous"
+[ceph-server-3][DEBUG ]       }
+[ceph-server-3][DEBUG ]     }
+[ceph-server-3][DEBUG ]   }, 
+[ceph-server-3][DEBUG ]   "features": {
+[ceph-server-3][DEBUG ]     "quorum_con": "0", 
+[ceph-server-3][DEBUG ]     "quorum_mon": [], 
+[ceph-server-3][DEBUG ]     "required_con": "0", 
+[ceph-server-3][DEBUG ]     "required_mon": []
+[ceph-server-3][DEBUG ]   }, 
+[ceph-server-3][DEBUG ]   "monmap": {
+[ceph-server-3][DEBUG ]     "created": "2019-02-23 03:34:59.752887", 
+[ceph-server-3][DEBUG ]     "epoch": 0, 
+[ceph-server-3][DEBUG ]     "features": {
+[ceph-server-3][DEBUG ]       "optional": [], 
+[ceph-server-3][DEBUG ]       "persistent": []
+[ceph-server-3][DEBUG ]     }, 
+[ceph-server-3][DEBUG ]     "fsid": "c49c3fb1-cfb9-4f16-adfd-ba93b44bd3b5", 
+[ceph-server-3][DEBUG ]     "modified": "2019-02-23 03:34:59.752887", 
+[ceph-server-3][DEBUG ]     "mons": [
+[ceph-server-3][DEBUG ]       {
+[ceph-server-3][DEBUG ]         "addr": "172.21.12.14:6789/0", 
+[ceph-server-3][DEBUG ]         "name": "ceph-server-3", 
+[ceph-server-3][DEBUG ]         "public_addr": "172.21.12.14:6789/0", 
+[ceph-server-3][DEBUG ]         "rank": 0
+[ceph-server-3][DEBUG ]       }, 
+[ceph-server-3][DEBUG ]       {
+[ceph-server-3][DEBUG ]         "addr": "0.0.0.0:0/1", 
+[ceph-server-3][DEBUG ]         "name": "ceph-server-1", 
+[ceph-server-3][DEBUG ]         "public_addr": "0.0.0.0:0/1", 
+[ceph-server-3][DEBUG ]         "rank": 1
+[ceph-server-3][DEBUG ]       }, 
+[ceph-server-3][DEBUG ]       {
+[ceph-server-3][DEBUG ]         "addr": "0.0.0.0:0/2", 
+[ceph-server-3][DEBUG ]         "name": "ceph-server-2", 
+[ceph-server-3][DEBUG ]         "public_addr": "0.0.0.0:0/2", 
+[ceph-server-3][DEBUG ]         "rank": 2
+[ceph-server-3][DEBUG ]       }
+[ceph-server-3][DEBUG ]     ]
+[ceph-server-3][DEBUG ]   }, 
+[ceph-server-3][DEBUG ]   "name": "ceph-server-3", 
+[ceph-server-3][DEBUG ]   "outside_quorum": [
+[ceph-server-3][DEBUG ]     "ceph-server-3"
+[ceph-server-3][DEBUG ]   ], 
+[ceph-server-3][DEBUG ]   "quorum": [], 
+[ceph-server-3][DEBUG ]   "rank": 0, 
+[ceph-server-3][DEBUG ]   "state": "probing", 
+[ceph-server-3][DEBUG ]   "sync_provider": []
+[ceph-server-3][DEBUG ] }
+[ceph-server-3][DEBUG ] ********************************************************************************
+[ceph-server-3][INFO  ] monitor: mon.ceph-server-3 is running
+[ceph-server-3][INFO  ] Running command: sudo ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.ceph-server-3.asok mon_status
+[ceph_deploy.mon][INFO  ] processing monitor mon.ceph-server-1
+[ceph-server-1][DEBUG ] connection detected need for sudo
+[ceph-server-1][DEBUG ] connected to host: ceph-server-1 
+[ceph-server-1][DEBUG ] detect platform information from remote host
+[ceph-server-1][DEBUG ] detect machine type
+[ceph-server-1][DEBUG ] find the location of an executable
+[ceph-server-1][INFO  ] Running command: sudo ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.ceph-server-1.asok mon_status
+[ceph_deploy.mon][WARNIN] mon.ceph-server-1 monitor is not yet in quorum, tries left: 5
+[ceph_deploy.mon][WARNIN] waiting 5 seconds before retrying
+[ceph-server-1][INFO  ] Running command: sudo ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.ceph-server-1.asok mon_status
+[ceph_deploy.mon][INFO  ] mon.ceph-server-1 monitor has reached quorum!
+[ceph_deploy.mon][INFO  ] processing monitor mon.ceph-server-2
+[ceph-server-2][DEBUG ] connection detected need for sudo
+[ceph-server-2][DEBUG ] connected to host: ceph-server-2 
+[ceph-server-2][DEBUG ] detect platform information from remote host
+[ceph-server-2][DEBUG ] detect machine type
+[ceph-server-2][DEBUG ] find the location of an executable
+[ceph-server-2][INFO  ] Running command: sudo ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.ceph-server-2.asok mon_status
+[ceph_deploy.mon][INFO  ] mon.ceph-server-2 monitor has reached quorum!
+[ceph_deploy.mon][INFO  ] processing monitor mon.ceph-server-3
+[ceph-server-3][DEBUG ] connection detected need for sudo
+[ceph-server-3][DEBUG ] connected to host: ceph-server-3 
+[ceph-server-3][DEBUG ] detect platform information from remote host
+[ceph-server-3][DEBUG ] detect machine type
+[ceph-server-3][DEBUG ] find the location of an executable
+[ceph-server-3][INFO  ] Running command: sudo ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.ceph-server-3.asok mon_status
+[ceph_deploy.mon][INFO  ] mon.ceph-server-3 monitor has reached quorum!
+[ceph_deploy.mon][INFO  ] all initial monitors are running and have formed quorum
+[ceph_deploy.mon][INFO  ] Running gatherkeys...
+[ceph_deploy.gatherkeys][INFO  ] Storing keys in temp directory /tmp/tmpv3qq3t
+[ceph-server-1][DEBUG ] connection detected need for sudo
+[ceph-server-1][DEBUG ] connected to host: ceph-server-1 
+[ceph-server-1][DEBUG ] detect platform information from remote host
+[ceph-server-1][DEBUG ] detect machine type
+[ceph-server-1][DEBUG ] get remote short hostname
+[ceph-server-1][DEBUG ] fetch remote file
+[ceph-server-1][INFO  ] Running command: sudo /usr/bin/ceph --connect-timeout=25 --cluster=ceph --admin-daemon=/var/run/ceph/ceph-mon.ceph-server-1.asok mon_status
+[ceph-server-1][INFO  ] Running command: sudo /usr/bin/ceph --connect-timeout=25 --cluster=ceph --name mon. --keyring=/var/lib/ceph/mon/ceph-ceph-server-1/keyring auth get client.admin
+[ceph-server-1][INFO  ] Running command: sudo /usr/bin/ceph --connect-timeout=25 --cluster=ceph --name mon. --keyring=/var/lib/ceph/mon/ceph-ceph-server-1/keyring auth get-or-create client.admin osd allow * mds allow * mon allow * mgr allow *
+[ceph-server-1][INFO  ] Running command: sudo /usr/bin/ceph --connect-timeout=25 --cluster=ceph --name mon. --keyring=/var/lib/ceph/mon/ceph-ceph-server-1/keyring auth get client.bootstrap-mds
+[ceph-server-1][INFO  ] Running command: sudo /usr/bin/ceph --connect-timeout=25 --cluster=ceph --name mon. --keyring=/var/lib/ceph/mon/ceph-ceph-server-1/keyring auth get-or-create client.bootstrap-mds mon allow profile bootstrap-mds
+[ceph-server-1][INFO  ] Running command: sudo /usr/bin/ceph --connect-timeout=25 --cluster=ceph --name mon. --keyring=/var/lib/ceph/mon/ceph-ceph-server-1/keyring auth get client.bootstrap-mgr
+[ceph-server-1][INFO  ] Running command: sudo /usr/bin/ceph --connect-timeout=25 --cluster=ceph --name mon. --keyring=/var/lib/ceph/mon/ceph-ceph-server-1/keyring auth get-or-create client.bootstrap-mgr mon allow profile bootstrap-mgr
+[ceph-server-1][INFO  ] Running command: sudo /usr/bin/ceph --connect-timeout=25 --cluster=ceph --name mon. --keyring=/var/lib/ceph/mon/ceph-ceph-server-1/keyring auth get client.bootstrap-osd
+[ceph-server-1][INFO  ] Running command: sudo /usr/bin/ceph --connect-timeout=25 --cluster=ceph --name mon. --keyring=/var/lib/ceph/mon/ceph-ceph-server-1/keyring auth get-or-create client.bootstrap-osd mon allow profile bootstrap-osd
+[ceph-server-1][INFO  ] Running command: sudo /usr/bin/ceph --connect-timeout=25 --cluster=ceph --name mon. --keyring=/var/lib/ceph/mon/ceph-ceph-server-1/keyring auth get client.bootstrap-rgw
+[ceph-server-1][INFO  ] Running command: sudo /usr/bin/ceph --connect-timeout=25 --cluster=ceph --name mon. --keyring=/var/lib/ceph/mon/ceph-ceph-server-1/keyring auth get-or-create client.bootstrap-rgw mon allow profile bootstrap-rgw
+[ceph_deploy.gatherkeys][INFO  ] Storing ceph.client.admin.keyring
+[ceph_deploy.gatherkeys][INFO  ] Storing ceph.bootstrap-mds.keyring
+[ceph_deploy.gatherkeys][INFO  ] Storing ceph.bootstrap-mgr.keyring
+[ceph_deploy.gatherkeys][INFO  ] keyring 'ceph.mon.keyring' already exists
+[ceph_deploy.gatherkeys][INFO  ] Storing ceph.bootstrap-osd.keyring
+[ceph_deploy.gatherkeys][INFO  ] Storing ceph.bootstrap-rgw.keyring
+[ceph_deploy.gatherkeys][INFO  ] Destroy temp directory /tmp/tmpv3qq3t
+vagrant@ceph-admin:~/test-cluster$ ls
+ceph-deploy-ceph.log  ceph.bootstrap-mds.keyring  ceph.bootstrap-mgr.keyring  ceph.bootstrap-osd.keyring  ceph.bootstrap-rgw.keyring  ceph.client.admin.keyring  ceph.conf  ceph.mon.keyring
+vagrant@ceph-admin:~/test-cluster$ 

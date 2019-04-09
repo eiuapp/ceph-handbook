@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<url> <loc>https://eiuapp.github.io/ceph-handbook/</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/env/env.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/command/command.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/installation/</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/installation/vagrant/carmstrong/multinode-ceph-vagrant.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/installation/vagrant/oprypin/vagrant-ceph-quickstart.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/installation/quick-install.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/installation/add-osds-with-quick-install.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/installation/add-an-rgw-instance-with-quick-install.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/installation/install-faq.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/hardware-recommendations.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/master/rados/configuration/common.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/radosgw/swift/authentication.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/radosgw/swift/radosgw-swift-get-auth.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/radosgw/swift/radosgw-swift-upload.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/radosgw/swift/openstack-swift-with-ceph-backend-radosgw.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/radosgw/swift/ceph-radosgw-with-openstack-keystone-v3.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/radosgw/swift/radosgw-swift-setup-tmp-url.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/radosgw/swift/radosgw-swift-tmp-url-no-keystone.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/radosgw/swift/radosgw-swift-tmp-url-keystone.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/radosgw/swift/get-user-info.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/faq/ntpdate.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/faq/rgw-conf-change.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/faq/get-service-name.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/radosgw/basic.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/faq/ceph-deploy-osd-error.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/faq/swift-list-error.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/radosgw/swift/radosgw-swift-keystone-mysql-change.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/ceph-handbook/docs/faq/faq-wangzhijian.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+</urlset>

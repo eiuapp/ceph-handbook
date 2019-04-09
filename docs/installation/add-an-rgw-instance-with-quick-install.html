@@ -1,0 +1,1149 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>添加rgw实例 · Ceph Handbook - Ceph 实践指南 by eiuapp</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="eiuapp">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-ghcolors.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-lightbox/lightbox.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-disqus/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../../ceph-deploy.md" />
+    
+    
+    <link rel="prev" href="add-osds-with-quick-install.html" />
+    
+
+    
+        <link rel="shortcut icon" href='../../favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="bookmark" href='../../favicon.ico' type="image/x-icon">
+    
+    
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"repo":"eiuapp/ceph-handbook","types":["star"],"size":"small"};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://eiuapp.github.io/ceph-handbook" target="_blank" class="custom-link">Ceph Handbook</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        <li class="header">序言</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">env</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../env/env.html">
+            
+                <a href="../env/env.html">
+            
+                    
+                        <b>2.1.</b>
+                    
+                    环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../command/command.html">
+            
+                <a href="../command/command.html">
+            
+                    
+                        <b>2.2.</b>
+                    
+                    常用命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">install</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                        <b>3.1.</b>
+                    
+                    安装
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="vagrant/README.md">
+            
+                <span>
+            
+                    
+                        <b>3.1.1.</b>
+                    
+                    vagrant install
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1.1" data-path="vagrant/carmstrong/multinode-ceph-vagrant.html">
+            
+                <a href="vagrant/carmstrong/multinode-ceph-vagrant.html">
+            
+                    
+                        <b>3.1.1.1.</b>
+                    
+                    carmstrong/multinode-ceph-vagrant
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.2" data-path="vagrant/oprypin/vagrant-ceph-quickstart.html">
+            
+                <a href="vagrant/oprypin/vagrant-ceph-quickstart.html">
+            
+                    
+                        <b>3.1.1.2.</b>
+                    
+                    oprypin/vagrant-ceph-quickstart
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="quick-install.html">
+            
+                <a href="quick-install.html">
+            
+                    
+                        <b>3.1.2.</b>
+                    
+                    quick install
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="add-osds-with-quick-install.html">
+            
+                <a href="add-osds-with-quick-install.html">
+            
+                    
+                        <b>3.1.3.</b>
+                    
+                    添加osd
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.1.4" data-path="add-an-rgw-instance-with-quick-install.html">
+            
+                <a href="add-an-rgw-instance-with-quick-install.html">
+            
+                    
+                        <b>3.1.4.</b>
+                    
+                    添加rgw实例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="../../ceph-deploy.md">
+            
+                <span>
+            
+                    
+                        <b>3.1.5.</b>
+                    
+                    Installation (ceph-deploy)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" data-path="install-faq.html">
+            
+                <a href="install-faq.html">
+            
+                    
+                        <b>3.1.6.</b>
+                    
+                    Installation 常见报错
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Intro to Ceph</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../hardware-recommendations.html">
+            
+                <a href="../hardware-recommendations.html">
+            
+                    
+                        <b>4.1.</b>
+                    
+                    硬件推荐
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">configuration</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../master/rados/configuration/common.html">
+            
+                <a href="../master/rados/configuration/common.html">
+            
+                    
+                        <b>5.1.</b>
+                    
+                    configuration/common
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">RADOSGW</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" >
+            
+                <span>
+            
+                    
+                        <b>6.1.</b>
+                    
+                    radosgw 与 swift
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../radosgw/swift/authentication.html">
+            
+                <a href="../radosgw/swift/authentication.html">
+            
+                    
+                        <b>6.1.1.</b>
+                    
+                    使用RADOSGW提供ceph的Swift接口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../radosgw/swift/radosgw-swift-get-auth.html">
+            
+                <a href="../radosgw/swift/radosgw-swift-get-auth.html">
+            
+                    
+                        <b>6.1.2.</b>
+                    
+                    swift获取auth
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.3" data-path="../radosgw/swift/radosgw-swift-upload.html">
+            
+                <a href="../radosgw/swift/radosgw-swift-upload.html">
+            
+                    
+                        <b>6.1.3.</b>
+                    
+                    swift上传文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.4" data-path="../radosgw/swift/openstack-swift-with-ceph-backend-radosgw.html">
+            
+                <a href="../radosgw/swift/openstack-swift-with-ceph-backend-radosgw.html">
+            
+                    
+                        <b>6.1.4.</b>
+                    
+                    ceph集成openstack swift
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.5" data-path="../radosgw/swift/ceph-radosgw-with-openstack-keystone-v3.html">
+            
+                <a href="../radosgw/swift/ceph-radosgw-with-openstack-keystone-v3.html">
+            
+                    
+                        <b>6.1.5.</b>
+                    
+                    ceph与openstack-keystone-v3和swift集成
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" >
+            
+                <span>
+            
+                    
+                        <b>6.2.</b>
+                    
+                    tmp url
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="../radosgw/swift/radosgw-swift-setup-tmp-url.html">
+            
+                <a href="../radosgw/swift/radosgw-swift-setup-tmp-url.html">
+            
+                    
+                        <b>6.2.1.</b>
+                    
+                    设置Temporary URL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="../radosgw/swift/radosgw-swift-tmp-url-no-keystone.html">
+            
+                <a href="../radosgw/swift/radosgw-swift-tmp-url-no-keystone.html">
+            
+                    
+                        <b>6.2.2.</b>
+                    
+                    (非keystone认证)swift生成并获取tmp url
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.3" data-path="../radosgw/swift/radosgw-swift-tmp-url-keystone.html">
+            
+                <a href="../radosgw/swift/radosgw-swift-tmp-url-keystone.html">
+            
+                    
+                        <b>6.2.3.</b>
+                    
+                    (keystone认证)swift生成并获取tmp url
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" >
+            
+                <span>
+            
+                    
+                        <b>6.3.</b>
+                    
+                    user
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.3.1" data-path="../radosgw/swift/get-user-info.html">
+            
+                <a href="../radosgw/swift/get-user-info.html">
+            
+                    
+                        <b>6.3.1.</b>
+                    
+                    radosgw用户信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">常见问题</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../faq/ntpdate.html">
+            
+                <a href="../faq/ntpdate.html">
+            
+                    
+                        <b>7.1.</b>
+                    
+                    时间不一致
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../faq/rgw-conf-change.html">
+            
+                <a href="../faq/rgw-conf-change.html">
+            
+                    
+                        <b>7.2.</b>
+                    
+                    修改rgw配置生效
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="../faq/get-service-name.html">
+            
+                <a href="../faq/get-service-name.html">
+            
+                    
+                        <b>7.3.</b>
+                    
+                    查找服务名称
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="../radosgw/swift/get-user-info.html">
+            
+                <a href="../radosgw/swift/get-user-info.html">
+            
+                    
+                        <b>7.4.</b>
+                    
+                    查找用户信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="../radosgw/basic.html">
+            
+                <a href="../radosgw/basic.html">
+            
+                    
+                        <b>7.5.</b>
+                    
+                    支持断点续传
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.6" data-path="../faq/ceph-deploy-osd-error.html">
+            
+                <a href="../faq/ceph-deploy-osd-error.html">
+            
+                    
+                        <b>7.6.</b>
+                    
+                    ceph-deploy osd create时报错
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.7" data-path="../faq/swift-list-error.html">
+            
+                <a href="../faq/swift-list-error.html">
+            
+                    
+                        <b>7.7.</b>
+                    
+                    swift-list临时出错
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.8" data-path="../radosgw/swift/radosgw-swift-keystone-mysql-change.html">
+            
+                <a href="../radosgw/swift/radosgw-swift-keystone-mysql-change.html">
+            
+                    
+                        <b>7.8.</b>
+                    
+                    keystone更换mysql
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.9" data-path="../faq/faq-wangzhijian.html">
+            
+                <a href="../faq/faq-wangzhijian.html">
+            
+                    
+                        <b>7.9.</b>
+                    
+                    常见问题-心远何方
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >添加rgw实例</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <html><head></head><body><p>&#x5728; ceph deploy quick install &#x57FA;&#x7840;&#x4E0A;&#x5B89;&#x88C5;&#x4E00;&#x4E2A; RGW INSTANCE</p>
+<h2 id="env">env</h2>
+<p>&#x8F6F;&#x4EF6;</p>
+<ul>
+<li>os&#xFF1A;Ubuntu Server 16.04&#xD7;64 </li>
+<li>Python: 2.7.12</li>
+<li>ceph&#xFF1A;v13.2.4 Mimic</li>
+<li>ceph-deploy&#xFF1A;2.0.1</li>
+</ul>
+<p>&#x786C;&#x4EF6;</p>
+<p>&#x6BCF;&#x4E00;&#x53F0;&#x673A;&#x5668;&#x90FD;&#x662F; &#x6D3E;+&#x786C;&#x76D8; &#x6A21;&#x5F0F;&#xFF0C;&#x6D3E;&#x4E0A;&#x653E;os&#xFF0C;&#x786C;&#x76D8;&#x5B58;&#x50A8;</p>
+<ul>
+<li>&#x5B58;&#x50A8;&#x8BBE;&#x7F6E;&#xFF1A;4T &#x4E0E; &#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5206;&#x79BB;</li>
+</ul>
+<p>&#x67B6;&#x6784;&#x90E8;&#x7F72;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">IP</th>
+<th style="text-align:left">&#x90E8;&#x4EF6;</th>
+<th style="text-align:left">OSD</th>
+<th style="text-align:left">Monitor</th>
+<th style="text-align:left">Managers</th>
+<th style="text-align:left">MDSs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">192.168.0.185</td>
+<td style="text-align:left">ceph-admin</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">192.168.0.134</td>
+<td style="text-align:left">ceph-client</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">192.168.0.130</td>
+<td style="text-align:left">ceph-server-1</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">192.168.0.111</td>
+<td style="text-align:left">ceph-server-2</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">192.168.0.105</td>
+<td style="text-align:left">ceph-server-3</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<p>RGW &#x5B89;&#x88C5; &#x5728; ceph-client &#x4E0A;&#x3002;</p>
+<h2 id="step">step</h2>
+<h3 id="&#x67E5;&#x770B;ceph-&#x72B6;&#x6001;">&#x67E5;&#x770B;ceph &#x72B6;&#x6001;</h3>
+<pre class="language-"><code class="lang-shell">admin@ceph-admin:~/test-cluster$ ceph health
+HEALTH_OK
+admin@ceph-admin:~/test-cluster$ 
+admin@ceph-admin:~/test-cluster$ ceph -s
+  cluster:
+    id:     87aa8ebd-2782-415d-bf23-ad2eb89b61c6
+    health: HEALTH_OK
+
+  services:
+    mon: 3 daemons, quorum ceph-server-3,ceph-server-2,ceph-server-1
+    mgr: ceph-server-1<span class="token punctuation">(</span>active<span class="token punctuation">)</span>
+    osd: 2 osds: 2 up, 2 <span class="token keyword">in</span>
+    rgw: 1 daemon active
+
+  data:
+    pools:   5 pools, 40 pgs
+    objects: 187  objects, 1.1 KiB
+    usage:   2.0 GiB used, 7.3 TiB / 7.3 TiB avail
+    pgs:     40 active+clean
+
+admin@ceph-admin:~/test-cluster$
+</code></pre>
+<h3 id="&#xFF08;&#x6B64;&#x6B65;&#x770B;&#x9700;&#x6C42;&#xFF0C;&#x53EF;&#x5FFD;&#x7565;&#xFF09;&#x4FEE;&#x6539;rgw&#x8BBF;&#x95EE;&#x7AEF;&#x53E3;7480&#x4E3A;8080">&#xFF08;&#x6B64;&#x6B65;&#x770B;&#x9700;&#x6C42;&#xFF0C;&#x53EF;&#x5FFD;&#x7565;&#xFF09;&#x4FEE;&#x6539;RGW&#x8BBF;&#x95EE;&#x7AEF;&#x53E3;7480&#x4E3A;8080</h3>
+<p>RGW&#x5F00;&#x59CB;&#x8FD0;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7AEF;&#x53E3;7480&#xFF08;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x4FEE;&#x6539;&#x7684;&#x8BDD;&#xFF09;&#x6765;&#x8BBF;&#x95EE;&#x3002;&#x5982;&#x679C;&#x4F60;&#x5E0C;&#x671B;&#x4FEE;&#x6539;&#x6210;8080&#x7684;&#x8BDD;&#xFF0C;&#x5F80;&#x4E0B;&#x770B;&#x3002;</p>
+<p>&#x4FEE;&#x6539;&#x914D;&#x7F6E;</p>
+<pre class="language-"><code>admin@ceph-admin:~/test-cluster$ vi ceph.conf
+</code></pre><p>&#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x5185;&#x5BB9;, &#x5176;&#x4E2D;<code>ceph-client</code>&#x662F;&#x4F60;&#x5E0C;&#x671B;&#x6DFB;&#x52A0;RGW&#x7684;&#x8282;&#x70B9;&#x540D;&#xFF0C;8080&#x4E3A;&#x5C06;&#x6765;&#x8BBF;&#x95EE;port&#x3002;</p>
+<pre class="language-"><code>[client.rgw.ceph-client]
+rgw_frontends = &quot;civetweb port=8080&quot;
+</code></pre><h3 id="&#x5206;&#x53D1;&#x914D;&#x7F6E;&#x6587;&#x4EF6;">&#x5206;&#x53D1;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h3>
+<pre class="language-"><code>ceph-deploy --overwrite-conf config push ceph-admin ceph-client ceph-server-1 ceph-server-2 ceph-server-3
+</code></pre><h3 id="&#x5B89;&#x88C5;ceph-object-gateway">&#x5B89;&#x88C5;CEPH OBJECT GATEWAY</h3>
+<pre class="language-"><code>ceph-deploy install --rgw ceph-client
+</code></pre><h3 id="&#x7BA1;&#x7406;rgw&#x8282;&#x70B9;">&#x7BA1;&#x7406;RGW&#x8282;&#x70B9;</h3>
+<p>Ceph CLI&#x5DE5;&#x5177;&#x9700;&#x8981;&#x5728;&#x7BA1;&#x7406;&#x5458;&#x6A21;&#x5F0F;&#x4E0B;&#x8FD0;&#x884C;&#xFF0C;&#x56E0;&#x6B64;&#x9700;&#x8981;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#xFF1A;</p>
+<pre class="language-"><code>ceph-deploy admin ceph-client
+</code></pre><h3 id="&#x5B89;&#x88C5;rgw&#x5B9E;&#x4F8B;">&#x5B89;&#x88C5;RGW&#x5B9E;&#x4F8B;</h3>
+<p>&#x6267;&#x884C;&#x547D;&#x4EE4;&#xFF1A;</p>
+<pre class="language-"><code>ceph-deploy rgw create ceph-client
+</code></pre><p>&#x4E00;&#x65E6;RGW&#x5F00;&#x59CB;&#x8FD0;&#x884C;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7AEF;&#x53E3;7480&#xFF08;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x4FEE;&#x6539;&#x7684;&#x8BDD;&#xFF09;&#x6765;&#x8BBF;&#x95EE;&#x3002;&#x5982;&#xFF1A;</p>
+<pre class="language-"><code>http://ceph-client:7480
+</code></pre><p>&#x5982;&#x679C;RGW&#x8FD0;&#x884C;&#x6B63;&#x5E38;&#xFF0C;&#x5B83;&#x5E94;&#x8BE5;&#x8FD4;&#x56DE;&#x7C7B;&#x4F3C;&#x7684;&#x4FE1;&#x606F;&#xFF1A;</p>
+<pre class="language-"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ListAllMyBucketsResult</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Owner</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ID</span><span class="token punctuation">&gt;</span></span>anonymous<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ID</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>DisplayName</span><span class="token punctuation">/&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Owner</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Buckets</span><span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ListAllMyBucketsResult</span><span class="token punctuation">&gt;</span></span>
+</code></pre><p>&#x6211;&#x7684;&#x5B9E;&#x64CD;&#xFF1A;</p>
+<pre class="language-"><code>admin@ceph-admin:~/test-cluster$ curl http://ceph-client:8080
+<span class="token prolog">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ListAllMyBucketsResult</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>http://s3.amazonaws.com/doc/2006-03-01/<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Owner</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ID</span><span class="token punctuation">&gt;</span></span>anonymous<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ID</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>DisplayName</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>DisplayName</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Owner</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Buckets</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Buckets</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ListAllMyBucketsResult</span><span class="token punctuation">&gt;</span></span>admin@ceph-admin:~/test-cluster$ 
+admin@ceph-admin:~/test-cluster$ curl http://ceph-client:8080 -I
+HTTP/1.1 200 OK
+x-amz-request-id: tx000000000000000000003-005c77a1a5-10c0-default
+Content-Type: application/xml
+Content-Length: 0
+Date: Thu, 28 Feb 2019 08:53:57 GMT
+
+admin@ceph-admin:~/test-cluster$
+</code></pre><p>&#x6CE8;&#x610F;&#xFF1A;&#x5269;&#x4E0B;&#x7684;&#x521B;&#x5EFA;&#x7528;&#x6237;&#x7684;&#x6B65;&#x9AA4;&#x90FD;&#x5E94;&#x8BE5;&#x5728;RGW&#x8282;&#x70B9;&#x4E0A;&#x8FD0;&#x884C;&#x3002;</p>
+<h3 id="&#x5BF9;&#x8C61;&#x5B58;&#x50A8;-&#x64CD;&#x4F5C;">&#x5BF9;&#x8C61;&#x5B58;&#x50A8; &#x64CD;&#x4F5C;</h3>
+<pre class="language-"><code>echo &apos;hello ceph oject storage&apos; &gt; testfile.txt
+
+&#x521B;&#x5EFA;pool
+ceph osd pool create mytest 8
+
+&#x4E0A;&#x4F20;&#x6587;&#x4EF6;
+rados put test-object-1 testfile.txt --pool=mytest
+
+
+rados -p mytest ls
+
+&#x83B7;&#x53D6;&#x6587;&#x4EF6;
+rados get test-object-1 testfile.txt.1 --pool=mytest
+
+&#x67E5;&#x770B;&#x6620;&#x5C04;&#x4F4D;&#x7F6E;
+ceph osd map mytest test-object-1
+
+&#x5220;&#x9664;&#x6587;&#x4EF6;
+rados rm test-object-1 --pool=mytest
+&#x5220;&#x9664;pool
+ceph osd pool rm mytest mytest --yes-i-really-really-mean-it
+</code></pre><p>&#x5B9E;&#x64CD;&#xFF1A;</p>
+<pre class="language-"><code>admin@ceph-admin:~/test-cluster$ mkdir ~/test-data/ &amp;&amp; cd ~/test-data/ 
+admin@ceph-admin:~/test-cluster$ echo &quot;this is my first test data&quot; &gt; testfile.txt
+admin@ceph-admin:~/test-data$ ceph osd pool create mytest 8
+admin@ceph-admin:~/test-data$ rados put test-object-1 ./testfile.txt --pool=mytest
+admin@ceph-admin:~/test-cluster$ rados -p mytest ls
+test-object-1
+admin@ceph-admin:~/test-cluster$ ceph osd map mytest test-object-1
+osdmap e26 pool &apos;mytest&apos; (2) object &apos;test-object-1&apos; -&gt; pg 2.74dc35e2 (2.2) -&gt; up ([1,0], p1) acting ([1,0], p1)
+admin@ceph-admin:~/test-cluster$
+</code></pre><p>&#x8FD9;&#x6837;&#xFF0C;&#x5C31;&#x5B8C;&#x6210;&#x4E86; RGW &#x7684;&#x57FA;&#x672C;&#x64CD;&#x4F5C;&#x3002;</p>
+<h4 id="&#x5FFD;&#x7565;ceph-osd-pool-create-mytest-8-&#x540E;">(&#x5FFD;&#x7565;)<code>ceph osd pool create mytest 8</code> &#x540E;</h4>
+<p>&#x6B64;&#x65F6;&#xFF0C;ceph -s &#x4F1A;&#x53D1;&#x73B0; &#x5728; data/gps &#x4E2D;&#x4F1A;&#x591A;&#x51FA; </p>
+<pre class="language-"><code>    pgs:     100.000% pgs unknown
+             8 unknown
+</code></pre><p>&#x8FD9;&#x6837;&#x7684;&#x5185;&#x5BB9;&#x3002;</p>
+<h3 id="&#x67E5;&#x770B;&#x72B6;&#x6001;">&#x67E5;&#x770B;&#x72B6;&#x6001;</h3>
+<pre class="language-"><code>admin@ceph-admin:~/test-data$ ceph -s
+  cluster:
+    id:     87aa8ebd-2782-415d-bf23-ad2eb89b61c6
+    health: HEALTH_WARN
+            application not enabled on 1 pool(s)
+
+  services:
+    mon: 3 daemons, quorum ceph-server-3,ceph-server-2,ceph-server-1
+    mgr: ceph-server-1(active)
+    osd: 2 osds: 2 up, 2 in
+    rgw: 1 daemon active
+
+  data:
+    pools:   5 pools, 40 pgs
+    objects: 188  objects, 1.2 KiB
+    usage:   2.0 GiB used, 7.3 TiB / 7.3 TiB avail
+    pgs:     40 active+clean
+
+  io:
+    client:   85 B/s wr, 0 op/s rd, 0 op/s wr
+
+admin@ceph-admin:~/test-cluster$
+</code></pre><h3 id="&#x8BB0;&#x5F55;&#x4E00;&#x4E0B;&#x914D;&#x7F6E;&#x6587;&#x4EF6;">&#x8BB0;&#x5F55;&#x4E00;&#x4E0B;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h3>
+<pre class="language-"><code>admin@ceph-admin:~/test-cluster$ ls
+ceph.bootstrap-mds.keyring  ceph.bootstrap-mgr.keyring  ceph.bootstrap-osd.keyring  ceph.bootstrap-rgw.keyring  ceph.client.admin.keyring  ceph.conf  ceph-deploy-ceph.log  ceph.mon.keyring  release.asc
+admin@ceph-admin:~/test-cluster$ cat ceph.conf
+[global]
+fsid = 87aa8ebd-2782-415d-bf23-ad2eb89b61c6
+mon_initial_members = ceph-server-1, ceph-server-2, ceph-server-3
+mon_host = 192.168.0.130,192.168.0.111,192.168.0.105
+auth_cluster_required = cephx
+auth_service_required = cephx
+auth_client_required = cephx
+
+osd pool default size = 2
+mon_clock_drift_allowed = 1
+
+[client.rgw.ceph-client]
+rgw_frontends = &quot;civetweb port=8080&quot;
+admin@ceph-admin:~/test-cluster$ ls /etc/ceph/
+ceph.client.admin.keyring  ceph.conf  rbdmap  tmp4FMEG8  tmpEO0ZBg
+admin@ceph-admin:~/test-cluster$
+</code></pre><h3 id="&#x5982;&#x679C;-rgw-&#x5B89;&#x88C5;&#x8FC7;&#x7A0B;&#x4E2D;&#x51FA;&#x4E86;&#x95EE;&#x9898;">&#x5982;&#x679C; RGW &#x5B89;&#x88C5;&#x8FC7;&#x7A0B;&#x4E2D;&#x51FA;&#x4E86;&#x95EE;&#x9898;</h3>
+<ul>
+<li>&#x901A;&#x8FC7;netstat&#x67E5;&#x770B; RGW &#x914D;&#x7F6E;&#x7684;&#x7AEF;&#x53E3;&#xFF0C;&#x5224;&#x65AD;rgw&#x670D;&#x52A1;&#x662F;&#x5426;&#x542F;&#x52A8;</li>
+</ul>
+<pre class="language-"><code>admin@swift0134:~$ netstat -tnlp | grep 8080
+(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
+tcp        0      0 0.0.0.0:8080            0.0.0.0:*               LISTEN      -               
+admin@swift0134:~$ sudo systemctl restart ceph-radosgw@rgw.ceph-client.service
+</code></pre><ul>
+<li>&#x67E5;&#x770B;rgw&#x670D;&#x52A1;&#x72B6;&#x6001;&#x3002;<code>sudo systemctl status ceph-radosgw@rgw.ceph-client.service</code> </li>
+</ul>
+<pre class="language-"><code>admin@swift0134:~$ sudo systemctl status ceph-radosgw@rgw.ceph-client.service 
+admin@swift0134:~$ sudo systemctl restart ceph-radosgw@rgw.ceph-client.service
+</code></pre><h2 id="ref">ref</h2>
+<ul>
+<li><a href="http://docs.ceph.com/docs/master/start/quick-ceph-deploy/" target="_blank">http://docs.ceph.com/docs/master/start/quick-ceph-deploy/</a></li>
+<li><a href="https://blog.csdn.net/styshoo/article/details/58572816" target="_blank">https://blog.csdn.net/styshoo/article/details/58572816</a></li>
+<li><a href="https://my.oschina.net/guol/blog/1928348" target="_blank">https://my.oschina.net/guol/blog/1928348</a></li>
+</ul>
+<footer class="page-footer"><span class="copyright"><p><a href="https://github.com/eiuapp/ceph-handbook" target="_blank">Ceph&#x5B9E;&#x8DF5;&#x6307;&#x5357;</a> | <a href="https://github.com/eiuapp/ceph-handbook" target="_blank">Ceph&#x5B9E;&#x8DF5;&#x6307;&#x5357;</a></p><p><a href="https://res.cloudinary.com/dmtixvmgt/image/upload/v1539022273/wechat-qrcode_cml5dm.jpg" data-lightbox="2fd927ee-fa64-4eca-8ed5-6bd72b573a3c" target="_blank">&#x70B9;&#x51FB;&#x5173;&#x6CE8;&#x3010;servicemesher&#x3011;&#x516C;&#x4F17;&#x53F7;&#x56DE;&#x590D;&#x3010;&#x52A0;&#x7FA4;&#x3011;&#x52A0;&#x5165;&#x5B66;&#x4E60;&#x7FA4;</a> | </p>Copyright &#xA9; <a href="https://eiuapp.github.io" target="_blank">eiuapp.github.io</a> 2017-2019 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification"> Updated at 
+2019-04-09 09:00:25
+</span></footer></body></html>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="add-osds-with-quick-install.html" class="navigation navigation-prev " aria-label="Previous page: 添加osd">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../../ceph-deploy.md" class="navigation navigation-next " aria-label="Next page: Installation (ceph-deploy)">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"添加rgw实例","level":"3.1.4","depth":2,"next":{"title":"Installation (ceph-deploy)","level":"3.1.5","depth":2,"path":"ceph-deploy.md","ref":"ceph-deploy.md","articles":[]},"previous":{"title":"添加osd","level":"3.1.3","depth":2,"path":"docs/installation/add-osds-with-quick-install.md","ref":"docs/installation/add-osds-with-quick-install.md","articles":[]},"dir":"ltr"},"config":{"plugins":["github","codesnippet","splitter","page-toc-button","editlink","back-to-top-button","-lunr","-search","search-plus","github-buttons@2.1.0","favicon@^0.0.2","tbfed-pagefooter@^0.0.1","3-ba","theme-default","-highlight","prism","prism-themes","sitemap-general","lightbox","adsense","disqus","ga"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"<p><a href=https://github.com/eiuapp/ceph-handbook>Ceph实践指南</a> | <a href=https://github.com/eiuapp/ceph-handbook>Ceph实践指南</a></p><p><a href=https://res.cloudinary.com/dmtixvmgt/image/upload/v1539022273/wechat-qrcode_cml5dm.jpg data-lightbox=2fd927ee-fa64-4eca-8ed5-6bd72b573a3c>点击关注【servicemesher】公众号回复【加群】加入学习群</a> | </p>Copyright © <a href=https://eiuapp.github.io>eiuapp.github.io</a> 2017-2019","modify_label":" Updated at ","modify_format":"YYYY-MM-DD HH:mm:ss"},"prism":{"lang":{"shell":"bash"},"css":["prism-themes/themes/prism-ghcolors.css"]},"disqus":{"useIdentifier":false,"shortName":"whoami"},"github":{"url":"https://github.com/eiuapp/ceph-handbook"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/eiuapp/ceph-handbook/blob/master/"},"splitter":{},"adsense":{"client":"ca-pub-4029167986768912","slot":"2445941692","format":"auto","element":".page-inner section","position":"bottom"},"codesnippet":{},"sitemap-general":{"prefix":"https://eiuapp.github.io/ceph-handbook/"},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico"},"lightbox":{"jquery":true},"page-toc-button":{},"back-to-top-button":{},"prism-themes":{},"github-buttons":{"repo":"eiuapp/ceph-handbook","types":["star"],"size":"small"},"3-ba":{"configuration":"auto","token":"108be826b9faa2f792cdae4a29d274bb"},"ga":{"configuration":"auto","token":"UA-93485976-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{}},"theme":"default","author":"eiuapp","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ceph Handbook - Ceph 实践指南 by eiuapp","language":"zh-hans","links":{"sidebar":{"Ceph Handbook":"https://eiuapp.github.io/ceph-handbook"}},"gitbook":"*","description":"Ceph Handbook - Ceph 实践指南 2019年 by eiuapp "},"file":{"path":"docs/installation/add-an-rgw-instance-with-quick-install.md","mtime":"2019-04-09T09:00:25.483Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-09T09:01:23.515Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-editlink/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-3-ba/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lightbox/jquery.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lightbox/lightbox.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-adsense/plugin.js"></script>
+        
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-disqus/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,1306 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>ceph集成openstack swift · Ceph Handbook - Ceph 实践指南 by eiuapp</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="eiuapp">
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-prism/prism-ghcolors.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-lightbox/lightbox.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-disqus/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ceph-radosgw-with-openstack-keystone-v3.html" />
+    
+    
+    <link rel="prev" href="radosgw-swift-upload.html" />
+    
+
+    
+        <link rel="shortcut icon" href='../../../favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="bookmark" href='../../../favicon.ico' type="image/x-icon">
+    
+    
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"repo":"eiuapp/ceph-handbook","types":["star"],"size":"small"};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://eiuapp.github.io/ceph-handbook" target="_blank" class="custom-link">Ceph Handbook</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        <li class="header">序言</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">env</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../env/env.html">
+            
+                <a href="../../env/env.html">
+            
+                    
+                        <b>2.1.</b>
+                    
+                    环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../command/command.html">
+            
+                <a href="../../command/command.html">
+            
+                    
+                        <b>2.2.</b>
+                    
+                    常用命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">install</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../installation/">
+            
+                <a href="../../installation/">
+            
+                    
+                        <b>3.1.</b>
+                    
+                    安装
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../../installation/vagrant/README.md">
+            
+                <span>
+            
+                    
+                        <b>3.1.1.</b>
+                    
+                    vagrant install
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1.1" data-path="../../installation/vagrant/carmstrong/multinode-ceph-vagrant.html">
+            
+                <a href="../../installation/vagrant/carmstrong/multinode-ceph-vagrant.html">
+            
+                    
+                        <b>3.1.1.1.</b>
+                    
+                    carmstrong/multinode-ceph-vagrant
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.2" data-path="../../installation/vagrant/oprypin/vagrant-ceph-quickstart.html">
+            
+                <a href="../../installation/vagrant/oprypin/vagrant-ceph-quickstart.html">
+            
+                    
+                        <b>3.1.1.2.</b>
+                    
+                    oprypin/vagrant-ceph-quickstart
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../../installation/quick-install.html">
+            
+                <a href="../../installation/quick-install.html">
+            
+                    
+                        <b>3.1.2.</b>
+                    
+                    quick install
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../../installation/add-osds-with-quick-install.html">
+            
+                <a href="../../installation/add-osds-with-quick-install.html">
+            
+                    
+                        <b>3.1.3.</b>
+                    
+                    添加osd
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../../installation/add-an-rgw-instance-with-quick-install.html">
+            
+                <a href="../../installation/add-an-rgw-instance-with-quick-install.html">
+            
+                    
+                        <b>3.1.4.</b>
+                    
+                    添加rgw实例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="../../../ceph-deploy.md">
+            
+                <span>
+            
+                    
+                        <b>3.1.5.</b>
+                    
+                    Installation (ceph-deploy)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" data-path="../../installation/install-faq.html">
+            
+                <a href="../../installation/install-faq.html">
+            
+                    
+                        <b>3.1.6.</b>
+                    
+                    Installation 常见报错
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Intro to Ceph</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../../hardware-recommendations.html">
+            
+                <a href="../../hardware-recommendations.html">
+            
+                    
+                        <b>4.1.</b>
+                    
+                    硬件推荐
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">configuration</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../../master/rados/configuration/common.html">
+            
+                <a href="../../master/rados/configuration/common.html">
+            
+                    
+                        <b>5.1.</b>
+                    
+                    configuration/common
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">RADOSGW</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" >
+            
+                <span>
+            
+                    
+                        <b>6.1.</b>
+                    
+                    radosgw 与 swift
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="authentication.html">
+            
+                <a href="authentication.html">
+            
+                    
+                        <b>6.1.1.</b>
+                    
+                    使用RADOSGW提供ceph的Swift接口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="radosgw-swift-get-auth.html">
+            
+                <a href="radosgw-swift-get-auth.html">
+            
+                    
+                        <b>6.1.2.</b>
+                    
+                    swift获取auth
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.3" data-path="radosgw-swift-upload.html">
+            
+                <a href="radosgw-swift-upload.html">
+            
+                    
+                        <b>6.1.3.</b>
+                    
+                    swift上传文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="6.1.4" data-path="openstack-swift-with-ceph-backend-radosgw.html">
+            
+                <a href="openstack-swift-with-ceph-backend-radosgw.html">
+            
+                    
+                        <b>6.1.4.</b>
+                    
+                    ceph集成openstack swift
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.5" data-path="ceph-radosgw-with-openstack-keystone-v3.html">
+            
+                <a href="ceph-radosgw-with-openstack-keystone-v3.html">
+            
+                    
+                        <b>6.1.5.</b>
+                    
+                    ceph与openstack-keystone-v3和swift集成
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" >
+            
+                <span>
+            
+                    
+                        <b>6.2.</b>
+                    
+                    tmp url
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="radosgw-swift-setup-tmp-url.html">
+            
+                <a href="radosgw-swift-setup-tmp-url.html">
+            
+                    
+                        <b>6.2.1.</b>
+                    
+                    设置Temporary URL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="radosgw-swift-tmp-url-no-keystone.html">
+            
+                <a href="radosgw-swift-tmp-url-no-keystone.html">
+            
+                    
+                        <b>6.2.2.</b>
+                    
+                    (非keystone认证)swift生成并获取tmp url
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.3" data-path="radosgw-swift-tmp-url-keystone.html">
+            
+                <a href="radosgw-swift-tmp-url-keystone.html">
+            
+                    
+                        <b>6.2.3.</b>
+                    
+                    (keystone认证)swift生成并获取tmp url
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" >
+            
+                <span>
+            
+                    
+                        <b>6.3.</b>
+                    
+                    user
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.3.1" data-path="get-user-info.html">
+            
+                <a href="get-user-info.html">
+            
+                    
+                        <b>6.3.1.</b>
+                    
+                    radosgw用户信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">常见问题</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../../faq/ntpdate.html">
+            
+                <a href="../../faq/ntpdate.html">
+            
+                    
+                        <b>7.1.</b>
+                    
+                    时间不一致
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../../faq/rgw-conf-change.html">
+            
+                <a href="../../faq/rgw-conf-change.html">
+            
+                    
+                        <b>7.2.</b>
+                    
+                    修改rgw配置生效
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="../../faq/get-service-name.html">
+            
+                <a href="../../faq/get-service-name.html">
+            
+                    
+                        <b>7.3.</b>
+                    
+                    查找服务名称
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="get-user-info.html">
+            
+                <a href="get-user-info.html">
+            
+                    
+                        <b>7.4.</b>
+                    
+                    查找用户信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="../basic.html">
+            
+                <a href="../basic.html">
+            
+                    
+                        <b>7.5.</b>
+                    
+                    支持断点续传
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.6" data-path="../../faq/ceph-deploy-osd-error.html">
+            
+                <a href="../../faq/ceph-deploy-osd-error.html">
+            
+                    
+                        <b>7.6.</b>
+                    
+                    ceph-deploy osd create时报错
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.7" data-path="../../faq/swift-list-error.html">
+            
+                <a href="../../faq/swift-list-error.html">
+            
+                    
+                        <b>7.7.</b>
+                    
+                    swift-list临时出错
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.8" data-path="radosgw-swift-keystone-mysql-change.html">
+            
+                <a href="radosgw-swift-keystone-mysql-change.html">
+            
+                    
+                        <b>7.8.</b>
+                    
+                    keystone更换mysql
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.9" data-path="../../faq/faq-wangzhijian.html">
+            
+                <a href="../../faq/faq-wangzhijian.html">
+            
+                    
+                        <b>7.9.</b>
+                    
+                    常见问题-心远何方
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >ceph集成openstack swift</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <html><head></head><body><p>&#x5728; openstack &#x4E2D;&#x7528;ceph&#x4F5C;&#x4E3A; &#x5BF9;&#x8C61;&#x5B58;&#x50A8;&#x7684;&#x540E;&#x7AEF;, python-swiftclient&#x4F5C;&#x4E3A;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x96C6;&#x6210;openstack keystone.</p>
+<p>&#x6B63;&#x5728;&#x5C1D;&#x8BD5;&#x4F7F;&#x7528;radosgw&#x4E0E;Ceph&#xFF08;Minic&#xFF09;&#x4E00;&#x8D77;&#x4F7F;&#x7528;Openstack&#xFF08;liberty&#xFF09;swift&#x3002;&#x76EE;&#x7684;&#x662F;&#x5C06;&#x5BF9;&#x8C61;&#x5B58;&#x50A8;&#x5728;ceph osds&#x4E0B;&#x3002;&#x6211;&#x6709;&#x4E00;&#x4E2A;&#x5DE5;&#x4F5C;&#x7684;Openstack&#x548C;Ceph&#x96C6;&#x7FA4;&#x3002;</p>
+<p>&#x8981;&#x4F7F;&#x7528;Ceph&#x4F5C;&#x4E3A;&#x5BF9;&#x8C61;&#x5B58;&#x50A8;&#x540E;&#x7AEF;&#xFF0C;&#x6211;&#x5728;ceph&#x96C6;&#x7FA4;&#x4E2D;&#x5B89;&#x88C5;&#x5E76;&#x914D;&#x7F6E;&#x4E86;radosgw&#x3002;&#x5728;openstack&#x8282;&#x70B9;&#x4E2D;&#xFF0C;&#x6211;&#x5B89;&#x88C5;&#x4E86;&#x201C;python-swiftclient&#x201D;&#xFF0C;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x5B58;&#x50A8;&#x670D;&#x52A1;&#xFF0C;&#x5E76;&#x4E3A;&#x8BE5;&#x670D;&#x52A1;&#x6DFB;&#x52A0;&#x4E86;&#x4E00;&#x4E2A;URL&#x4E3A;radosgw&#x7684;&#x7AEF;&#x70B9;&#x3002;</p>
+<p>&#x6211;&#x6309;&#x7167;&#x4EE5;&#x4E0B;&#x94FE;&#x63A5;&#x4E2D;&#x7684;&#x8BF4;&#x660E;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#x3002; <a href="http://docs.ceph.com/docs/jewel/radosgw/keystone/" target="_blank">http://docs.ceph.com/docs/jewel/radosgw/keystone/</a></p>
+<p>&#x6839;&#x636E; <a href="http://docs.ceph.com/docs/master/radosgw/keystone/" target="_blank">http://docs.ceph.com/docs/master/radosgw/keystone/</a> &#x96C6;&#x6210; keystone </p>
+<h2 id="env">env</h2>
+<p>&#x57FA;&#x4E8E; &#x4E4B;&#x524D; add-an-rgw-instance-with-quick-install &#xFF0C;&#x56E0;&#x6B64;&#x6709;&#xFF1A;</p>
+<ul>
+<li>ceph rgw &#x7684; http &#x63A5;&#x53E3;&#x662F;&#xFF1A; <a href="http://ceph-client:8080/" target="_blank">http://ceph-client:8080/</a></li>
+<li>ceph-client ip &#x662F;&#xFF1A; 192.168.0.134 &#xFF0C;&#x4EE5;&#x4E0B;&#x53EA;&#x7528;&#x6B64;IP&#x8868;&#x793A; ceph rgw &#x63A5;&#x53E3;&#x3002;</li>
+<li>ceph-admin: 192.168.0.185</li>
+<li>keystone: 192.168.0.51 </li>
+</ul>
+<p>swift client : 192.168.0.51, &#x6B64;&#x4E0A;&#x5FC5;&#x987B;&#x6709; swift &#x547D;&#x4EE4;</p>
+<h2 id="step">step</h2>
+<h3 id="&#x786E;&#x4FDD;&#x5728;&#x96C6;&#x6210;&#x4E4B;&#x524D;&#xFF0C;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x6709;&#x6548;">&#x786E;&#x4FDD;&#x5728;&#x96C6;&#x6210;&#x4E4B;&#x524D;&#xFF0C;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x6709;&#x6548;</h3>
+<p>Connecting to 192.168.0.51 </p>
+<pre class="language-"><code>root@controller:/home/ubuntu# cat ceph-swift-user1-openrc
+username=swiftuser1
+subusername=swiftsubuser1
+displayname=swiftuser1displayname
+password=8Us5blLxYeh77cqWQR9qhgWT3e8BMOu8zokeKB3k
+root@controller:/home/ubuntu# 
+root@controller:/home/ubuntu# . ceph-swift-user1-openrc
+root@controller:/home/ubuntu# swift -A http://192.168.0.134:8080/auth/v1.0 -U ${username}:${subusername} -K ${password} list 
+swiftuser1-container1
+root@controller:/home/ubuntu# swift -A http://192.168.0.134:8080/auth/v1.0 -U ${username}:${subusername} -K ${password} list swiftuser1-container1
+ceph-swiftuser1-container1-object-1.txt
+dao.txt
+guo.txt
+root@controller:/home/ubuntu#
+</code></pre><h3 id="&#x628A;-swift-&#x76F8;&#x5173;&#x914D;&#x7F6E;&#x52A0;&#x5165;-openstack">&#x628A; swift &#x76F8;&#x5173;&#x914D;&#x7F6E;&#x52A0;&#x5165; openstack</h3>
+<h3 id="&#x67E5;&#x770B;-openstack-endpoint">&#x67E5;&#x770B; openstack endpoint</h3>
+<pre class="language-"><code>root@controller:~# ls
+account.ring.gz  admin-openrc  backups  cirros-0.4.0-x86_64-disk.img  container.ring.gz  demo-openrc  object.ring.gz  swift-conf  tmp  tmp2  tmp3
+root@controller:~# cat admin-openrc 
+export OS_PROJECT_DOMAIN_NAME=Default
+export OS_USER_DOMAIN_NAME=Default
+export OS_PROJECT_NAME=admin
+export OS_USERNAME=admin
+export OS_PASSWORD=openstack
+export OS_AUTH_URL=http://controller:5000/v3
+export OS_IDENTITY_API_VERSION=3
+export OS_IMAGE_API_VERSION=2
+root@controller:~# . admin-openrc 
+root@controller:~# openstack endpoint list
++----------------------------------|-----------|--------------|--------------|---------|-----------|-----------------------------------------------+
+| ID                               | Region    | Service Name | Service Type | Enabled | Interface | URL                                           |
++----------------------------------|-----------|--------------|--------------|---------|-----------|-----------------------------------------------+
+| 014c4ed5c42042c394d62a1194bf07ce | RegionOne | keystone     | identity     | True    | internal  | http://controller:5000/v3/                    |
+| 057cd51c8ace4daa8834d25ae15998f4 | RegionOne | swift        | object-store | True    | admin     | http://controller:8080/v1                     |
+| 0b3dc5788cac4f2cb66edc3efacf10c0 | RegionOne | keystone     | identity     | True    | public    | http://controller:5000/v3/                    |
+| 19e727c1668c4e8aae4315e13057fbbd | RegionOne | cinderv2     | volumev2     | True    | public    | http://controller:8776/v2/%(project_id)s      |
+| 2548787f06524287b6a27d0a562da375 | RegionOne | glance       | image        | True    | internal  | http://controller:9292                        |
+| 295cfee33ff04ab7890a84b47e95bc3f | RegionOne | keystone     | identity     | True    | admin     | http://controller:5000/v3/                    |
+| 50d3b61b60654a65bda26584b4fe0896 | RegionOne | neutron      | network      | True    | admin     | http://controller:9696                        |
+| 51952812b675436899ba118585b2dae2 | RegionOne | swift        | object-store | True    | public    | http://swiftproxy:8080/v1/AUTH_%(project_id)s |
+| 55367bdc8db6438da3a4ed82b1a1b04c | RegionOne | glance       | image        | True    | public    | http://controller:9292                        |
+| 5b60dcd8e374410f83e675201d76f06f | RegionOne | placement    | placement    | True    | admin     | http://controller:8778                        |
+| 76d61f360fc140a58b4258c344ea9ae5 | RegionOne | nova         | compute      | True    | internal  | http://controller:8774/v2.1                   |
+| 7eece3971f9f4105b031214666940d54 | RegionOne | placement    | placement    | True    | public    | http://controller:8778                        |
+| 8237211a85314e0c914ea34851e324b7 | RegionOne | cinderv2     | volumev2     | True    | admin     | http://controller:8776/v2/%(project_id)s      |
+| 87de9f6afbd74792bc80c7d092eb7da6 | RegionOne | swift        | object-store | True    | internal  | http://controller:8080/v1/AUTH_%(project_id)s |
+| 99b6673fda7f48bb8b6ae11a87ba0e1b | RegionOne | glance       | image        | True    | admin     | http://controller:9292                        |
+| a61cbe1448284dd482725fb3067fa25c | RegionOne | nova         | compute      | True    | public    | http://controller:8774/v2.1                   |
+| beccdad7270643cabf8a271258c102c0 | RegionOne | swift        | object-store | True    | admin     | http://swiftproxy:8080/v1                     |
+| cfb1df03d1bd42719dd506e0fbee7e5a | RegionOne | cinderv3     | volumev3     | True    | internal  | http://controller:8776/v3/%(project_id)s      |
+| cfe6b374e86048c98951d079a3cdaa42 | RegionOne | placement    | placement    | True    | internal  | http://controller:8778                        |
+| d3f5808482cb42f386c3741b8e1c1d82 | RegionOne | swift        | object-store | True    | public    | http://controller:8080/v1/AUTH_%(project_id)s |
+| d9bb0785c23143ed855d0bb74dfe53bb | RegionOne | cinderv3     | volumev3     | True    | public    | http://controller:8776/v3/%(project_id)s      |
+| e1f98d0e79f549a5bc46bcf05705c4b1 | RegionOne | neutron      | network      | True    | public    | http://controller:9696                        |
+| e577371ea7e349ffa2a86f7aef2ef35e | RegionOne | swift        | object-store | True    | internal  | http://swiftproxy:8080/v1/AUTH_%(project_id)s |
+| f089ebe1cb5040319e942dbc607e9930 | RegionOne | cinderv3     | volumev3     | True    | admin     | http://controller:8776/v3/%(project_id)s      |
+| f3350a1d66fa4813a091beef3782b6fd | RegionOne | neutron      | network      | True    | internal  | http://controller:9696                        |
+| f5460d92ef8b428b9dc354628acdb289 | RegionOne | cinderv2     | volumev2     | True    | internal  | http://controller:8776/v2/%(project_id)s      |
+| fb5c30679ed14e078646041e75e77294 | RegionOne | nova         | compute      | True    | admin     | http://controller:8774/v2.1                   |
++----------------------------------|-----------|--------------|--------------|---------|-----------|-----------------------------------------------+
+root@controller:~# openstack endpoint list | grep object-store
+| 057cd51c8ace4daa8834d25ae15998f4 | RegionOne | swift        | object-store | True    | admin     | http://controller:8080/v1                     |
+| 51952812b675436899ba118585b2dae2 | RegionOne | swift        | object-store | True    | public    | http://swiftproxy:8080/v1/AUTH_%(project_id)s |
+| 87de9f6afbd74792bc80c7d092eb7da6 | RegionOne | swift        | object-store | True    | internal  | http://controller:8080/v1/AUTH_%(project_id)s |
+| beccdad7270643cabf8a271258c102c0 | RegionOne | swift        | object-store | True    | admin     | http://swiftproxy:8080/v1                     |
+| d3f5808482cb42f386c3741b8e1c1d82 | RegionOne | swift        | object-store | True    | public    | http://controller:8080/v1/AUTH_%(project_id)s |
+| e577371ea7e349ffa2a86f7aef2ef35e | RegionOne | swift        | object-store | True    | internal  | http://swiftproxy:8080/v1/AUTH_%(project_id)s |
+root@controller:~# openstack endpoint show object-store 
+More than one endpoint exists with the name &apos;object-store&apos;.
+root@controller:~#
+</code></pre><p>&#x5DF2;&#x7ECF;&#x6709;&#x4E86; object-store , &#x5220;&#x9664;&#x76F8;&#x5E94;&#x7684; endpoint</p>
+<pre class="language-"><code>root@controller:~# openstack endpoint delete 057cd51c8ace4daa8834d25ae15998f4 
+root@controller:~# openstack endpoint delete 51952812b675436899ba118585b2dae2
+root@controller:~# openstack endpoint delete 87de9f6afbd74792bc80c7d092eb7da6
+root@controller:~# openstack endpoint delete beccdad7270643cabf8a271258c102c0
+root@controller:~# openstack endpoint delete d3f5808482cb42f386c3741b8e1c1d82
+root@controller:~# openstack endpoint delete e577371ea7e349ffa2a86f7aef2ef35e
+</code></pre><h3 id="&#x6DFB;&#x52A0;-openstack-service">&#x6DFB;&#x52A0; openstack service</h3>
+<pre class="language-"><code>root@controller:~# openstack service create --name=swift \
+&gt;                          --description=&quot;Swift Service&quot; \
+&gt;                          object-store
++-------------|----------------------------------+
+| Field       | Value                            |
++-------------|----------------------------------+
+| description | Swift Service                    |
+| enabled     | True                             |
+| id          | c428acff9bb746e8947e99f24e8c5dc8 |
+| name        | swift                            |
+| type        | object-store                     |
++-------------|----------------------------------+
+</code></pre><h3 id="&#x53EF;&#x8DF3;&#x8FC7;&#x6DFB;&#x52A0;-openstack-endpoint-&#x51FA;&#x9519;">(&#x53EF;&#x8DF3;&#x8FC7;)&#x6DFB;&#x52A0; openstack endpoint &#x51FA;&#x9519;</h3>
+<pre class="language-"><code>root@controller:~# vi /etc/hosts 
+root@controller:~# openstack endpoint create --region RegionOne \
+&gt;      --publicurl   &quot;http://ceph-rgw-client:8080/swift/v1&quot; \
+&gt;      --adminurl    &quot;http://ceph-rgw-client:8080/swift/v1&quot; \
+&gt;      --internalurl &quot;http://ceph-rgw-client:8080/swift/v1&quot; \
+&gt;      swift
+usage: openstack endpoint create [-h] [-f {json,shell,table,value,yaml}]
+                                 [-c COLUMN] [--max-width <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>integer</span><span class="token punctuation">&gt;</span></span>]
+                                 [--fit-width] [--print-empty] [--noindent]
+                                 [--prefix PREFIX] [--region <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>region-id</span><span class="token punctuation">&gt;</span></span>]
+                                 [--enable | --disable]
+                                 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>service</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>interface</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url</span><span class="token punctuation">&gt;</span></span>
+openstack endpoint create: error: argument <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>interface</span><span class="token punctuation">&gt;</span></span>: invalid choice: u&apos;http://ceph-rgw-client:8080/swift/v1&apos; (choose from &apos;admin&apos;, &apos;public&apos;, &apos;internal&apos;)
+root@controller:~#
+</code></pre><p>&#x53C2;&#x6570;&#x4E0D;&#x5BF9;&#xFF0C;&#x90A3;&#x53EF;&#x80FD;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x53D8;&#x4E86;&#x3002;&#x53C2;&#x8003; <a href="https://docs.openstack.org/swift/rocky/install/controller-install-ubuntu.html" target="_blank">https://docs.openstack.org/swift/rocky/install/controller-install-ubuntu.html</a> </p>
+<pre class="language-"><code>root@controller:~# openstack endpoint create --region RegionOne \
+&gt;   object-store public http://ceph-rgw-client:8080/swift/v1
+Multiple service matches found for &apos;object-store&apos;, use an ID to be more specific.
+root@controller:~#
+</code></pre><p>&#x52A0;&#x4E0D;&#x8FDB;&#xFF0C;&#x6709;&#x591A;&#x4E2A; service &#x3002;&#x90A3;&#x5E94;&#x8BE5;&#x5C31;&#x662F;&#x521A;&#x521A;&#x5220;&#x9664;&#x7684;endpoint&#x7684;service&#x6CA1;&#x5220;&#x9664;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x4E0D;&#x8981;&#x641E;&#x9519;&#x4E86;&#xFF0C;&#x8FD9;&#x91CC;&#x518D;&#x65B0;&#x5EFA;&#x7ACB;&#x4E00;&#x6B21;&#x3002;</p>
+<pre class="language-"><code>root@controller:~# openstack service create --name=swift --description=&quot;Swift Service&quot; object-store
++-------------|----------------------------------+
+| Field       | Value                            |
++-------------|----------------------------------+
+| description | Swift Service                    |
+| enabled     | True                             |
+| id          | 356603934f624475b863560b95394ad3 |
+| name        | swift                            |
+| type        | object-store                     |
++-------------|----------------------------------+
+root@controller:~#
+</code></pre><p>&#x67E5;&#x770B; service &#x5E76;&#x5220;&#x9664;</p>
+<pre class="language-"><code>root@controller:~# openstack service | grep swift
+root@controller:~# openstack service list | grep swift
+| 356603934f624475b863560b95394ad3 | swift     | object-store |
+| a1f85844507d4135b9e77a4c36503552 | swift     | object-store |
+| c428acff9bb746e8947e99f24e8c5dc8 | swift     | object-store |
+root@controller:~# openstack service delete a1f85844507d4135b9e77a4c36503552
+root@controller:~# openstack service delete c428acff9bb746e8947e99f24e8c5dc8
+root@controller:~# openstack service list | grep swift
+| 356603934f624475b863560b95394ad3 | swift     | object-store |
+</code></pre><h3 id="&#x6DFB;&#x52A0;-openstack-endpoint">&#x6DFB;&#x52A0; openstack endpoint</h3>
+<pre class="language-"><code>root@controller:~# ping ceph-rgw-client
+root@controller:~# openstack endpoint create --region RegionOne   object-store public http://ceph-rgw-client:8080/swift/v1
++--------------|--------------------------------------+
+| Field        | Value                                |
++--------------|--------------------------------------+
+| enabled      | True                                 |
+| id           | d2cb83a1aab9467fa9d6d2ede12f9eb7     |
+| interface    | public                               |
+| region       | RegionOne                            |
+| region_id    | RegionOne                            |
+| service_id   | 356603934f624475b863560b95394ad3     |
+| service_name | swift                                |
+| service_type | object-store                         |
+| url          | http://ceph-rgw-client:8080/swift/v1 |
++--------------|--------------------------------------+
+root@controller:~# openstack endpoint create --region RegionOne \
+&gt;   object-store internal http://ceph-rgw-client:8080/swift/v1
++--------------|--------------------------------------+
+| Field        | Value                                |
++--------------|--------------------------------------+
+| enabled      | True                                 |
+| id           | 47fa3d7baab34bf4b333b4fbaf269f08     |
+| interface    | internal                             |
+| region       | RegionOne                            |
+| region_id    | RegionOne                            |
+| service_id   | 356603934f624475b863560b95394ad3     |
+| service_name | swift                                |
+| service_type | object-store                         |
+| url          | http://ceph-rgw-client:8080/swift/v1 |
++--------------|--------------------------------------+
+root@controller:~# openstack endpoint create --region RegionOne \
+&gt;   object-store admin http://ceph-rgw-client:8080/swift/v1
++--------------|--------------------------------------+
+| Field        | Value                                |
++--------------|--------------------------------------+
+| enabled      | True                                 |
+| id           | 96b6fe4b7e404fa4868d06c3d402ba8f     |
+| interface    | admin                                |
+| region       | RegionOne                            |
+| region_id    | RegionOne                            |
+| service_id   | 356603934f624475b863560b95394ad3     |
+| service_name | swift                                |
+| service_type | object-store                         |
+| url          | http://ceph-rgw-client:8080/swift/v1 |
++--------------|--------------------------------------+
+root@controller:~# openstack endpoint list
++----------------------------------|-----------|--------------|--------------|---------|-----------|------------------------------------------+
+| ID                               | Region    | Service Name | Service Type | Enabled | Interface | URL                                      |
++----------------------------------|-----------|--------------|--------------|---------|-----------|------------------------------------------+
+| 014c4ed5c42042c394d62a1194bf07ce | RegionOne | keystone     | identity     | True    | internal  | http://controller:5000/v3/               |
+| 0b3dc5788cac4f2cb66edc3efacf10c0 | RegionOne | keystone     | identity     | True    | public    | http://controller:5000/v3/               |
+| 19e727c1668c4e8aae4315e13057fbbd | RegionOne | cinderv2     | volumev2     | True    | public    | http://controller:8776/v2/%(project_id)s |
+| 2548787f06524287b6a27d0a562da375 | RegionOne | glance       | image        | True    | internal  | http://controller:9292                   |
+| 295cfee33ff04ab7890a84b47e95bc3f | RegionOne | keystone     | identity     | True    | admin     | http://controller:5000/v3/               |
+| 47fa3d7baab34bf4b333b4fbaf269f08 | RegionOne | swift        | object-store | True    | internal  | http://ceph-rgw-client:8080/swift/v1     |
+| 50d3b61b60654a65bda26584b4fe0896 | RegionOne | neutron      | network      | True    | admin     | http://controller:9696                   |
+| 55367bdc8db6438da3a4ed82b1a1b04c | RegionOne | glance       | image        | True    | public    | http://controller:9292                   |
+| 5b60dcd8e374410f83e675201d76f06f | RegionOne | placement    | placement    | True    | admin     | http://controller:8778                   |
+| 76d61f360fc140a58b4258c344ea9ae5 | RegionOne | nova         | compute      | True    | internal  | http://controller:8774/v2.1              |
+| 7eece3971f9f4105b031214666940d54 | RegionOne | placement    | placement    | True    | public    | http://controller:8778                   |
+| 8237211a85314e0c914ea34851e324b7 | RegionOne | cinderv2     | volumev2     | True    | admin     | http://controller:8776/v2/%(project_id)s |
+| 96b6fe4b7e404fa4868d06c3d402ba8f | RegionOne | swift        | object-store | True    | admin     | http://ceph-rgw-client:8080/swift/v1     |
+| 99b6673fda7f48bb8b6ae11a87ba0e1b | RegionOne | glance       | image        | True    | admin     | http://controller:9292                   |
+| a61cbe1448284dd482725fb3067fa25c | RegionOne | nova         | compute      | True    | public    | http://controller:8774/v2.1              |
+| cfb1df03d1bd42719dd506e0fbee7e5a | RegionOne | cinderv3     | volumev3     | True    | internal  | http://controller:8776/v3/%(project_id)s |
+| cfe6b374e86048c98951d079a3cdaa42 | RegionOne | placement    | placement    | True    | internal  | http://controller:8778                   |
+| d2cb83a1aab9467fa9d6d2ede12f9eb7 | RegionOne | swift        | object-store | True    | public    | http://ceph-rgw-client:8080/swift/v1     |
+| d9bb0785c23143ed855d0bb74dfe53bb | RegionOne | cinderv3     | volumev3     | True    | public    | http://controller:8776/v3/%(project_id)s |
+| e1f98d0e79f549a5bc46bcf05705c4b1 | RegionOne | neutron      | network      | True    | public    | http://controller:9696                   |
+| f089ebe1cb5040319e942dbc607e9930 | RegionOne | cinderv3     | volumev3     | True    | admin     | http://controller:8776/v3/%(project_id)s |
+| f3350a1d66fa4813a091beef3782b6fd | RegionOne | neutron      | network      | True    | internal  | http://controller:9696                   |
+| f5460d92ef8b428b9dc354628acdb289 | RegionOne | cinderv2     | volumev2     | True    | internal  | http://controller:8776/v2/%(project_id)s |
+| fb5c30679ed14e078646041e75e77294 | RegionOne | nova         | compute      | True    | admin     | http://controller:8774/v2.1              |
++----------------------------------|-----------|--------------|--------------|---------|-----------|------------------------------------------+
+root@controller:~# openstack endpoint show object-store 
+More than one endpoint exists with the name &apos;object-store&apos;.
+root@controller:~# openstack endpoint list |grep -i object 
+| 47fa3d7baab34bf4b333b4fbaf269f08 | RegionOne | swift        | object-store | True    | internal  | http://ceph-rgw-client:8080/swift/v1     |
+| 96b6fe4b7e404fa4868d06c3d402ba8f | RegionOne | swift        | object-store | True    | admin     | http://ceph-rgw-client:8080/swift/v1     |
+| d2cb83a1aab9467fa9d6d2ede12f9eb7 | RegionOne | swift        | object-store | True    | public    | http://ceph-rgw-client:8080/swift/v1     |
+root@controller:~#
+</code></pre><p>&#x597D;&#x4E86;&#x3002;&#x8FD9;&#x91CC;&#x5DF2;&#x7ECF;&#x52A0;&#x597D;&#x4E86;&#xFF01;~</p>
+<h3 id="&#x4FEE;&#x6539;-cephconf-&#x914D;&#x7F6E;">&#x4FEE;&#x6539; ceph.conf &#x914D;&#x7F6E;</h3>
+<p>&#x56E0;&#x4E3A;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x4E0D;&#x786E;&#x5B9A;&#x5199;&#x7684;&#x914D;&#x7F6E;&#x80FD;&#x4E00;&#x6B21;&#x6027;&#x6210;&#x529F;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;&#x5148;&#x5728; ceph rgw client &#x8282;&#x70B9;&#x76F4;&#x63A5;&#x4FEE;&#x6539; /etc/ceph/ceph.conf &#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x91CD;&#x542F;&#x3002;</p>
+<p>&#x53EF;&#x53C2;&#x8003;<a href="../../faq/rgw-conf-change.html">&#x8FD9;&#x91CC;</a></p>
+<h4 id="&#x53EF;&#x8DF3;&#x8FC7;&#x4FEE;&#x6539;&#x914D;&#x7F6E;">(&#x53EF;&#x8DF3;&#x8FC7;)&#x4FEE;&#x6539;&#x914D;&#x7F6E;</h4>
+<pre class="language-"><code>root@ceph-client:/home/admin# mkdir /var/ceph/nss -p
+root@ceph-client:/home/admin# vi /etc/ceph/ceph.conf 
+root@ceph-client:/home/admin# cat /etc/ceph/ceph.conf 
+[global]
+fsid = 87aa8ebd-2782-415d-bf23-ad2eb89b61c6
+mon_initial_members = ceph-server-1, ceph-server-2, ceph-server-3
+mon_host = 192.168.0.130,192.168.0.111,192.168.0.105
+auth_cluster_required = cephx
+auth_service_required = cephx
+auth_client_required = cephx
+
+osd pool default size = 2
+mon_clock_drift_allowed = 1
+
+[client.rgw.ceph-client]
+rgw_frontends = &quot;civetweb port=8080&quot;
+
+rgw_keystone_api_version = v3
+rgw_keystone_url = http://controller:5000
+rgw_keystone_admin_token = openstack
+#rgw_keystone_admin_token_path = {path to keystone admin token} #preferred
+rgw_keystone_accepted_roles =  _member_,admin
+rgw_keystone_token_cache_size = 200
+rgw_keystone_revocation_interval = 60
+rgw_keystone_admin_domain = default
+rgw_keystone_admin_project = default
+rgw_keystone_implicit_tenants = true
+rgw_keystone_verify_ssl = false
+nss_db_path = /var/ceph/nss
+root@ceph-client:/home/admin#
+</code></pre><h4 id="&#x53EF;&#x8DF3;&#x8FC7;&#x91CD;&#x542F;-rgw-&#x670D;&#x52A1;">(&#x53EF;&#x8DF3;&#x8FC7;)&#x91CD;&#x542F; rgw &#x670D;&#x52A1;</h4>
+<pre class="language-"><code>root@ceph-client:/home/admin# systemctl restart ceph-radosgw@rgw.ceph-client
+root@ceph-client:/home/admin# systemctl status ceph-radosgw@rgw.ceph-client
+&#x25CF; ceph-radosgw@rgw.ceph-client.service - Ceph rados gateway
+   Loaded: loaded (/lib/systemd/system/ceph-radosgw@.service; enabled; vendor preset: enabled)
+   Active: active (running) since &#x4E00; 2019-03-11 18:02:41 CST; 4ms ago
+ Main PID: 83757 ((radosgw))
+   CGroup: /system.slice/system-ceph\x2dradosgw.slice/ceph-radosgw@rgw.ceph-client.service
+           &#x2514;&#x2500;83757 (radosgw)        
+
+3&#x6708; 11 18:02:41 ceph-client systemd[1]: Started Ceph rados gateway.
+root@ceph-client:/home/admin# systemctl status ceph-radosgw@rgw.ceph-client
+&#x25CF; ceph-radosgw@rgw.ceph-client.service - Ceph rados gateway
+   Loaded: loaded (/lib/systemd/system/ceph-radosgw@.service; enabled; vendor preset: enabled)
+   Active: failed (Result: start-limit-hit) since &#x4E00; 2019-03-11 18:46:10 CST; 2s ago
+  Process: 84958 ExecStart=/usr/bin/radosgw -f --cluster ${CLUSTER} --name client.%i --setuser ceph --setgroup ceph (code=dumped, signal=ABRT)
+ Main PID: 84958 (code=dumped, signal=ABRT)
+
+3&#x6708; 11 18:46:09 ceph-client systemd[1]: ceph-radosgw@rgw.ceph-client.service: Main process exited, code=dumped, status=6/ABRT
+3&#x6708; 11 18:46:09 ceph-client systemd[1]: ceph-radosgw@rgw.ceph-client.service: Unit entered failed state.
+3&#x6708; 11 18:46:09 ceph-client systemd[1]: ceph-radosgw@rgw.ceph-client.service: Failed with result &apos;core-dump&apos;.
+3&#x6708; 11 18:46:10 ceph-client systemd[1]: ceph-radosgw@rgw.ceph-client.service: Service hold-off time over, scheduling restart.
+3&#x6708; 11 18:46:10 ceph-client systemd[1]: Stopped Ceph rados gateway.
+3&#x6708; 11 18:46:10 ceph-client systemd[1]: ceph-radosgw@rgw.ceph-client.service: Start request repeated too quickly.
+3&#x6708; 11 18:46:10 ceph-client systemd[1]: Failed to start Ceph rados gateway.
+3&#x6708; 11 18:46:10 ceph-client systemd[1]: ceph-radosgw@rgw.ceph-client.service: Unit entered failed state.
+3&#x6708; 11 18:46:10 ceph-client systemd[1]: ceph-radosgw@rgw.ceph-client.service: Failed with result &apos;start-limit-hit&apos;.
+root@ceph-client:/home/admin#
+</code></pre><p>&#x62A5;&#x9519;&#x4E86;&#xFF0C;&#x5565;&#x95EE;&#x9898;</p>
+<h4 id="&#x53EF;&#x8DF3;&#x8FC7;swift-client-&#x9A8C;&#x8BC1;">(&#x53EF;&#x8DF3;&#x8FC7;)swift client &#x9A8C;&#x8BC1;</h4>
+<pre class="language-"><code>root@controller:/home/ubuntu# ls
+ceph-swiftuser1-container1-object-1.txt  ceph-swiftuser1-container1-object-1.txt.bak  ceph-swift-user1-openrc  ceph-swift-user1-openrc.password  hello.txt
+root@controller:/home/ubuntu# . ceph-swift-user1-openrc
+root@controller:/home/ubuntu# swift list -v 
+Account GET failed: http://ceph-rgw-client:8080/swift/v1?format=json 401 Unauthorized  [first 60 chars of response] {&quot;Code&quot;:&quot;AccessDenied&quot;,&quot;RequestId&quot;:&quot;tx00000000000000000001f-
+Failed Transaction ID: tx00000000000000000001f-005c862b5a-5e2c-default
+root@controller:/home/ubuntu# cat ceph-swift-user1-openrc
+username=swiftuser1
+subusername=swiftsubuser1
+displayname=swiftuser1displayname
+password=8Us5blLxYeh77cqWQR9qhgWT3e8BMOu8zokeKB3k
+root@controller:/home/ubuntu# . ceph-swift-user1-openrc
+root@controller:/home/ubuntu# swift list -v 
+Account GET failed: http://ceph-rgw-client:8080/swift/v1?format=json 401 Unauthorized  [first 60 chars of response] {&quot;Code&quot;:&quot;AccessDenied&quot;,&quot;RequestId&quot;:&quot;tx000000000000000000021-
+Failed Transaction ID: tx000000000000000000021-005c862e4a-5e2c-default
+root@controller:/home/ubuntu# ls
+ceph-swiftuser1-container1-object-1.txt  ceph-swiftuser1-container1-object-1.txt.bak  ceph-swift-user1-openrc  ceph-swift-user1-openrc.password  hello.txt
+root@controller:/home/ubuntu# . ceph-swift-user1-openrc
+root@controller:/home/ubuntu# . ceph-swift-user1-openrc
+root@controller:/home/ubuntu# swift list -v 
+HTTPConnectionPool(host=&apos;ceph-rgw-client&apos;, port=8080): Max retries exceeded with url: /swift/v1?format=json (Caused by NewConnectionError(&apos;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>urllib3.connection.HTTPConnection</span> <span class="token attr-name">object</span> <span class="token attr-name">at</span> <span class="token attr-name">0x7fb1ca95f490</span><span class="token punctuation">&gt;</span></span>: Failed to establish a new connection: [Errno 111] Connection refused&apos;,))
+root@controller:/home/ubuntu# telnet 192.168.0.134 8080
+Trying 192.168.0.134...
+telnet: Unable to connect to remote host: Connection refused
+root@controller:/home/ubuntu#
+</code></pre><h3 id="&#x91CD;&#x65B0;&#x914D;&#x7F6E;">&#x91CD;&#x65B0;&#x914D;&#x7F6E;</h3>
+<p>&#x8FD8;&#x662F;&#x53C2;&#x8003;&#x5B98;&#x7F51; <a href="http://docs.ceph.com/docs/master/radosgw/keystone/" target="_blank">http://docs.ceph.com/docs/master/radosgw/keystone/</a> </p>
+<p>ceph rgw &#x8282;&#x70B9;&#x76F4;&#x63A5;&#x4FEE;&#x6539;</p>
+<pre class="language-"><code>root@ceph-client:/etc/ceph# ls
+ceph.client.admin.keyring  ceph.client.rgw.ceph-client.keyring  ceph.conf  rbdmap  tmpaKLOQJ  tmpqMjag3
+root@ceph-client:/etc/ceph# cat ceph.conf 
+[global]
+fsid = 87aa8ebd-2782-415d-bf23-ad2eb89b61c6
+mon_initial_members = ceph-server-1, ceph-server-2, ceph-server-3
+mon_host = 192.168.0.130,192.168.0.111,192.168.0.105
+auth_cluster_required = cephx
+auth_service_required = cephx
+auth_client_required = cephx
+
+osd pool default size = 2
+mon_clock_drift_allowed = 1
+
+[client.rgw.ceph-client]
+rgw_frontends = &quot;civetweb port=8080&quot;
+
+rgw keystone api version = 3
+rgw keystone url = http://192.168.0.51:5000 
+rgw keystone admin user = admin
+rgw keystone admin password = openstack
+rgw keystone admin domain = default
+rgw keystone admin project = admin
+rgw keystone accepted roles = admin, user 
+rgw keystone token cache size = 500
+rgw s3 auth use keystone = true
+rgw keystone revocation interval = 60
+rgw keystone implicit tenants = true
+
+root@ceph-client:/etc/ceph# systemctl restart ceph-radosgw@rgw.ceph-client
+root@ceph-client:/etc/ceph# systemctl status ceph-radosgw@rgw.ceph-client
+</code></pre><h3 id="swift-client-&#x9A8C;&#x8BC1;">swift client &#x9A8C;&#x8BC1;</h3>
+<p>&#x56E0;&#x4E3A;&#x8FD9;&#x91CC;&#x53EA;&#x8BBE;&#x7F6E;&#x4E86; admin &#x7684;role &#x6240;&#x4EE5;&#xFF0C;&#x73B0;&#x5728;&#x53EA;&#x6709;admin&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x8BA4;&#x8BC1;</p>
+<p>swift client &#x8282;&#x70B9;</p>
+<pre class="language-"><code>root@controller:~# . admin-openrc 
+root@controller:~# swift list
+root@controller:~# . demo-openrc 
+root@controller:~# swift list
+Account GET failed: http://ceph-rgw-client:8080/swift/v1?format=json 401 Unauthorized  [first 60 chars of response] {&quot;Code&quot;:&quot;AccessDenied&quot;,&quot;RequestId&quot;:&quot;tx000000000000000000003-
+Failed Transaction ID: tx000000000000000000003-005c877aed-5ebf-default
+root@controller:~#
+</code></pre><p>&#x770B;&#x5230;&#x4E86;&#x5427;&#xFF0C;&#x7531;&#x4E8E; demo &#x7528;&#x6237;&#x7684; role&#x662F; user &#x800C;&#x4E0D;&#x662F; admin, &#x6240;&#x4EE5;&#xFF0C;&#x8FD9;&#x91CC;&#x4F1A;&#x8BA4;&#x8BC1;&#x5931;&#x8D25;&#x7684;&#x3002;</p>
+<p>&#x600E;&#x4E48;&#x8BA9; demo &#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; keystone &#x8BA4;&#x8BC1;&#xFF0C;&#x5F53;&#x7136;&#x662F;&#x5728; <code>rgw keystone accepted roles</code> &#x52A0;&#x4E0A; <code>user</code> &#x53D8;&#x6210;&#x4E0B;&#x9762;&#x7684;&#x6837;&#x5B50;</p>
+<p><code>rgw keystone accepted roles = admin, user</code> </p>
+<p>&#x7136;&#x540E;&#x91CD;&#x542F;rgw, &#x6548;&#x679C;&#x5982;&#x4E0B;&#x3002;</p>
+<pre class="language-"><code>root@controller:~# . demo-openrc 
+root@controller:~# swift list
+root@controller:~#
+</code></pre><p>&#x5F53;&#x7136;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x770B;&#x5230;&#x4E86; admin&#x548C;demo&#x7528;&#x6237; &#x73B0;&#x5728;&#x662F;&#x6CA1;&#x6709;container&#x7684;&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x5168;&#x7A7A;&#x7684;&#x7528;&#x6237;&#x3002;</p>
+<h3 id="horizon-&#x4E0A;&#x4F20;&#x6587;&#x4EF6;">horizon &#x4E0A;&#x4F20;&#x6587;&#x4EF6;</h3>
+<p>&#x901A;&#x8FC7;chrome&#x8BBF;&#x95EE; <a href="https://192.168.0.51/horizon/" target="_blank">https://192.168.0.51/horizon/</a> &#x4E0A;&#x4F20;&#x4E00;&#x4E9B;&#x6587;&#x4EF6;</p>
+<pre class="language-"><code>root@controller:~# . demo-openrc 
+root@controller:~# swift list
+root@controller:~# swift list
+helloworld
+root@controller:~# swift list helloworld 
+DingTalk_v4.6.8.281.exe
+root@controller:~#
+</code></pre><h2 id="ref">ref</h2>
+<ul>
+<li><a href="http://docs.ceph.com/docs/master/radosgw/keystone/" target="_blank">http://docs.ceph.com/docs/master/radosgw/keystone/</a></li>
+<li><a href="http://docs.ceph.com/docs/jewel/radosgw/keystone/" target="_blank">http://docs.ceph.com/docs/jewel/radosgw/keystone/</a></li>
+<li><a href="https://stackoverflow.com/questions/39461803/openstack-swift-with-ceph-backend-radosgw" target="_blank">https://stackoverflow.com/questions/39461803/openstack-swift-with-ceph-backend-radosgw</a></li>
+<li><a href="https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/2/html-single/using_keystone_to_authenticate_ceph_object_gateway_users/index" target="_blank">https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/2/html-single/using_keystone_to_authenticate_ceph_object_gateway_users/index</a></li>
+</ul>
+<footer class="page-footer"><span class="copyright"><p><a href="https://github.com/eiuapp/ceph-handbook" target="_blank">Ceph&#x5B9E;&#x8DF5;&#x6307;&#x5357;</a> | <a href="https://github.com/eiuapp/ceph-handbook" target="_blank">Ceph&#x5B9E;&#x8DF5;&#x6307;&#x5357;</a></p><p><a href="https://res.cloudinary.com/dmtixvmgt/image/upload/v1539022273/wechat-qrcode_cml5dm.jpg" data-lightbox="2fd927ee-fa64-4eca-8ed5-6bd72b573a3c" target="_blank">&#x70B9;&#x51FB;&#x5173;&#x6CE8;&#x3010;servicemesher&#x3011;&#x516C;&#x4F17;&#x53F7;&#x56DE;&#x590D;&#x3010;&#x52A0;&#x7FA4;&#x3011;&#x52A0;&#x5165;&#x5B66;&#x4E60;&#x7FA4;</a> | </p>Copyright &#xA9; <a href="https://eiuapp.github.io" target="_blank">eiuapp.github.io</a> 2017-2019 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification"> Updated at 
+2019-04-09 09:00:25
+</span></footer></body></html>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="radosgw-swift-upload.html" class="navigation navigation-prev " aria-label="Previous page: swift上传文件">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="ceph-radosgw-with-openstack-keystone-v3.html" class="navigation navigation-next " aria-label="Next page: ceph与openstack-keystone-v3和swift集成">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"ceph集成openstack swift","level":"6.1.4","depth":2,"next":{"title":"ceph与openstack-keystone-v3和swift集成","level":"6.1.5","depth":2,"path":"docs/radosgw/swift/ceph-radosgw-with-openstack-keystone-v3.md","ref":"docs/radosgw/swift/ceph-radosgw-with-openstack-keystone-v3.md","articles":[]},"previous":{"title":"swift上传文件","level":"6.1.3","depth":2,"path":"docs/radosgw/swift/radosgw-swift-upload.md","ref":"docs/radosgw/swift/radosgw-swift-upload.md","articles":[]},"dir":"ltr"},"config":{"plugins":["github","codesnippet","splitter","page-toc-button","editlink","back-to-top-button","-lunr","-search","search-plus","github-buttons@2.1.0","favicon@^0.0.2","tbfed-pagefooter@^0.0.1","3-ba","theme-default","-highlight","prism","prism-themes","sitemap-general","lightbox","adsense","disqus","ga"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"<p><a href=https://github.com/eiuapp/ceph-handbook>Ceph实践指南</a> | <a href=https://github.com/eiuapp/ceph-handbook>Ceph实践指南</a></p><p><a href=https://res.cloudinary.com/dmtixvmgt/image/upload/v1539022273/wechat-qrcode_cml5dm.jpg data-lightbox=2fd927ee-fa64-4eca-8ed5-6bd72b573a3c>点击关注【servicemesher】公众号回复【加群】加入学习群</a> | </p>Copyright © <a href=https://eiuapp.github.io>eiuapp.github.io</a> 2017-2019","modify_label":" Updated at ","modify_format":"YYYY-MM-DD HH:mm:ss"},"prism":{"lang":{"shell":"bash"},"css":["prism-themes/themes/prism-ghcolors.css"]},"disqus":{"useIdentifier":false,"shortName":"whoami"},"github":{"url":"https://github.com/eiuapp/ceph-handbook"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/eiuapp/ceph-handbook/blob/master/"},"splitter":{},"adsense":{"client":"ca-pub-4029167986768912","slot":"2445941692","format":"auto","element":".page-inner section","position":"bottom"},"codesnippet":{},"sitemap-general":{"prefix":"https://eiuapp.github.io/ceph-handbook/"},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico"},"lightbox":{"jquery":true},"page-toc-button":{},"back-to-top-button":{},"prism-themes":{},"github-buttons":{"repo":"eiuapp/ceph-handbook","types":["star"],"size":"small"},"3-ba":{"configuration":"auto","token":"108be826b9faa2f792cdae4a29d274bb"},"ga":{"configuration":"auto","token":"UA-93485976-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{}},"theme":"default","author":"eiuapp","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Ceph Handbook - Ceph 实践指南 by eiuapp","language":"zh-hans","links":{"sidebar":{"Ceph Handbook":"https://eiuapp.github.io/ceph-handbook"}},"gitbook":"*","description":"Ceph Handbook - Ceph 实践指南 2019年 by eiuapp "},"file":{"path":"docs/radosgw/swift/openstack-swift-with-ceph-backend-radosgw.md","mtime":"2019-04-09T09:00:25.483Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-09T09:01:23.515Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-editlink/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-3-ba/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lightbox/jquery.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lightbox/lightbox.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-adsense/plugin.js"></script>
+        
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-disqus/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
