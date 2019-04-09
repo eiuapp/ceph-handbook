@@ -42,10 +42,11 @@
     * [ceph集成openstack swift](docs/radosgw/swift/openstack-swift-with-ceph-backend-radosgw.md)
     * [ceph与openstack-keystone-v3和swift集成](docs/radosgw/swift/ceph-radosgw-with-openstack-keystone-v3.md)
 * [tmp url]()
-    * [设置tmp url](docs/radosgw/swift/radosgw-swift-setup-tmp-url.md)
+    * [设置Temporary URL](docs/radosgw/swift/radosgw-swift-setup-tmp-url.md)
     * [(非keystone认证)swift生成并获取tmp url](docs/radosgw/swift/radosgw-swift-tmp-url-no-keystone.md)
     * [(keystone认证)swift生成并获取tmp url](docs/radosgw/swift/radosgw-swift-tmp-url-keystone.md)
-
+* [user]()
+    * [radosgw用户信息](docs/radosgw/swift/radosgw-user-info.md)
 ## 常见问题
 
 * [时间不一致](docs/faq/ntpdate.md)

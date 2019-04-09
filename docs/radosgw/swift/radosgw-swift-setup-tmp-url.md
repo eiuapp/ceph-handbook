@@ -133,5 +133,9 @@ print(res.status_code)
 abcd
 {'X-Timestamp': '1554781444.03614', 'X-Account-Container-Count': '1', 'X-Account-Object-Count': '3', 'X-Account-Bytes-Used': '25529', 'X-Account-Bytes-Used-Actual': '36864', 'X-Account-Storage-Policy-Default-Placement-Container-Count': '1', 'X-Account-Storage-Policy-Default-Placement-Object-Count': '3', 'X-Account-Storage-Policy-Default-Placement-Bytes-Used': '25529', 'X-Account-Storage-Policy-Default-Placement-Bytes-Used-Actual': '36864', 'X-Account-Meta-Temp-Url-Key': 'admintmpurlkey', 'Accept-Ranges': 'bytes', 'X-Trans-Id': 'tx000000000000000000464-005cac1503-392d5-default', 'X-Openstack-Request-Id': 'tx000000000000000000464-005cac1503-392d5-default', 'Content-Type': 'text/plain; charset=utf-8', 'Content-Length': '4', 'Date': 'Tue, 09 Apr 2019 03:44:04 GMT', 'Connection': 'Keep-Alive'}
 200
-```
 (swift) ➜  utils git:(master) ✗
+```
+
+## ref
+
+- https://docs.openstack.org/kilo/config-reference/content/object-storage-tempurl.html

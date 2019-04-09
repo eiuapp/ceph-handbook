@@ -94,7 +94,8 @@ print(res.status_code)
 
 print("查看有没有设置成功------------------------------------------------")
 URL = 'http://192.168.0.134:8080/swift/v1/'
-headers = {'X-Auth-Token':token, 'X-Account-Meta-Temp-URL-Key':"hello"}
+# headers = {'X-Auth-Token':token, 'X-Account-Meta-Temp-URL-Key':"hello"}
+headers = {'X-Auth-Token':token}
 res = requests.get(URL,headers=headers)
 print(res.text)
 print(res.headers)
